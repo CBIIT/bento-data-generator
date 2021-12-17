@@ -1,0 +1,547 @@
+---
+HeadNode:
+  name: Program
+  count: 4
+  Prefix: Program
+
+#Nodes to be included in the data graph.
+#Only nodes in the IncludeNodes section will be created.
+#Includes nodes in the hierarchy in which they occur in the model.
+IncludeNodes:
+  - Adverse_Events_Table
+  - Biopsy_Surgical_Procedures_Table
+  - Cellular_Immunotherapy_Table
+  - Concomitant_Medications_Table
+  - Course_Timing_Table
+  - Cytology_Table
+  - Demographics_Table
+  - Disease_Characteristics_Table
+  - Disease_Phase_Timing_Table
+  - Echocardiogram_Table
+  - File
+  - Growing_Teratoma_Syndrome_Table
+  - Histology_Table
+  - Immunohistochemistry_Table
+  - Labs_Table
+  - Medical_History_Table
+  - Minimal_Residual_Disease_Table
+  - Molecular_Analysis_Table
+  - Myeloid_Sarcoma_Involvement_Table
+  - Non_Protocol_Therapy_Table
+  - Non_protocol_Therapy_Table_2
+  - Off_Protocol_Therapy_Study_Table
+  - Patient_Reported_Outcomes_Metadata_Table
+  - Program
+  - Radiation_Therapy_Table
+  - Secondary_Malignant_Neoplasm_Table
+  - Staging_Table
+  - Stem_Cell_Transplant_Table
+  - Study
+  - Subject_Characteristics_Table
+  - Subject_Response_Table
+  - Survival_Characteristics_Table
+  - Total_Dose_Table
+  - Transfusion_Medicine_Procedures_Table
+  - Tumor_Assessment_Table
+  - Vitals_Table
+
+#Properties for which synthetic values need to be created.
+#Assumption: property names are duplicated among node types, ie, a property never belongs
+#to more than one node type.
+
+IncludeProperties:
+  - AA_MUTATION
+  - ADVERSE_EVENT
+  - AE_ATTRIBUTION
+  - AE_CODE
+  - AE_GRADE
+  - AE_ICU
+  - AE_INTERVENTION
+  - AE_MEDICATION
+  - AE_MED_INTERVENTION_DETAIL
+  - AE_OUTCOME
+  - AE_PATHOGEN
+  - AE_PATHOGEN_CONFIRMATION
+  - AE_SYSTEM
+  - AE_SYSTEM_VERSION
+  - AGE_AT_AE
+  - AGE_AT_AE_RESOLVED
+  - AGE_AT_COURSE_ANC_500
+  - AGE_AT_COURSE_END
+  - AGE_AT_COURSE_START
+  - AGE_AT_CYTOLOGY
+  - AGE_AT_DISEASE_PHASE
+  - AGE_AT_ECHO
+  - AGE_AT_ENROLLMENT
+  - AGE_AT_GTS
+  - AGE_AT_HIST_ASSESSMENT
+  - AGE_AT_IHC
+  - AGE_AT_IMT_START
+  - AGE_AT_LAB
+  - AGE_AT_LKSS
+  - AGE_AT_MEDICATION_END
+  - AGE_AT_MEDICATION_START
+  - AGE_AT_MOLECULAR_ANALYSIS
+  - AGE_AT_MRD_ASSESSMENT
+  - AGE_AT_PROCEDURE
+  - AGE_AT_RESPONSE
+  - AGE_AT_RT_END
+  - AGE_AT_RT_START
+  - AGE_AT_SCT
+  - AGE_AT_SMN
+  - AGE_AT_STAGING
+  - AGE_AT_TMP_START
+  - AGE_AT_TOTAL_DOSE_START
+  - AGE_AT_TUMOR_ASSESSMENT
+  - AGE_AT_TXASSIGN
+  - AGE_AT_VITALS
+  - AGE_A_TOTAL_DOSE_END
+  - AGE_LOST_TO_FOLLOW_UP
+  - AGE_OFF
+  - ALLELIC_RATIO
+  - ALL_TYPE
+  - AMPUTATION_TYPE
+  - ANC_AT_RESPONSE
+  - ANC_THRESHOLD_AT_RESPONSE
+  - ANOTHER_STUDY
+  - ANTINEOPLASTIC_AGENT
+  - AVN_JOINT
+  - AVN_JOINT_LATERALITY
+  - AVN_METHOD
+  - Adverse_Event
+  - BIOPSY_TYPE
+  - BM_ANALYSIS_METHOD_AT_RESPONSE
+  - BM_MORPHOLOGY
+  - BM_PCT_BLASTS_AT_RESPONSE
+  - BOOST
+  - BULK_MED_MASS
+  - Biopsy
+  - CAUSE_OF_DEATH
+  - CAUSE_OF_DEATH_DETAIL
+  - CAUSE_OF_DEATH_RANKING
+  - CHROMOSOME
+  - CNS_DISEASE_STATUS
+  - COMPUTED_VOLUME
+  - COURSE
+  - COURSE_NUMBER
+  - CYTOLOGY_SPEC_TYPE
+  - Cancer
+  - Consortium
+  - Consortium_Manager
+  - DATA_CONTRIBUTOR_ID
+  - DETECTION_METHOD
+  - DISEASE_PHASE
+  - DISEASE_PHASE_NUMBER
+  - DISEASE_SITE
+  - DNA_INDEX
+  - DYSGENETIC_GONAD
+  - ECHO_RESULT
+  - ECHO_RESULT_NUMERIC
+  - ECHO_RESULT_UNIT
+  - ECHO_TEST
+  - ENERGY_TYPE
+  - ENROLLED_STATUS
+  - ESTIMATED_VOLUME
+  - ETHNICITY
+  - EXTENSION_SITE
+  - FAB_TYPE
+  - FILE_DESCRIPTION
+  - FILE_FORMAT
+  - FILE_LOCATION
+  - FILE_NAME
+  - FILE_SIZE
+  - FILE_STATUS
+  - FILE_TYPE
+  - FLOW_CYTOMETRY_TYPE
+  - FRACTURE
+  - GENE1
+  - GENE2
+  - GENETIC_SEQ
+  - GPOH_SCORE
+  - GTS_TREATMENT
+  - GVHD_ACUITY
+  - GVHD_ORGAN
+  - HISTOLOGY
+  - HISTOLOGY_GRADE
+  - HISTOLOGY_RESULT
+  - HISTOLOGY_RESULT_NUMERIC
+  - HISTOLOGY_RESULT_UNIT
+  - HIST_ASSESSMENT_REVIEW
+  - HIST_ICD_O_MORPH
+  - HLA_A_RESULT
+  - HLA_B_RESULT
+  - HLA_C_RESULT
+  - HLA_DQ_RESULT
+  - HLA_DRB1_RESULT
+  - HLA_MATCH
+  - HONEST_BROKER_SUBJECT_ID
+  - Headquarters
+  - IGCCC_RISK_GROUP
+  - IHC_RESULT
+  - IHC_RESULT_NUMERIC
+  - IHC_TEST
+  - IMT_TYPE
+  - INDEPEN_ABB
+  - INFECTION_CLASSIFICATION
+  - IPSILATERAL_NODULES
+  - ISCN
+  - JOINT_INVOLVEMENT
+  - KARNOFSKY
+  - KARYOTYPE_STATUS
+  - LAB_CAT
+  - LAB_METHOD
+  - LAB_RESULT
+  - LAB_RESULT_NUMERIC
+  - LAB_RESULT_UNIT
+  - LAB_SEQ_METHOD
+  - LAB_SPEC_TYPE
+  - LAB_TEST
+  - LANSKY
+  - LKSS
+  - LKSS_WITH_DISEASE
+  - LOCALIZATION_TECHNIQUE
+  - LONGEST_DIAM_DIM1
+  - LONGEST_DIAM_DIM2
+  - LONGEST_DIAM_DIM3
+  - MAGIC_RISK_GROUP
+  - MALIGNANT_CELLS
+  - MARGINS
+  - MATURE_GLIAL_IMPLANTS
+  - MD5SUM
+  - MEDICAL_HISTORY
+  - MEDICATION
+  - MEDICATION_ADMN_STATUS
+  - MET_LUNG_MGMT
+  - MET_NON_LUNG_MGMT
+  - MLDS
+  - MOLECULAR_ABNORMALITY
+  - MOLECULAR_ABNORMALITY_RESULT
+  - MOLECULAR_ANALYSIS_METHOD
+  - MOLECULAR_ANALYSIS_SAMPLE_SOURCE
+  - MPAL
+  - MRD_METHOD
+  - MRD_MOLECULAR_MARKERS
+  - MRD_RESULT
+  - MRD_RESULT_NUMERIC
+  - MRD_RESULT_UNIT
+  - MRD_SAMPLE_SOURCE
+  - MRD_SENSITIVTY
+  - MYELOID_SARCOMA
+  - MYELOID_SARCOMA_SITE
+  - NODAL_INVOLVEMENT
+  - NODAL_SITE
+  - NPT_TIMING
+  - NPT_TYPE
+  - NUMBER_DOSES
+  - NUMBER_HLA
+  - NUMBER_MATCHES
+  - NUM_CHROMOSOMES
+  - NUM_FRACTION
+  - NUM_METAPHASES
+  - OFF_TYPE
+  - ORTHOPEDIC_PROCEDURE
+  - PCDC_SUBJECT_ID
+  - PERITONEAL_CYTOLOGY
+  - PERITONEAL_EFFUSION
+  - PLATELET_COUNT_AT_RESPONSE
+  - PLATELET_THRESHOLD_AT_RESPONSE
+  - PLEURAL_CYTOLOGY
+  - PLEURAL_EFFUSION
+  - PMID_REF
+  - PRIOR_STEROIDS_MONTH
+  - PRIOR_STEROIDS_WEEK
+  - PROCEDURE_EXTENT
+  - PROCEDURE_LATERALITY
+  - PROCEDURE_SITE
+  - PROCEDURE_TYPE
+  - PROGRAM_ID
+  - PRO_MEASURES
+  - RACE
+  - REASON_OFF
+  - RECONSTRUCTION_TYPE
+  - RESPONSE
+  - RESPONSE_CATEGORY
+  - RESPONSE_CRITERIA
+  - RESPONSE_CRITERIA_VERSION
+  - RESPONSE_METHOD
+  - ROUTE
+  - RT_DOSE
+  - RT_LATERALITY
+  - RT_SITE
+  - RT_UNIT
+  - Radiation_Therapy
+  - SCT_CD34_COLL
+  - SCT_CD34_TRANSPLANT
+  - SCT_CONDITIONING_TYPE
+  - SCT_CYCLES
+  - SCT_DONOR_RELATIONSHIP
+  - SCT_SOURCE
+  - SCT_TBI
+  - SCT_TYPE
+  - SECONDARY_AML
+  - SEX
+  - SITE_WITHIN_BONE
+  - SKIP_LESION
+  - SMN_FIELD
+  - SMN_ICD_O_MORPH
+  - SMN_ICD_O_TOP
+  - SOMATIC_MALIGNANCY_TYPE
+  - STAGE
+  - STAGE_SYSTEM
+  - STUDY_Description
+  - STUDY_ID
+  - SURGERY_TYPE_LIMB
+  - SURGERY_TYPE_LIMB_SALVAGE
+  - TAMDS
+  - THRESHOLD_HIGH
+  - THRESHOLD_LOW
+  - TMP_PRODUCT
+  - TMP_TYPE
+  - TOTAL_DOSE_ADMINISTERED
+  - TOTAL_DOSE_INTENDED
+  - TOTAL_DOSE_UNITS
+  - TRANSLOCATION_STATUS
+  - TRANSPOSITION_ORGAN
+  - TRAUMATIC_TAP
+  - TREATMENT_ARM
+  - TRM_TYPE
+  - TUMOR_CLASSIFICATION
+  - TUMOR_DETECTION_METHOD
+  - TUMOR_LATERALITY
+  - TUMOR_SITE
+  - TUMOR_TISSUE_TYPE
+  - TUMOR_VOLUME
+  - UUID
+  - VARIANT_TYPE
+  - VITALS_RESULT
+  - VITALS_RESULT_NUMERIC
+  - VITALS_RESULT_UNIT
+  - VITALS_TEST
+  - WHO_AML
+  - YEAR_AT_DISEASE_PHASE
+  - YEAR_AT_ENROLLMENT
+
+
+
+#Relationship specifications. For example: how many studies per program; how many cases per studies.
+# This also includes specifications on how these node counts should be generated.
+# 1. SrcNodeCount: fixed, indicates that the "count" variable holds the counts.
+# 2. SrcNodeCount: random, indicates that counts are generated from a drawing from a uniform distribution 
+#    between the variable minCount and maxCount (both inclusive).
+# 3. All relationships among the included nodes will automatically be created.
+# 4. Do not specify relationships between nodes of the same type, e.g between two samples, two visits etc.
+
+RelationshipSpecs:
+  Program:
+    Study:
+      EdgeType: of_programs
+      SrcNodeCount: fixed
+      count: 8
+      Prefix: Study
+  Study:
+    Subject_Characteristics_Table:
+      EdgeType: of_programs
+      SrcNodeCount: fixed
+      count: 20
+      Prefix: Subject
+  Subject_Characteristics_Table:
+    Transfusion_Medicine_Procedures_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: TMPT
+    Subject_Response_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: SRT
+    Growing_Teratoma_Syndrome_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: GTST
+    Cytology_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: CT
+    Secondary_Malignant_Neoplasm_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: SMNT
+    Adverse_Events_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: AET
+    Vitals_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: VT
+    Radiation_Therapy_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: RTT
+    Molecular_Analysis_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: MAT
+    Stem_Cell_Transplant_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: SCTT
+    Concomitant_Medications_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: CMT
+    Echocardiogram_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: ET
+    Demographics_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: DT
+    Non_Protocol_Therapy_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: NPTT
+    Tumor_Assessment_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: TAT
+    Histology_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: HT
+    Staging_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: ST
+    Patient_Reported_Outcomes_Metadata_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: PROMT
+    Survival_Characteristics_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: SCT
+    Non_protocol_Therapy_Table_2:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: NPTT2
+    Course_Timing_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: CTT
+    Immunohistochemistry_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: IT
+    Off_Protocol_Therapy_Study_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: OPTST
+    Medical_History_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: MHT
+    Minimal_Residual_Disease_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: MRDT
+    Labs_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: LT
+    Disease_Characteristics_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: DCT
+    Total_Dose_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: TDT
+    Biopsy_Surgical_Procedures_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: BSPT
+    Cellular_Immunotherapy_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: CIT
+    File:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: File
+    Myeloid_Sarcoma_Involvement_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: MSIT
+    Disease_Phase_Timing_Table:
+      EdgeType: of_subject
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: DPTT
+
+

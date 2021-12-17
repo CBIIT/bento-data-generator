@@ -1,0 +1,4505 @@
+PropDefinitions:
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Transfusion Medicine Procedures Table:
+   AGE_AT_TMP_START:
+     Desc: Age of subject (in days) at the start of the transfusion procedure.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Transfusion Medicine Procedures Table:
+   TMP_TYPE:
+     Desc: An infusion or replacement of blood components.
+     Src: NA
+     Type:
+        - "Exchange Transfusion"
+        - "Simple Transfusion"
+        - "Therapeutic Apheresis"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Transfusion Medicine Procedures Table:
+   TMP_PRODUCT:
+     Desc: The type of product intended for transfusion.
+     Src: NA
+     Type:
+        - "Platelets"
+        - "RBC"
+        - "WBC"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Subject Response Table:
+   AGE_AT_RESPONSE:
+     Desc: Age of subject (in days) when the response assessment was made.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Subject Response Table:
+   RESPONSE_CATEGORY:
+     Desc: The category used to assess the response to therapy.
+     Src: NA
+     Type:
+        - "CNS Response"
+        - "Myeloid Sarcoma Response"
+        - "Bone Marrow Response"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+        - "Overall Response"
+        - "Tumor Marker"
+        - "Imaging"
+        - "Pathology"
+     Req: null
+     Private: null
+   #Property of Subject Response Table:
+   RESPONSE:
+     Desc: The pathologic and/or clinical changes that result from treatment. The changes may include eradication of detectable disease, stabilization of disease, or disease progression.
+     Src: NA
+     Type:
+        - "Non-response"
+        - "Unknown"
+        - "Not Reported"
+        - "Partial Response"
+        - "Stable Disease"
+        - "Progressive Disease"
+        - "Not Evaluable"
+     Req: null
+     Private: null
+   #Property of Subject Response Table:
+   BM_PCT_BLASTS_AT_RESPONSE:
+     Desc: The percent of cells that were blasts in the subject's bone marrow used to make the response assessment.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Subject Response Table:
+   BM_ANALYSIS_METHOD_AT_RESPONSE:
+     Desc: The modality used to determine the bone marrow percent blasts.
+     Src: NA
+     Type:
+        - "Flow Cytometry"
+        - "Other"
+        - "Unknown"
+        - "Morphology"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Subject Response Table:
+   ANC_AT_RESPONSE:
+     Desc: The absolute neutrophil count used to make the response assessment.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Subject Response Table:
+   ANC_THRESHOLD_AT_RESPONSE:
+     Desc: Subject exceeded an absolute neutrophil count threshold of >= 500 (ANC/mm3) at the time of the response assessment.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Subject Response Table:
+   PLATELET_COUNT_AT_RESPONSE:
+     Desc: The platelet count used to make the response assessment.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Subject Response Table:
+   PLATELET_THRESHOLD_AT_RESPONSE:
+     Desc: Subject exceeded a platelet count threshold of >=50,000 (platelets/mm3) at the time of the response assessment.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Subject Response Table:
+   RESPONSE_CRITERIA:
+     Desc: A standard from which a judgment concerning tumor response to therapy can be established.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "RECIST"
+        - "Choi"
+        - "mRECIST"
+        - "PERCIST"
+        - "WHO"
+     Req: null
+     Private: null
+   #Property of Subject Response Table:
+   RESPONSE_CRITERIA_VERSION:
+     Desc: The version of the response criteria.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Subject Response Table:
+   RESPONSE_METHOD:
+     Desc: The method used to assess the response to therapy.
+     Src: NA
+     Type:
+        - "Tumor Marker"
+        - "Imaging"
+        - "Unknown"
+        - "Pathology"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Growing Teratoma Syndrome Table:
+   AGE_AT_GTS:
+     Desc: Age of subject (in days) at the diagnosis of growing teratoma syndrome.
+     Src: NA
+     Type:
+        - ""
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Growing Teratoma Syndrome Table:
+   GTS_TREATMENT:
+     Desc: The therapy chosen to treat Growing Teratoma Syndrome.
+     Src: NA
+     Type:
+        - "Chemotherapy"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Cytology Table:
+   AGE_AT_CYTOLOGY:
+     Desc: Age of subject (in days) at the time of the cytology test.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Cytology Table:
+   MALIGNANT_CELLS:
+     Desc: Cells of, or derived from, a malignant tumor.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Present"
+        - "Not Reported"
+        - "Absent"
+     Req: null
+     Private: null
+   #Property of Cytology Table:
+   CYTOLOGY_SPEC_TYPE:
+     Desc: The type of a material sample taken from a biological entity for testing, diagnostic, propagation, treatment or research purposes
+     Src: NA
+     Type:
+        - "CSF"
+        - "Unknown"
+        - "Not Reported"
+        - "Peritoneal Fluid"
+     Req: null
+     Private: null
+   #Property of Secondary Malignant Neoplasm Table:
+   AGE_AT_SMN:
+     Desc: Age of subject (in days) at the diagnosis of the secondary malignant neoplasm.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Secondary Malignant Neoplasm Table:
+   SMN_ICD_O_MORPH:
+     Desc: ICD-O morphology code of the secondary malignant neoplasm.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Secondary Malignant Neoplasm Table:
+   SMN_ICD_O_TOP:
+     Desc: ICD-O topography code of the secondary malignant neoplasm.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Secondary Malignant Neoplasm Table:
+   SMN_FIELD:
+     Desc: The location of the second malignant neoplasm related to the prior radiation field.
+     Src: NA
+     Type:
+        - "In XRT field"
+        - "Out of XRT field"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AGE_AT_AE:
+     Desc: Age of subject (in days) at the onset of the adverse event.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   ADVERSE_EVENT:
+     Desc: Any unfavorable or unintended disease, sign, or symptom (including an abnormal laboratory finding) that is temporally associated with the use of a medical treatment or procedure, and that may or may not be considered related to the medical treatment or procedure. Such events can be related to the intervention, dose, route of administration, patient, or caused by an interaction with another drug(s) or procedure(s).
+     Src: NA
+     Type:
+        - "Infection"
+        - "Other"
+        - "Unknown"
+        - "Hemorrhage"
+        - "Sinusoidal Obstruction Syndrome"
+        - "Hyperbilirubinemia"
+        - "Neurotoxicity Syndrome"
+        - "Graft Versus Host Disease"
+        - "Typhlitis"
+        - "Not Reported"
+        - "Left Ventricular Systolic Dysfunction"
+        - "Multi-Organ Failure"
+        - "Renal Toxicity"
+        - "Pulmonary Toxicity"
+        - "Neuropathy"
+        - "Ototoxicity"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AE_CODE:
+     Desc: The code of the adverse event.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AE_SYSTEM:
+     Desc: The name of the system used to grade the adverse events.
+     Src: NA
+     Type:
+        - "European Society for Blood and Marrow Transplantation (EBMT)"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+        - "CTCAE"
+        - "Balis Neuropathy Scale"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AE_SYSTEM_VERSION:
+     Desc: The version of the adverse event grading system.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AE_GRADE:
+     Desc: A numeric value corresponding to the degree of severity of an adverse event.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Grade 1"
+        - "Grade 2"
+        - "Grade 3"
+        - "Not Reported"
+        - "Grade 5"
+        - "Grade 4"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AE_ATTRIBUTION:
+     Desc: A specific identifiable level (defined qualitatively or quantitatively) of probability of adverse event being caused or associated with the product or procedure administration to a patient.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "Unrelated"
+        - "Unlikely"
+        - "Possible"
+        - "Probable"
+        - "Definite"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AE_OUTCOME:
+     Desc: A condition or event that is attributed to the adverse event and is the result or conclusion of the adverse event.
+     Src: NA
+     Type:
+        - "Death, contributory"
+        - "Death, noncontributory"
+        - "Unknown"
+        - "Not Reported"
+        - "Not Recovered"
+        - "Recovered with Sequelae"
+        - "Recovered"
+        - "Death, Contributory"
+        - "Death, Noncontributory"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AE_ICU:
+     Desc: An indication of whether the subject was admitted to the intensive care unit.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AE_MEDICATION:
+     Desc: The medication related to the adverse event.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AE_INTERVENTION:
+     Desc: The intervention related to the adverse event.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AE_MED_INTERVENTION_DETAIL:
+     Desc: The intervention or medication detail of the adverse event.
+     Src: NA
+     Type:
+        - "Heart Transplant"
+        - "Inotropic Support"
+        - "Other"
+        - "Unknown"
+        - "ACE-inhibitor"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AE_PATHOGEN:
+     Desc: An agent of disease; a disease producer.
+     Src: NA
+     Type:
+        - "Bacteria"
+        - "Fungus"
+        - "Virus"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AE_PATHOGEN_CONFIRMATION:
+     Desc: An indication that the reported pathogen was confirmed or suspected as the cause of an infection.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Confirmed"
+        - "Not Reported"
+        - "Suspected"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   GVHD_ACUITY:
+     Desc: The assessed level of seriousness assigned to the graft vs host disease.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "Acute"
+        - "Chronic"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   GVHD_ORGAN:
+     Desc: The organs involved in the graft vs host disease.
+     Src: NA
+     Type:
+        - "Liver"
+        - "Lung"
+        - "Skin"
+        - "Other"
+        - "Unknown"
+        - "Gastrointestinal Tract"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AGE_AT_AE_RESOLVED:
+     Desc: Age of subject (in days) at adverse event resolution.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AVN_JOINT:
+     Desc: Death of bone tissue in a joint due to temporary or permanent interruption of blood flow.
+     Src: NA
+     Type:
+        - "Heel (calcaneus)"
+        - "Other"
+        - "Unknown"
+        - "Shoulder"
+        - "Ankle"
+        - "Elbow (distal humerus, proximal radius, proximal ulna)"
+        - "Hip (proximal femur)"
+        - "Knee"
+        - "Wrist"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AVN_JOINT_LATERALITY:
+     Desc: A finding descriptive of the laterality of the avascular necrosis in the joints.
+     Src: NA
+     Type:
+        - "Bilateral"
+        - "Right"
+        - "Left"
+        - "Midline"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   AVN_METHOD:
+     Desc: The method used to determine the diagnosis of the avascular necrosis.
+     Src: NA
+     Type:
+        - "MRI"
+        - "CT Scan"
+        - "Bone Scan"
+        - "Other"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   ORTHOPEDIC_PROCEDURE:
+     Desc: Orthopedic procedures to repair avascular necrosis.
+     Src: NA
+     Type:
+        - "Core Decompression"
+        - "Other"
+        - "Arthroplasty, Hemi/Resurfacing"
+        - "Arthroplasty, Total"
+        - "Bone Graft, Free Vascularized"
+        - "Bone Graft, Nonvascularized"
+        - "Chondroplasty"
+        - "Osteotomy"
+     Req: null
+     Private: null
+   #Property of Adverse Events Table:
+   INFECTION_CLASSIFICATION:
+     Desc: The type of evidence regarding the infection type.
+     Src: NA
+     Type:
+        - "Clinically Documented"
+        - "Microbiologically Documented Non-Sterile Site"
+        - "Microbiologically Documented Sterile Site"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Vitals Table:
+   AGE_AT_VITALS:
+     Desc: Age of subject (in days) when vital signs were recorded.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Vitals Table:
+   VITALS_TEST:
+     Desc: The act of assessing an individual's current temperature, heart rate, respiratory rate, pulse oxygenation, and blood pressure.
+     Src: NA
+     Type:
+        - "BMI"
+        - "Height"
+        - "Weight"
+        - "BSA"
+        - ""
+     Req: null
+     Private: null
+   #Property of Vitals Table:
+   VITALS_RESULT:
+     Desc: The results of the vital sign measurements.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Vitals Table:
+   VITALS_RESULT_NUMERIC:
+     Desc: The numeric values of the vital signs.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Vitals Table:
+   VITALS_RESULT_UNIT:
+     Desc: The unit used to record and describe the result of a test investigating a vital sign.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "kg"
+        - "Not Reported"
+        - "cm"
+        - "kg/m2"
+        - "m2"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Radiation Therapy Table:
+   AGE_AT_RT_START:
+     Desc: Age of subject (in days) at the start of radiation therapy.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Radiation Therapy Table:
+   AGE_AT_RT_END:
+     Desc: Age of subject (in days) at the end of radiation therapy.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Radiation Therapy Table:
+   RT_SITE:
+     Desc: The anatomic site of the radiation therapy.
+     Src: NA
+     Type:
+        - "Cranium"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+        - "Head and Neck"
+        - "Abdomen"
+        - "Upper Extremity"
+        - "Lower Extremity"
+        - "Pelvis"
+        - "Spine"
+        - "Chest"
+        - "Liver"
+        - "Pineal"
+        - "Ovary"
+        - "Vagina"
+        - "Testis"
+        - "Thalamus"
+        - "Spinal Cord"
+        - "Mediastinum"
+        - "Suprasellar/Neurohypophyseal"
+        - "Sacrococcygeal"
+     Req: null
+     Private: null
+   #Property of Radiation Therapy Table:
+   RT_DOSE:
+     Desc: The total radiation dose administered.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Radiation Therapy Table:
+   RT_UNIT:
+     Desc: A unit of measurement of the dose of radiation received or absorbed.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Gy"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   TUMOR_CLASSIFICATION:
+     Desc: The classification of a tumor based primarily on histopathological characteristics.
+     Src: NA
+     Type:
+        - "Metastatic"
+        - "Unknown"
+        - "Not Reported"
+        - "Primary Tumor"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   TUMOR_TISSUE_TYPE:
+     Desc: The type of material sample taken from a biological entity for tumor findings assessment testing.
+     Src: NA
+     Type:
+        - "Mandible"
+        - "Bone"
+        - "Liver"
+        - "Kidney"
+        - "Head and Neck"
+        - "Bone Marrow"
+        - "Central Nervous System"
+        - "Brain"
+        - "Spinal Cord"
+        - "Lung"
+        - "Soft Tissue"
+        - "Abdomen"
+        - "Upper Extremity"
+        - "Axilla"
+        - "Carpal Bone"
+        - "Cervical Vertebra"
+        - "Clavicle"
+        - "Coccyx"
+        - "Ethmoid Bone"
+        - "Femur"
+        - "Fibula"
+     Req: null
+     Private: null
+   #Property of Radiation Therapy Table:
+   RT_LATERALITY:
+     Desc: The laterality intended for radiation therapy.
+     Src: NA
+     Type:
+        - "Bilateral"
+        - "Unknown"
+        - "Right"
+        - "Left"
+        - "Not Reported"
+        - "Midline"
+     Req: null
+     Private: null
+   #Property of Radiation Therapy Table:
+   ENERGY_TYPE:
+     Desc: Treatment of a disease by means of exposure of the target or the whole body to radiation. Radiation therapy is often used as part of curative therapy and occasionally as a component of palliative treatment for cancer. Other uses include total body irradiation prior to transplantation.
+     Src: NA
+     Type:
+        - "3D Conformal"
+        - "Intensity-Modulated Radiation Therapy"
+        - "Proton Stereotactic Body Radiation Therapy"
+        - "Photon Stereotactic Body Radiation Therapy"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+        - "Proton"
+        - "Photon"
+     Req: null
+     Private: null
+   #Property of Radiation Therapy Table:
+   NUM_FRACTION:
+     Desc: The number of divided radiation doses received per day.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Radiation Therapy Table:
+   TRANSPOSITION_ORGAN:
+     Desc: A procedure to move organs out of the range of the damaging effects of radiation.
+     Src: NA
+     Type:
+        - "Ovary"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Radiation Therapy Table:
+   BOOST:
+     Desc: One or more extra radiation treatments targeted at the tumor bed, given after the regular sessions of radiation are complete.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   AGE_AT_MOLECULAR_ANALYSIS:
+     Desc: Age of subject (in days) when molecular analysis was performed.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   MOLECULAR_ANALYSIS_METHOD:
+     Desc: A request to enter the specific molecular analysis method used to detect abnormalities in the study.
+     Src: NA
+     Type:
+        - "Next Generation Sequencing"
+        - "Karyotyping"
+        - "Fluorescence In Situ Hybridization"
+        - "Capillary Electropheresis"
+        - "Other"
+        - "Unknown"
+        - "Gel Electropheresis"
+        - "Reverse Transcriptase-Polymerase Chain Reaction"
+        - "Not Reported"
+        - "Cytogenetics"
+        - "Polymerase Chain Reaction"
+        - "Genotyping"
+        - "Karyotype"
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   ISCN:
+     Desc: A karyotype finding as classified by the International System for Human Cytogenetic Nomenclature.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   INDEPEN_ABB:
+     Desc: The number of independent aberrations found in the karyotype during analysis.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   NUM_METAPHASES:
+     Desc: The number of cells in metaphase during karyotype analysis.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   MOLECULAR_ABNORMALITY:
+     Desc: A molecular or cytogenic abnormality which occurs in either human disease states or disease models.
+     Src: NA
+     Type:
+        - "CKIT Mutation - Ex17"
+        - "MLL Rearrangement"
+        - "t(7;12)(q36;p13)"
+        - "CKIT Mutation - Ex8"
+        - "t(5;11)(q35;p15)"
+        - "t(11;15)(p15;q35)"
+        - "t(10;11)(p12;q23)"
+        - "t(9;22)(q34;q11.2)"
+        - "WT1 mutation"
+        - "Biallelic CEBPA Gene Mutation"
+        - "inv(16)(p13.3q24.3)"
+        - "t(10;11)(p11.2;q23)"
+        - "t(1;11)(q21;q23)"
+        - "t(11;19)(q23;p13)"
+        - "t(3;12)(q23;p12.3)"
+        - "del(5q)(5q31-q32)"
+        - "del(13q)(13q14-21)"
+        - "Non-KMT2A MLLT10"
+        - "t(16;21)(q24;q22)"
+        - "Monoallelic CEBPA Gene Mutation"
+        - "der.12p"
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   CHROMOSOME:
+     Desc: One of the bodies in the cell nucleus that is the bearer of genes, has the form of a delicate chromatin filament during interphase, contracts to form a compact cylinder segmented into two arms by the centromere during metaphase and anaphase stages of cell division, and is capable of reproducing its physical and chemical structure through successive cell divisions.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   GENE1:
+     Desc: The gene symbol that represents either a single gene that has a mutation or the gene that comprises the 5' portion of the coding sequence involved in a fusion gene mutation.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   GENE2:
+     Desc: The gene symbol that represents the gene that comprises the 3' portion of the coding sequence for a fusion gene.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   VARIANT_TYPE:
+     Desc: A variation in or modification of the molecular sequence of a gene or gene product.
+     Src: NA
+     Type:
+        - "Single Nucleotide Variant"
+        - "Other"
+        - "Unknown"
+        - "Deletion"
+        - "Translocation"
+        - "Rearrangement"
+        - "Copy Number Alteration"
+        - "Not Reported"
+        - "Mutation"
+        - "Inversion"
+        - "Amplification"
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   GENETIC_SEQ:
+     Desc: A variation in the nucleic acid sequence of a specific gene.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   AA_MUTATION:
+     Desc: A variation in the amino acid sequence of a specific gene product.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   MOLECULAR_ABNORMALITY_RESULT:
+     Desc: An indicator for whether a molecular analysis procedure was performed and whether the assay detected a molecular abnormality.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Negative"
+        - "Positive"
+        - "Not Reported"
+        - "Not Done"
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   ALLELIC_RATIO:
+     Desc: The determination of the ratio of variant alleles to wild-type alleles present in a sample.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   TUMOR_CLASSIFICATION:
+     Desc: The classification of a tumor based primarily on histopathological characteristics.
+     Src: NA
+     Type:
+        - "Metastatic"
+        - "Unknown"
+        - "Not Reported"
+        - "Primary Tumor"
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   KARYOTYPE_STATUS:
+     Desc: The status of the subject's karyotype.
+     Src: NA
+     Type:
+        - "Abnormal Karyotype"
+        - "Normal Karyotype"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   NUM_CHROMOSOMES:
+     Desc: The number of chromosomes upon karyotype analysis.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   MOLECULAR_ANALYSIS_SAMPLE_SOURCE:
+     Desc: The anatomic source of the molecular analysis sample.
+     Src: NA
+     Type:
+        - "Bone Marrow"
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   DNA_INDEX:
+     Desc: The ratio of the DNA content or chromosome number in a tumor sample compared to that in a normal sample.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Molecular Analysis Table:
+   TRANSLOCATION_STATUS:
+     Desc: The finding of the chromosomal translocation analysis.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "Balanced"
+        - "Unbalanced"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   HONEST_BROKER_SUBJECT_ID:
+     Desc: Subject identifier assigned by the honest broker.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   DATA_CONTRIBUTOR_ID:
+     Desc: An identifier assigned to a data contributor.
+     Src: NA
+     Type:
+        - "AIEOP"
+        - "BFM-SG"
+        - "DCOG"
+        - "JACLS"
+        - "JPLSG"
+        - "MRC"
+        - "NOPHO"
+        - "PPLLSG"
+        - "COG"
+        - "SJCRH"
+        - "GPOH (German Pediatric Oncology-Hematology Society)"
+        - "SSG (Scandinavian Sarcoma Group)"
+        - "FSG (French Sarcoma Group)"
+        - "UK (United Kingdom Sarcoma Registry)"
+        - "EURO-EWING Consortium"
+        - "ISG (Italian Sarcoma Group)"
+        - "CRCTU (Cancer Research Clinical Trials Unit)"
+        - "University College of London"
+        - "CCLG"
+        - "SFCE"
+        - "SOPOBE"
+     Req: null
+     Private: null
+   #Property of Study:
+   STUDY_ID:
+     Desc: A sequence of characters used to identify, name, or characterize the study.
+     Src: NA
+     Type:
+        - "AAML03P1"
+        - "AAML0531"
+        - "AAML1031"
+        - "AMLBFM2004"
+        - "SJCRHAML02"
+        - "JPLSGAML05"
+        - "AEIOPLAM2002"
+        - "JACLSAML99"
+        - "DBAML01"
+        - "MRCAML12"
+        - "NOPHOAML2004"
+        - "PPLLSGAML98"
+        - "AMLBFM2012"
+        - "AMLBFMRegistry2012"
+        - "MRCAML15"
+        - "NOPHOAML2012"
+        - "AIEOPLAM92"
+        - "SCFEELAM02"
+        - "AEWS1221"
+        - "AEWS0331"
+        - "AEWS0031"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   AGE_AT_ENROLLMENT:
+     Desc: Age of subject (in days) when the subject enrolled in the study.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   TREATMENT_ARM:
+     Desc: A specific treatment plan within a clinical trial that describes the activities a subject will be involved in as he or she progresses through the study.
+     Src: NA
+     Type:
+        - ""
+        - "3W-VDC-MESNA+IFO-GCSF/AEWS0031"
+        - "2W-VDC-MESNA+IFO-GCSF/AEWS0031"
+        - "VDC/IE/AEWS1221"
+        - "VDC/IE+Ganitumab/AEWS1221"
+        - "VIDE-Surgery-R1-VAI-VAC/VAI/AEWS0331"
+        - "VIDE-Surgery-R2-VAI-VAI/BuMel/AEWS0331"
+        - "VIDE-Surgery-R3-VAI-MEME/TreoMel/BuMel/P2/AEWS0331"
+        - "VIDEC/AEWS1031"
+        - "VIDEC+Topotecan/AEWS1031"
+        - "SR/VAIA/EICESS92"
+        - "SR/VACA/EICESS92"
+        - "HR/VAIA/EICESS92"
+        - "HR/EVAIA/EICESS92"
+        - "VAIA-VACA/AEWS07P1"
+        - "VAIA-VAIA/AEWS07P1"
+        - "EVAIA-EVAIA/AEWS07P1"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   ENROLLED_STATUS:
+     Desc: The current status of the subject's enrollment.
+     Src: NA
+     Type:
+        - "Enrolled"
+        - "Not Enrolled"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   YEAR_AT_ENROLLMENT:
+     Desc: The year at which a subject enrolled in a study.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   AGE_AT_SCT:
+     Desc: Age of subject (in days) at the time of stem-cell transplantation.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   SCT_TYPE:
+     Desc: Type of stem-cell transplantation the subject received.
+     Src: NA
+     Type:
+        - "Autologous"
+        - "Unknown"
+        - "Not Reported"
+        - "Allogeneic"
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   SCT_SOURCE:
+     Desc: The source of the stem cells for the stem cell transplant.
+     Src: NA
+     Type:
+        - "Bone Marrow"
+        - "Cord Blood"
+        - "Stem Cell Mixture"
+        - "Peripheral Blood"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   SCT_DONOR_RELATIONSHIP:
+     Desc: The biological relationship between the stem cell donor and the recipients.
+     Src: NA
+     Type:
+        - "Biological Sibling"
+        - "Biologically Unrelated"
+        - "Biological Parent"
+        - "Unknown"
+        - "Not Reported"
+        - "Biological Relative"
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   HLA_MATCH:
+     Desc: A process in which blood or tissue samples are analyzed to determine their human leukocyte antigen (HLA) profiles so that transplant materials can be transferred into a patient with the same or similar profile.
+     Src: NA
+     Type:
+        - "Non-match"
+        - "Match"
+        - "Unknown"
+        - "Not Reported"
+        - "Non-Match"
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   NUMBER_HLA:
+     Desc: The number of human leukocyte antigens that were evaluated.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   NUMBER_MATCHES:
+     Desc: The number of human leukocyte antigens that matched between the donor and the recipient.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   HLA_A_RESULT:
+     Desc: The extent of HLA-A matching between the donor and the recipient.
+     Src: NA
+     Type:
+        - "One Allele Mismatched"
+        - "Two Alleles Mismatched"
+        - "Both Alleles Matched"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   HLA_B_RESULT:
+     Desc: The extent of HLA-B matching between the donor and the recipient.
+     Src: NA
+     Type:
+        - "One Allele Mismatched"
+        - "Two Alleles Mismatched"
+        - "Both Alleles Matched"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   HLA_C_RESULT:
+     Desc: The extent of HLA-C matching between the donor and the recipient.
+     Src: NA
+     Type:
+        - "One Allele Mismatched"
+        - "Two Alleles Mismatched"
+        - "Both Alleles Matched"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   HLA_DRB1_RESULT:
+     Desc: The extent of HLA-DRB1 matching between the donor and the recipient.
+     Src: NA
+     Type:
+        - "One Allele Mismatched"
+        - "Two Alleles Mismatched"
+        - "Both Alleles Matched"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   HLA_DQ_RESULT:
+     Desc: The extent of HLA-DQ matching between the donor and the recipient.
+     Src: NA
+     Type:
+        - "One Allele Mismatched"
+        - "Two Alleles Mismatched"
+        - "Both Alleles Matched"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   SCT_CONDITIONING_TYPE:
+     Desc: Type of conditioning the subject received prior to stem-cell transplantation.
+     Src: NA
+     Type:
+        - "Reduced Intensity Conditioning/Reduced Toxicity Conditioning"
+        - "Myeloablative"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+        - "Non-myeloablative"
+        - "Non-Myeloablative"
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   SCT_TBI:
+     Desc: A therapeutic procedure that involves the irradiation of the whole body with ionizing or non-ionizing radiation.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   SCT_CD34_COLL:
+     Desc: The determination of the amount of CD34 expressing stem cells present in a sample.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   SCT_CD34_TRANSPLANT:
+     Desc: The determination of the amount of transplanted CD34 expressing stem cells.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Stem Cell Transplant Table:
+   SCT_CYCLES:
+     Desc: The total number of stem cell transplant cycles.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Concomitant Medications Table:
+   AGE_AT_MEDICATION_START:
+     Desc: Age of subject (in days) at the start of the concomitant medication administration.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Concomitant Medications Table:
+   AGE_AT_MEDICATION_END:
+     Desc: Age of subject (in days) at the end of the concomitant medication administration.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Concomitant Medications Table:
+   MEDICATION:
+     Desc: A pharmaceutical agent other than agent(s) tested in a given protocol that is administered to or used by a subject either prior to or during the study. Supportive care and essential ancillary medications required by a treatment regimen should be clearly identified. A protocol complete instructions including appropriate indication, dosage, administration route, schedule, restrictions to use, and any other relevant data should be explicitly stated. Concept also refers to substance(s) used prior or during the study that are not specified by the protocol.
+     Src: NA
+     Type:
+        - "Dexrazoxane"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+        - "Sodium Thiosulfate"
+     Req: null
+     Private: null
+   #Property of Concomitant Medications Table:
+   MEDICATION_ADMN_STATUS:
+     Desc: The status of the medication administration.
+     Src: NA
+     Type:
+        - "Medication Administered"
+        - "Medication Not Administered"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Echocardiogram Table:
+   AGE_AT_ECHO:
+     Desc: Age of subject (in days) at the time of echocardiogram.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Echocardiogram Table:
+   ECHO_TEST:
+     Desc: A test that uses high-frequency sound waves (ultrasound) to create an image of the heart.
+     Src: NA
+     Type:
+        - "Shortening Fraction"
+        - "Ejection Fraction"
+     Req: null
+     Private: null
+   #Property of Echocardiogram Table:
+   ECHO_RESULT:
+     Desc: An echocardiogram result that is descriptive but not measured.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Echocardiogram Table:
+   ECHO_RESULT_NUMERIC:
+     Desc: An echocardiogram result that is numeric.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Echocardiogram Table:
+   ECHO_RESULT_UNIT:
+     Desc: The units used to express a measured echocardiogram result.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "%"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Demographics Table:
+   SEX:
+     Desc: The assemblage of physical properties or qualities by which male is distinguished from female; the physical difference between male and female; the distinguishing peculiarity of male or female.
+     Src: NA
+     Type:
+        - "Female"
+        - "Other"
+        - "Unknown"
+        - "Male"
+        - "Not Reported"
+        - "Undifferentiated"
+     Req: null
+     Private: null
+   #Property of Demographics Table:
+   RACE:
+     Desc: A geographic ancestral origin category that is assigned to a population group based mainly on physical characteristics that are thought to be distinct and inherent.
+     Src: NA
+     Type:
+        - "Black or African American"
+        - "Other"
+        - "Unknown"
+        - "Native Hawaiian or Other Pacific Islander"
+        - "American Indian or Alaska Native"
+        - "Asian"
+        - "White"
+        - "Not Reported"
+        - "Multiracial"
+     Req: null
+     Private: null
+   #Property of Demographics Table:
+   ETHNICITY:
+     Desc: A social group characterized by a distinctive social and cultural tradition that is maintained from generation to generation. Members share a common history and origin and a sense of identification with the group. They have similar and distinctive features in their lifestyle habits and shared experiences. They often have a common genetic heritage which may be reflected in their experience of health and disease.
+     Src: NA
+     Type:
+        - "Hispanic or Latino"
+        - "Unknown"
+        - "Not Hispanic or Latino"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Non-Protocol Therapy Table:
+   NPT_TIMING:
+     Desc: A description of the timing of when the non-protocol therapy was received.
+     Src: NA
+     Type:
+        - "Prior to Study"
+        - "After Study Completion"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Non-Protocol Therapy Table:
+   NPT_TYPE:
+     Desc: The type of therapy that the patient received outside of the protocol.
+     Src: NA
+     Type:
+        - "ENERGY_TYPE"
+        - "Radiation Therapy"
+        - "Surgery"
+        - "Stem Cell Transplant"
+        - "Chemotherapy"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+        - "Immunotherapy"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   AGE_AT_TUMOR_ASSESSMENT:
+     Desc: Age of subject (in days) at tumor assessment.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   TUMOR_DETECTION_METHOD:
+     Desc: The technique used to administer the tumor identification assessment.
+     Src: NA
+     Type:
+        - "MRI"
+        - "CT Scan"
+        - "Imaging"
+        - "Unknown"
+        - "X-ray"
+        - "Not Reported"
+        - "PET"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   TUMOR_CLASSIFICATION:
+     Desc: The classification of a tumor based primarily on histopathological characteristics.
+     Src: NA
+     Type:
+        - "Metastatic"
+        - "Unknown"
+        - "Not Reported"
+        - "Primary Tumor"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   TUMOR_TISSUE_TYPE:
+     Desc: The type of material sample taken from a biological entity for tumor findings assessment testing.
+     Src: NA
+     Type:
+        - "Mandible"
+        - "Bone"
+        - "Liver"
+        - "Kidney"
+        - "Head and Neck"
+        - "Bone Marrow"
+        - "Central Nervous System"
+        - "Brain"
+        - "Spinal Cord"
+        - "Lung"
+        - "Soft Tissue"
+        - "Abdomen"
+        - "Upper Extremity"
+        - "Axilla"
+        - "Carpal Bone"
+        - "Cervical Vertebra"
+        - "Clavicle"
+        - "Coccyx"
+        - "Ethmoid Bone"
+        - "Femur"
+        - "Fibula"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   TUMOR_SITE:
+     Desc: The anatomic site of the tumor.
+     Src: NA
+     Type:
+        - "Mandible"
+        - "Liver"
+        - "Kidney"
+        - "Head and Neck"
+        - "Bone Marrow"
+        - "Central Nervous System"
+        - "Brain"
+        - "Spinal Cord"
+        - "Lung"
+        - "Intra-Abdominal"
+        - "Abdomen"
+        - "Upper Extremity"
+        - "Axilla"
+        - "Carpal Bone"
+        - "Cervical Vertebra"
+        - "Clavicle"
+        - "Coccyx"
+        - "Ethmoid Bone"
+        - "Femur"
+        - "Fibula"
+        - "Humerus"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   TUMOR_LATERALITY:
+     Desc: A qualifier for the side of the body the tumor findings assessment is performed.
+     Src: NA
+     Type:
+        - "Bilateral"
+        - "Unknown"
+        - "Right"
+        - "Left"
+        - "Not Reported"
+        - "Midline"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   SITE_WITHIN_BONE:
+     Desc: The anatomic site within the bone.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Proximal"
+        - "Distal"
+        - "Diaphysis"
+        - "Epiphysis"
+        - "Not Reported"
+        - "Metaphysis"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   FRACTURE:
+     Desc: A traumatic injury to the bone in which the continuity of the bone is broken.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   LONGEST_DIAM_DIM1:
+     Desc: The longest possible length of a straight line passing through the center of a circular or spheroid object that connects two points on the circumference.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   LONGEST_DIAM_DIM2:
+     Desc: The second longest possible length of a straight line passing through the center of a nearly circular or spheroid object that connects two points on the circumference.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   LONGEST_DIAM_DIM3:
+     Desc: The third longest possible length of a straight line passing through the center of a nearly circular or spheroid object that connects two points on the circumference.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   COMPUTED_VOLUME:
+     Desc: The International Electrotechnical Commission preferred expression of radiation dose in computed tomography (CT) dosimetry. It is calculated by averaging the radiation dose delivered over x,y and z directions and expressed in the SI unit of Gray (Gy).
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   ESTIMATED_VOLUME:
+     Desc: An estimate of the volume.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   TUMOR_VOLUME:
+     Desc: The volume of tumor.
+     Src: NA
+     Type:
+        - "<200 mL"
+        - ">=200 mL"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   JOINT_INVOLVEMENT:
+     Desc: A finding indicating the spread of cancer to a joint.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   NODAL_INVOLVEMENT:
+     Desc: A finding indicating the spread of cancer to regional or distant lymph node(s).
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   SKIP_LESION:
+     Desc: A benign or malignant pathologic process which is patchy and skips areas which are normal (uninvolved by the pathologic process).
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   IPSILATERAL_NODULES:
+     Desc: A metastatic tumor nodule located in the same side of the organ in which the primary tumor occurred.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   PLEURAL_EFFUSION:
+     Desc: Increased amounts of fluid within the pleural cavity. Symptoms include shortness of breath, cough, and chest pain. It is usually caused by lung infections, congestive heart failure, pleural and lung tumors, connective tissue disorders, and trauma.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   PLEURAL_CYTOLOGY:
+     Desc: An examination of cells obtained from a sample of pleural fluid.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Negative"
+        - "Positive"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   PERITONEAL_EFFUSION:
+     Desc: The abnormal collection of fluid in the peritoneal cavity resulting in ascites.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   PERITONEAL_CYTOLOGY:
+     Desc: An examination of cells obtained from a sample of peritoneal fluid.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Negative"
+        - "Positive"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   EXTENSION_SITE:
+     Desc: The anatomical location where metastasis was detected.
+     Src: NA
+     Type:
+        - "Mandible"
+        - "Kidney"
+        - "Intra-Abdominal"
+        - "Abdomen"
+        - "Axilla"
+        - "Carpal Bone"
+        - "Cervical Vertebra"
+        - "Clavicle"
+        - "Femur"
+        - "Fibula"
+        - "Humerus"
+        - "Lumbar Vertebra"
+        - "Metacarpus"
+        - "Metatarsus"
+        - "Pelvis"
+        - "Radius Bone"
+        - "Rib"
+        - "Scapula"
+        - "Cranium"
+        - "Sternum"
+        - "Thoracic Vertebra"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   NODAL_SITE:
+     Desc: The anatomic site of a tumor node.
+     Src: NA
+     Type:
+        - "Cervix"
+        - "Mediastinum"
+        - "Pelvis"
+        - "Other"
+        - "Unknown"
+        - "Omentum"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Histology Table:
+   AGE_AT_HIST_ASSESSMENT:
+     Desc: Age of subject (in days) at histology assessment.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Histology Table:
+   HISTOLOGY:
+     Desc: The study of the structure of the cells and their arrangement to constitute tissues and, finally, the association among these to form organs.  In pathology, the microscopic process of identifying normal and abnormal morphologic characteristics in tissues, by employing various cytochemical and immunocytochemical stains.
+     Src: NA
+     Type:
+        - "Undifferentiated Ewing Tumor"
+        - "Large Cell Ewing Tumor"
+        - "Unknown"
+        - "Not Reported"
+        - "Neuro-Differentiated Ewing Tumor"
+        - "Seminoma/Dysgerminoma/Germinoma"
+        - "Choriocarcinoma"
+        - "Yolk Sac Tumor"
+        - "Teratoma, Not Otherwise Specified"
+        - "Embryonal Carcinoma"
+        - "Gonadoblastoma"
+        - "Immature Teratoma"
+        - "Malignant Teratoma"
+        - "Somatic Malignancy"
+        - "Mixed Germ Cell Tumor"
+        - "Germinoma"
+        - "Dysgerminoma"
+        - "Mature Teratoma"
+        - "Seminoma"
+     Req: null
+     Private: null
+   #Property of Histology Table:
+   HIST_ASSESSMENT_REVIEW:
+     Desc: The name of the institution or central histological assessment.
+     Src: NA
+     Type:
+        - "Central"
+        - "Unknown"
+        - "Institutional"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Histology Table:
+   HISTOLOGY_RESULT:
+     Desc: The percentage of tumor tissue in a sample.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Histology Table:
+   HISTOLOGY_RESULT_NUMERIC:
+     Desc: The numeric value for the histology result.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Histology Table:
+   HISTOLOGY_RESULT_UNIT:
+     Desc: The unit being used as the measurement for the histology test.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "%"
+     Req: null
+     Private: null
+   #Property of Histology Table:
+   HIST_ICD_O_MORPH:
+     Desc: Codes for the histologic type of the tumor being reported using ICD-O.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Histology Table:
+   HISTOLOGY_GRADE:
+     Desc: The degree of abnormality of cancer cells, a measure of differentiation, the extent to which cancer cells are similar in appearance and function to healthy cells of the same tissue type. The degree of differentiation often relates to the clinical behavior of the particular tumor. Based on the microscopic findings, tumor grade is commonly described by one of four degrees of severity. Histopathologic grade of a tumor may be used to plan treatment and estimate the future course, outcome, and overall prognosis of disease. Certain types of cancers, such as soft tissue sarcoma, primary brain tumors, lymphomas, and breast have special grading systems.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Grade 1"
+        - "Grade 2"
+        - "Grade 3"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Histology Table:
+   MATURE_GLIAL_IMPLANTS:
+     Desc: A nodule of mature glial tissue that develops in the peritoneum. It is usually accompanied by mature or immature ovarian teratoma.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Histology Table:
+   SOMATIC_MALIGNANCY_TYPE:
+     Desc: A malignant non-germ cell component that typically develops secondarily within a germ cell tumor. The malignant cellular component is usually sarcomatous or carcinomatous.
+     Src: NA
+     Type:
+        - "Other"
+        - "Unknown"
+        - "Adenocarcinoma"
+        - "Squamous Cell Carcinoma"
+        - "Rhabdomyosarcoma"
+        - "Primitive Neuroectodermal Tumor"
+        - "Not Reported"
+        - "Malignant Histiocytosis"
+        - "Sarcoma, Not Otherwise Specified"
+     Req: null
+     Private: null
+   #Property of Study:
+   STUDY_ID:
+     Desc: 
+     Src: NA
+     Type:
+        - "AAML03P1"
+        - "AAML0531"
+        - "AAML1031"
+        - "AMLBFM2004"
+        - "SJCRHAML02"
+        - "JPLSGAML05"
+        - "AEIOPLAM2002"
+        - "JACLSAML99"
+        - "DBAML01"
+        - "MRCAML12"
+        - "NOPHOAML2004"
+        - "PPLLSGAML98"
+        - "AMLBFM2012"
+        - "AMLBFMRegistry2012"
+        - "MRCAML15"
+        - "NOPHOAML2012"
+        - "AIEOPLAM92"
+        - "SCFEELAM02"
+        - "AEWS1221"
+        - "AEWS0331"
+        - "AEWS0031"
+     Req: null
+     Private: null
+   #Property of Study:
+   STUDY_Description:
+     Desc: 
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Staging Table:
+   AGE_AT_STAGING:
+     Desc: Age of subject (in days) at the time of the staging assessment.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Staging Table:
+   STAGE_SYSTEM:
+     Desc: A systematic method for clinicopathologic evaluation of tumors.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "AJCC"
+        - "COG"
+        - "Not Reported"
+        - "FIGO"
+     Req: null
+     Private: null
+   #Property of Staging Table:
+   STAGE:
+     Desc: The extent of a cancer in the body.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Stage I"
+        - "Stage III"
+        - "Stage IV"
+        - "Stage II"
+        - "Not Reported"
+        - "Stage 0"
+        - "Stage IA"
+        - "Stage IB"
+        - "Stage IS"
+        - "Stage IIA"
+        - "Stage IIB"
+        - "Stage IIC"
+        - "Stage IIIC"
+        - "Stage IIIB"
+        - "Stage IIIA"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Study:
+   STUDY_ID:
+     Desc: A sequence of characters used to identify, name, or characterize the study.
+     Src: NA
+     Type:
+        - "AAML03P1"
+        - "AAML0531"
+        - "AAML1031"
+        - "AMLBFM2004"
+        - "SJCRHAML02"
+        - "JPLSGAML05"
+        - "AEIOPLAM2002"
+        - "JACLSAML99"
+        - "DBAML01"
+        - "MRCAML12"
+        - "NOPHOAML2004"
+        - "PPLLSGAML98"
+        - "AMLBFM2012"
+        - "AMLBFMRegistry2012"
+        - "MRCAML15"
+        - "NOPHOAML2012"
+        - "AIEOPLAM92"
+        - "SCFEELAM02"
+        - "AEWS1221"
+        - "AEWS0331"
+        - "AEWS0031"
+     Req: null
+     Private: null
+   #Property of Patient Reported Outcomes Metadata Table:
+   PRO_MEASURES:
+     Desc: Survey measures that are completed by the patient which help assess patient status with regards to pain, mobility, quality of life, ability to perform daily tasks or notable events in a clinical study.
+     Src: NA
+     Type:
+        - "PedsQL Multi-Dimensional Fatigue Scale"
+        - "AYA-HEARS"
+        - "FACT Ntx"
+        - "PedsQL 4.0 Generic Core Scale"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Program:
+   PROGRAM_ID:
+     Desc: 
+     Src: NA
+     Type:
+        - "AML"
+        - "EWS"
+        - "GCT"
+        - "ALL"
+     Req: null
+     Private: null
+   #Property of Program:
+   Cancer:
+     Desc: 
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Program:
+   Headquarters:
+     Desc: 
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Program:
+   Consortium:
+     Desc: 
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Program:
+   Consortium_Manager:
+     Desc: 
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Survival Characteristics Table:
+   AGE_AT_LKSS:
+     Desc: Age of subject (in days) at the last known survival status.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Survival Characteristics Table:
+   LKSS:
+     Desc: The individual's last known survival status.
+     Src: NA
+     Type:
+        - "Dead"
+        - "Alive"
+     Req: null
+     Private: null
+   #Property of Survival Characteristics Table:
+   AGE_LOST_TO_FOLLOW_UP:
+     Desc: Age of subject (in days) when the subject was lost to follow-up.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Survival Characteristics Table:
+   CAUSE_OF_DEATH:
+     Desc: The circumstance or condition that results in the death of a living being.
+     Src: NA
+     Type:
+        - "Treatment-Related Mortality"
+        - "Pre-treatment disease complications"
+        - "Post-treatment disease complications"
+        - "Disease Progression"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+        - "Progressive Disease"
+        - "Secondary Malignancy"
+     Req: null
+     Private: null
+   #Property of Survival Characteristics Table:
+   TRM_TYPE:
+     Desc: The type of treatment related to the mortality of the subject.
+     Src: NA
+     Type:
+        - "Immunotherapy"
+        - "Stem Cell Transplant"
+        - "Other"
+        - "Not Reported"
+        - "Unknown"
+     Req: null
+     Private: null
+   #Property of Survival Characteristics Table:
+   CAUSE_OF_DEATH_DETAIL:
+     Desc: Specific details of the cause of death.
+     Src: NA
+     Type:
+        - "Infection"
+        - "Other"
+        - "Unknown"
+        - "Hemorrhage"
+        - "Sinusoidal Obstruction Syndrome"
+        - "Bacterial Infection"
+        - "Graft Versus Host Disease"
+        - "Fungal Infection"
+        - "Viral Infection"
+        - "Not Reported"
+        - "Cardiac Failure"
+        - "Immunotherapy-Related"
+        - "Acute Respiratory Distress Syndrome"
+        - "Multi-Organ Failure"
+     Req: null
+     Private: null
+   #Property of Survival Characteristics Table:
+   CAUSE_OF_DEATH_RANKING:
+     Desc: Assigning a weighted relevance to the cause of death.
+     Src: NA
+     Type:
+        - "Death, contributory"
+        - "Unknown"
+        - "Not Reported"
+        - "Primary"
+        - "Contributory"
+     Req: null
+     Private: null
+   #Property of Survival Characteristics Table:
+   LKSS_WITH_DISEASE:
+     Desc: The last know survival status of the individual with the disease
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Non-Protocol Therapy Table:
+   NPT_TIMING:
+     Desc: A description of the timing of when the non-protocol therapy was received.
+     Src: NA
+     Type:
+        - "Prior to Study"
+        - "After Study Completion"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Non-Protocol Therapy Table:
+   NPT_TYPE:
+     Desc: The type of therapy that the patient received outside of the protocol.
+     Src: NA
+     Type:
+        - "ENERGY_TYPE"
+        - "Radiation Therapy"
+        - "Surgery"
+        - "Stem Cell Transplant"
+        - "Chemotherapy"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+        - "Immunotherapy"
+     Req: null
+     Private: null
+   #Property of Non-protocol Therapy Table:
+   Radiation_Therapy:
+     Desc: Treatment of a disease by means of exposure of the target or the whole body to radiation. Radiation therapy is often used as part of curative therapy and occasionally as a component of palliative treatment for cancer. Other uses include total body irradiation prior to transplantation.
+     Src: NA
+     Type:
+        - ""
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Course Timing Table:
+   AGE_AT_COURSE_START:
+     Desc: Age of subject (in days) at the start of the course.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Course Timing Table:
+   AGE_AT_COURSE_END:
+     Desc: Age of subject (in days) at the end of the course.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Course Timing Table:
+   AGE_AT_COURSE_ANC_500:
+     Desc: Age of subject (in days) when their neutrophil count exceeded a threshold of 500 (ANC/mm3) during the course.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Course Timing Table:
+   AGE_AT_TXASSIGN:
+     Desc: Age of subject (in days) when the treatment was assigned.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Immunohistochemistry Table:
+   AGE_AT_IHC:
+     Desc: Age of subject (in days) at immunohistochemistry assessment.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Immunohistochemistry Table:
+   IHC_TEST:
+     Desc: A diagnostic test in which an antibody is used to link a cellular antigen specifically to a stain that can be seen with a microscope.
+     Src: NA
+     Type:
+        - "CD99"
+        - "CD45"
+        - "FLI-1"
+        - "PAS"
+        - "S100"
+        - "Vimentin"
+        - "NSE"
+        - "Desmin"
+        - "beta-catenin"
+        - "CD30"
+        - "GPC3"
+     Req: null
+     Private: null
+   #Property of Immunohistochemistry Table:
+   IHC_RESULT:
+     Desc: The result from the immunohistochemical test.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Immunohistochemistry Table:
+   IHC_RESULT_NUMERIC:
+     Desc: The numerical identifier of an immunohistochemistry specimen assessment result.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   AGE_OFF:
+     Desc: Age of subject (in days) when subject was off therapy or study.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   OFF_TYPE:
+     Desc: The code used to designate that the subject went off therapy or off the study.
+     Src: NA
+     Type:
+        - "Protocol Therapy"
+        - "Study"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   REASON_OFF:
+     Desc: A coded value specifying why the subject is removed from a study.
+     Src: NA
+     Type:
+        - "Subject/Guardian Refused Further Treatment"
+        - "Completion of Planned Therapy"
+        - "Other"
+        - "Disease Progression"
+        - "Unknown"
+        - "Relapse"
+        - "ADVERSE_EVENT"
+        - "Adverse Event"
+        - "Not Reported"
+        - "Physician Decision"
+        - "Withdrawal of Consent"
+        - "Secondary Malignancy"
+        - "Lost to Follow-up"
+        - "Death"
+        - "Progressive Disease"
+        - "Completion of Follow-Up"
+        - "Failure to Attain Remission"
+        - "Ineligible"
+        - "Lost to Follow-Up"
+        - "Subject Non-Compliance"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   Adverse_Event:
+     Desc: Any unfavorable or unintended disease, sign, or symptom (including an abnormal laboratory finding) that is temporally associated with the use of a medical treatment or procedure, and that may or may not be considered related to the medical treatment or procedure. Such events can be related to the intervention, dose, route of administration, patient, or caused by an interaction with another drug(s) or procedure(s).
+     Src: NA
+     Type:
+        - ""
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   ANOTHER_STUDY:
+     Desc: The subject was enrolled in another therapeutic study after the off protocol study.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Medical History Table:
+   MEDICAL_HISTORY:
+     Desc: A record of a patient's background regarding health and the occurrence of disease events of the individual. In addition, personal medical history may be a variable in epidemiologic studies.
+     Src: NA
+     Type:
+        - "Trisomy 21 Mosaicism"
+        - "Other"
+        - "Unknown"
+        - "Trisomy 21"
+        - "Not Reported"
+        - "Li-Fraumeni"
+        - "Fanconi Anemia"
+        - "Breast and Ovarian Cancer"
+        - "Lynch Syndrome"
+        - "Frasier Syndrome"
+        - "Turner Syndrome"
+        - "Klinefelter Syndrome"
+        - "Swyer James Syndrome"
+     Req: null
+     Private: null
+   #Property of Medical History Table:
+   DYSGENETIC_GONAD:
+     Desc: A congenital disorder characterized by the presence of extremely hypoplastic gonads preventing the development of secondary sex characteristics.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Minimal Residual Disease Table:
+   AGE_AT_MRD_ASSESSMENT:
+     Desc: Age of subject (in days) at assessment of minimal residual disease.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Minimal Residual Disease Table:
+   MRD_METHOD:
+     Desc: Modality used to determine minimal residual disease.
+     Src: NA
+     Type:
+        - ""
+        - "Next Generation Sequencing"
+        - "Flow Cytometry"
+        - "Molecular Real-Time Quantitative Polymerase Chain Reaction"
+     Req: null
+     Private: null
+   #Property of Minimal Residual Disease Table:
+   FLOW_CYTOMETRY_TYPE:
+     Desc: The classification, nature or purpose for a flow cytometry assay.
+     Src: NA
+     Type:
+        - "Next Generation Sequencing"
+        - "Leukemia-Associated Immunophenotypes"
+        - "Different-from-Normal"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+        - "Molecular Real-Time Quantitative Polymerase Chain Reaction"
+     Req: null
+     Private: null
+   #Property of Minimal Residual Disease Table:
+   MRD_RESULT:
+     Desc: An assessment of the minimal residual disease response to therapy.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Minimal Residual Disease Table:
+   MRD_RESULT_NUMERIC:
+     Desc: Minimal residual disease value expressed as a percent, fraction or ratio.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Minimal Residual Disease Table:
+   MRD_RESULT_UNIT:
+     Desc: The unit of the minimal residual disease result.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "%"
+     Req: null
+     Private: null
+   #Property of Minimal Residual Disease Table:
+   MRD_SENSITIVTY:
+     Desc: Sensitivity of modality used to determine minimal residual disease.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Minimal Residual Disease Table:
+   MRD_SAMPLE_SOURCE:
+     Desc: Source of sample used for minimal residual disease assessment.
+     Src: NA
+     Type:
+        - "Bone Marrow"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Minimal Residual Disease Table:
+   MRD_MOLECULAR_MARKERS:
+     Desc: A one or more molecular characteristics that are used as a biomarker for minimal residual disease.
+     Src: NA
+     Type:
+        - "CKIT Mutation - Ex17"
+        - "MLL Rearrangement"
+        - "t(7;12)(q36;p13)"
+        - "CKIT Mutation - Ex8"
+        - "t(5;11)(q35;p15)"
+        - "t(11;15)(p15;q35)"
+        - "t(10;11)(p12;q23)"
+        - "t(9;22)(q34;q11.2)"
+        - "WT1 mutation"
+        - "Biallelic CEBPA Gene Mutation"
+        - "inv(16)(p13.3q24.3)"
+        - "t(10;11)(p11.2;q23)"
+        - "t(1;11)(q21;q23)"
+        - "t(11;19)(q23;p13)"
+        - "t(3;12)(q23;p12.3)"
+        - "del(5q)(5q31-q32)"
+        - "del(13q)(13q14-21)"
+        - "Non-KMT2A MLLT10"
+        - "t(16;21)(q24;q22)"
+        - "Monoallelic CEBPA Gene Mutation"
+        - "der.12p"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Labs Table:
+   AGE_AT_LAB:
+     Desc: Age of subject (in days) when the laboratory test was performed.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Labs Table:
+   LAB_CAT:
+     Desc: A classification of the laboratory test.
+     Src: NA
+     Type:
+        - "Peripheral Blood Analysis"
+        - "Cerebrospinal Fluid Analysis"
+        - "Bone Marrow Analysis"
+        - "Unknown"
+        - "Not Reported"
+        - "microRNA Sequencing"
+        - "Other"
+     Req: null
+     Private: null
+   #Property of Labs Table:
+   LAB_TEST:
+     Desc: A character or string that represents the full name of the laboratory assessment.
+     Src: NA
+     Type:
+        - "RBC"
+        - "WBC"
+        - "Platelets"
+        - "Hemoglobin"
+        - "Blasts"
+        - "Auer Rods"
+        - "LDH"
+        - "ESR"
+        - "miR-371a-3p"
+        - "miR-372-3p"
+        - "miR-373-3p"
+        - "miR-367-3p"
+        - "miR-375-3p"
+        - "cfDNA/ctDNA"
+        - "beta-hCG"
+        - "AFP"
+        - "Absolute Neutrophil Count"
+     Req: null
+     Private: null
+   #Property of Labs Table:
+   LAB_SPEC_TYPE:
+     Desc: The type of a material sample taken from a biological entity for laboratory testing.
+     Src: NA
+     Type:
+        - "Bone Marrow"
+        - "CSF"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+        - "Blood"
+        - "Serum"
+        - "Plasma"
+        - "Peritoneal Fluid"
+     Req: null
+     Private: null
+   #Property of Labs Table:
+   LAB_RESULT:
+     Desc: The outcome of a laboratory test.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Labs Table:
+   LAB_RESULT_NUMERIC:
+     Desc: A numeric representation of a test result.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Labs Table:
+   LAB_RESULT_UNIT:
+     Desc: The numeric unit that expresses the lab result.
+     Src: NA
+     Type:
+        - "count/mm3"
+        - "Unknown"
+        - "Not Reported"
+        - "%"
+        - "mg/L"
+        - "g/dL"
+        - "mm/h"
+        - "U/L"
+        - "ng/mL"
+        - "IU/L"
+     Req: null
+     Private: null
+   #Property of Labs Table:
+   LAB_METHOD:
+     Desc: A systematic course of action that is performed in order to complete a laboratory test.
+     Src: NA
+     Type:
+        - "Flow Cytometry"
+        - "Other"
+        - "Unknown"
+        - "Morphology"
+        - "Not Reported"
+        - "microRNA Sequencing"
+        - "Cytology"
+        - "ddPCR"
+        - "Molecular Real-Time Quantitative Polymerase Chain Reaction"
+     Req: null
+     Private: null
+   #Property of Labs Table:
+   TRAUMATIC_TAP:
+     Desc: Contamination of a cerebrospinal fluid sample by red blood cells greater than 10/mm3.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Labs Table:
+   THRESHOLD_HIGH:
+     Desc: The maximum level that must be exceeded for a certain reaction to occur or be manifested.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Labs Table:
+   LAB_SEQ_METHOD:
+     Desc: The number of molecules of a particular type on or in a cell or part of a cell. Usually applied to specific genes or to plasmids within a bacterium.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "Absolute"
+        - "Relative"
+     Req: null
+     Private: null
+   #Property of Labs Table:
+   THRESHOLD_LOW:
+     Desc: The minimum level that must be attained for a certain reaction to occur or be manifested.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Labs Table:
+   PMID_REF:
+     Desc: A globally unique identifier for a biomedical article, as assigned by PubMed.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Labs Table:
+   BM_MORPHOLOGY:
+     Desc: The morphology characteristics of the bone marrow blasts.
+     Src: NA
+     Type:
+        - "M1 (less than 5% blasts)"
+        - "M3 (greater than 25% blasts)"
+        - "M2 (5-25% blasts)"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   FAB_TYPE:
+     Desc: A classification system for acute myeloid leukemias, acute lymphoblastic leukemias, and myelodysplastic syndromes.  It is based on the morphologic and cytochemical evaluation of bone marrow and peripheral blood smears.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "AML, Not Otherwise Specified"
+        - "M3 Variant"
+        - "M7"
+        - "M3"
+        - "M1"
+        - "M2"
+        - "Not Reported"
+        - "M5"
+        - "M4"
+        - "M0"
+        - "M6"
+        - "M4eo"
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   WHO_AML:
+     Desc: A classification of acute myeloid leukemia tumors by the World Health Organization (WHO).
+     Src: NA
+     Type:
+        - "AML with biallelic mutations of CEBPA"
+        - "Provisional Entity: AML with BCR-ABL1"
+        - "Provisional entity: AML with mutated RUNX1"
+        - "Unknown"
+        - "AML, Not Otherwise Specified"
+        - "Therapy-related Myeloid Neoplasms"
+        - "Acute Basophilic Leukemia"
+        - "M7"
+        - "M1"
+        - "M2"
+        - "MYELOID_SARCOMA"
+        - "Myeloid Sarcoma"
+        - "MLDS"
+        - "Myeloid Leukemia Associated with Down Syndrome"
+        - "Not Reported"
+        - "Acute Panmyelosis with Myelofibrosis"
+        - "Acute Monoblastic/Monocytic Leukemia"
+        - "M4"
+        - "Pure Erythroid Leukemia"
+        - "AML with Myelodysplasia-related Changes"
+        - "APL with PML-RARA"
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   DETECTION_METHOD:
+     Desc: The method used to detect the extent of the disease involvement.
+     Src: NA
+     Type:
+        - "Clinical Signs or Symptoms"
+        - "CSF Results"
+        - "Imaging"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+        - "Tumor Marker"
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   DISEASE_SITE:
+     Desc: The anatomic site of the disease.
+     Src: NA
+     Type:
+        - "Testis"
+        - "Bone Marrow"
+        - "Central Nervous System"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   CNS_DISEASE_STATUS:
+     Desc: The status describing the extent of central nervous system involvement at the time of leukemia diagnosis.
+     Src: NA
+     Type:
+        - "CNS1"
+        - "CNS2"
+        - "CNS3"
+        - "CNS2a"
+        - "CNS2b"
+        - "CNS2c"
+        - "CNS3a"
+        - "CNS3b"
+        - "CNS3c"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   MPAL:
+     Desc: An acute leukemia of ambiguous lineage.  It is characterized by the presence of either separate populations of blasts of more than one lineage, or one population of blasts co-expressing markers of more than one lineage.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   MLDS:
+     Desc: Acute myeloid leukemia or myelodysplastic syndrome occurring in children with Down syndrome.  The acute myeloid leukemia is usually an acute megakaryoblastic leukemia, and is associated with GATA1 gene mutation.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   TAMDS:
+     Desc: A myeloid proliferation occurring in newborns with Down syndrome.  It is clinically and morphologically indistinguishable from acute myeloid leukemia and is associated with GATA1 mutations.  The blasts display morphologic and immunophenotypic features of megakaryocytic lineage.  In the majority of patients the myeloid proliferation undergoes spontaneous remission.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   SECONDARY_AML:
+     Desc: An acute myeloid leukemia arising from prior myelodysplastic syndrome, myeloproliferative neoplasm, or myelodysplastic/myeloproliferative neoplasm, or as a result of previous exposure to alkylating agents or topoisomerase II inhibitors.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   LANSKY:
+     Desc: The play-performance scale for children is a parent-rated instrument which records usual play activity as the index of performance.  It is similar to the Karnofsky Performance Scale for adults.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "50"
+        - "60"
+        - "70"
+        - "80"
+        - "90"
+        - "100"
+        - "0"
+        - "10"
+        - "20"
+        - "30"
+        - "40"
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   KARNOFSKY:
+     Desc: An index designed for classifying patients 16 years of age or older by their functional impairment.
+     Src: NA
+     Type:
+        - "100"
+        - "90"
+        - "80"
+        - "70"
+        - "60"
+        - "50"
+        - "40"
+        - "30"
+        - "20"
+        - "10"
+        - "0"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   GPOH_SCORE:
+     Desc: A measure of an individual's overall performance status or ability to perform their activities of daily living.
+     Src: NA
+     Type:
+        - "1 - Normal, No Complaint"
+        - "2 - Mild Complaints, But Needs No Assistance"
+        - "3 - Age-Appropriate Activity Severely Impaired"
+        - "4 - Confined To Bed, Needs Nursing Care"
+        - "5 - Needs Intensive Care, Seriously Ill, Moribund"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   IGCCC_RISK_GROUP:
+     Desc: A risk classification system for malignant germ cell tumors developed by the International Germ Cell Cancer Collaborative Group.
+     Src: NA
+     Type:
+        - "IGCCC Good"
+        - "IGCCC Intermediate"
+        - "IGCCC Poor"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   MAGIC_RISK_GROUP:
+     Desc: A risk classification system for extracranial, malignant, pediatric germ cell tumors.
+     Src: NA
+     Type:
+        - "Low"
+        - "Standard"
+        - "Poor"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   ALL_TYPE:
+     Desc: Leukemia with an acute onset, characterized by the presence of lymphoblasts in the bone marrow and the peripheral blood. It includes the acute B lymphoblastic leukemia and acute T lymphoblastic leukemia.
+     Src: NA
+     Type:
+        - "T-ALL"
+        - "Acute Leukemia, ambiguous lineage (mixed or biphenotypic)"
+        - "Mixed Phenotype Acute Leukemia"
+        - "B-ALL"
+     Req: null
+     Private: null
+   #Property of Histology Table:
+   HIST_ICD_O_MORPH:
+     Desc: Codes for the histologic type of the tumor being reported using ICD-O.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   BULK_MED_MASS:
+     Desc: When the maximum width of a mass is equal or greater than one-third of the internal transverse diameter of the thorax at the level of T5/6 on a PA CXR. Bulk at an alternate site is defined as any mass measuring 10 cm or more by any imaging study.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   PRIOR_STEROIDS_WEEK:
+     Desc: The subject received steroids within one week prior to diagnosis of the disease phase.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Disease Characteristics Table:
+   PRIOR_STEROIDS_MONTH:
+     Desc: The subject received steroids within one month prior to diagnosis of the disease phase.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Total Dose Table:
+   AGE_AT_TOTAL_DOSE_START:
+     Desc: Age of subject (in days) at the start of the total dose calculation.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Total Dose Table:
+   AGE_A_TOTAL_DOSE_END:
+     Desc: Age of subject (in days) at the end of the total dose calculation.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Total Dose Table:
+   ROUTE:
+     Desc: Designation of the part of the body through which or into which, or the way in which, the medicinal product is intended to be introduced. In some cases a medicinal product can be intended for more than one route and/or method of administration.
+     Src: NA
+     Type:
+        - "Systemic"
+        - "Intrathecal"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Total Dose Table:
+   ANTINEOPLASTIC_AGENT:
+     Desc: A substance that inhibits the maturation, growth or spread of tumor cells.
+     Src: NA
+     Type:
+        - "Arsenic Trioxide"
+        - "Fludarabine"
+        - "Gilteritinib"
+        - "Cladribine"
+        - "Other"
+        - "Unknown"
+        - "Gemtuzumab Ozogamicin"
+        - "Hydrocortisone Sodium Succinate"
+        - "Bortezomib"
+        - "Midostaurin"
+        - "Daunorubicin (Liposomal)"
+        - "Amsacrine"
+        - "Clofarabine"
+        - "Busulfan"
+        - "Cyclophosphamide"
+        - "Cytarabine"
+        - "Not Reported"
+        - "Doxorubicin"
+        - "Etoposide"
+        - "Idarubicin"
+        - "Sorafenib"
+     Req: null
+     Private: null
+   #Property of Total Dose Table:
+   NUMBER_DOSES:
+     Desc: The number of doses.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Total Dose Table:
+   TOTAL_DOSE_ADMINISTERED:
+     Desc: The total amount of an agent (e.g., drug, biologic, radiation, etc.) administered to a subject over a defined period of time.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Total Dose Table:
+   TOTAL_DOSE_INTENDED:
+     Desc: The total dose intended.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Total Dose Table:
+   TOTAL_DOSE_UNITS:
+     Desc: The units of the total dose.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "mg/m2"
+        - "mg"
+        - "IU"
+        - "mg/kg"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Biopsy/Surgical Procedures Table:
+   AGE_AT_PROCEDURE:
+     Desc: Age of subject (in days) at procedure.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   TUMOR_CLASSIFICATION:
+     Desc: The classification of a tumor based primarily on histopathological characteristics.
+     Src: NA
+     Type:
+        - "Metastatic"
+        - "Unknown"
+        - "Not Reported"
+        - "Primary Tumor"
+     Req: null
+     Private: null
+   #Property of Tumor Assessment Table:
+   TUMOR_TISSUE_TYPE:
+     Desc: The type of material sample taken from a biological entity for tumor findings assessment testing.
+     Src: NA
+     Type:
+        - "Mandible"
+        - "Bone"
+        - "Liver"
+        - "Kidney"
+        - "Head and Neck"
+        - "Bone Marrow"
+        - "Central Nervous System"
+        - "Brain"
+        - "Spinal Cord"
+        - "Lung"
+        - "Soft Tissue"
+        - "Abdomen"
+        - "Upper Extremity"
+        - "Axilla"
+        - "Carpal Bone"
+        - "Cervical Vertebra"
+        - "Clavicle"
+        - "Coccyx"
+        - "Ethmoid Bone"
+        - "Femur"
+        - "Fibula"
+     Req: null
+     Private: null
+   #Property of Biopsy/Surgical Procedures Table:
+   PROCEDURE_SITE:
+     Desc: The anatomical site on which surgery was performed.
+     Src: NA
+     Type:
+        - "Intra-Abdominal"
+        - "Metatarsus"
+        - "Sternum"
+        - "Liver"
+        - "Pineal"
+        - "Ovary"
+        - "Vagina"
+        - "Testis"
+        - "Head and Neck"
+        - "Thalamus"
+        - "Spinal Cord"
+        - "Mediastinum"
+        - "Other"
+        - "Suprasellar/Neurohypophyseal"
+        - "Unknown"
+        - "Sacrococcygeal"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Biopsy/Surgical Procedures Table:
+   PROCEDURE_LATERALITY:
+     Desc: A qualifier for the side of the body the procedure is performed.
+     Src: NA
+     Type:
+        - "Bilateral"
+        - "Unknown"
+        - "Right"
+        - "Left"
+        - "Not Reported"
+        - "Midline"
+     Req: null
+     Private: null
+   #Property of Biopsy/Surgical Procedures Table:
+   PROCEDURE_TYPE:
+     Desc: A categorization of surgical procedures by type or purpose.
+     Src: NA
+     Type:
+        - "BIOPSY_TYPE"
+        - "Biopsy"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Biopsy/Surgical Procedures Table:
+   SURGERY_TYPE_LIMB:
+     Desc: Surgical procedures on a limb.
+     Src: NA
+     Type:
+        - "AMPUTATION_TYPE"
+        - "Amputation"
+        - "Limb-salvage"
+        - "SURGERY_TYPE_LIMB_SALVAGE"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Biopsy/Surgical Procedures Table:
+   AMPUTATION_TYPE:
+     Desc: The surgical removal of all or part of a limb or other appendage.
+     Src: NA
+     Type:
+        - "Amputation - Through Involved Bone"
+        - "Amputation - Proximal To Involved Bone"
+        - "Disarticulation"
+        - "Internal Hemipelvectomy"
+        - "External Hemipelvectomy"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Biopsy/Surgical Procedures Table:
+   SURGERY_TYPE_LIMB_SALVAGE:
+     Desc: A procedure to avoid amputation of an arm or leg.
+     Src: NA
+     Type:
+        - "Intra-Articular Resection"
+        - "Extra-Articular Resection"
+        - "Intercalary Resection"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Biopsy/Surgical Procedures Table:
+   RECONSTRUCTION_TYPE:
+     Desc: Surgical restoration of function or form of a part.
+     Src: NA
+     Type:
+        - "Endoprosthetic"
+        - "Osteoarticular Allograft"
+        - "Intercalary Allograft"
+        - "Allograft-Prosthetic"
+        - "Non-Vascularized Autograft"
+        - "Vascularized Autograft"
+        - "Allograft + Vascularized Autograft"
+        - "Vascularized Autograft Endoprosthetic Composite"
+        - "No Reconstruction"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+        - "Arthrodesis"
+     Req: null
+     Private: null
+   #Property of Biopsy/Surgical Procedures Table:
+   PROCEDURE_EXTENT:
+     Desc: The degree to which the lesion has been cut out, or resected.
+     Src: NA
+     Type:
+        - "Gross Total"
+        - "Partial Resection"
+        - "Complete Resection"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Biopsy/Surgical Procedures Table:
+   MARGINS:
+     Desc: "One of the criteria for assessment of the effectiveness of given surgical procedure in achieving the local control of a neoplasm and the adequacy of tumor removal. It is defined by the tissue plane through which the dissection has been done and the actual or potential neoplastic tissue which has been left outside the boundary of a resected specimen within the patient. There are four types of surgical margins: intracapsular or intralesional, marginal, wide, and radical."
+     Src: NA
+     Type:
+        - "R0 - Complete Resection, Negative Margins"
+        - "R1 - Complete Resection, Positive Margins"
+        - "R2 - Gross Residual Disease"
+        - "Unknown"
+        - "Not Reported"
+        - "Partial Resection"
+     Req: null
+     Private: null
+   #Property of Biopsy/Surgical Procedures Table:
+   BIOPSY_TYPE:
+     Desc: The removal of tissue specimens or fluid from the living body for microscopic examination, performed to establish a diagnosis.
+     Src: NA
+     Type:
+        - "Excisional biopsy"
+        - "Incisional biopsy"
+        - "Core Needle"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Biopsy/Surgical Procedures Table:
+   MET_NON_LUNG_MGMT:
+     Desc: Surgical treatment of metastatic disease not involving the lungs.
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Biopsy/Surgical Procedures Table:
+   MET_LUNG_MGMT:
+     Desc: Surgical treatment of disease metastatic to the lungs.
+     Src: NA
+     Type:
+        - "Thoracotomy"
+        - "Other"
+        - "Unknown"
+        - "Sternotomy"
+        - "Not Reported"
+        - "Video-Assisted Thoroscopic Surgery"
+     Req: null
+     Private: null
+   #Property of Biopsy/Surgical Procedures Table:
+   LOCALIZATION_TECHNIQUE:
+     Desc: The process of determining or marking the location or site of a lesion or disease.
+     Src: NA
+     Type:
+        - "Navigation and Robotics"
+        - "Indocyanine Green Fluorescence Angiography"
+        - "Methylene Blue Dye Marking"
+        - "Other"
+        - "Unknown"
+        - "None"
+        - "Not Reported"
+        - "Wire Localization"
+     Req: null
+     Private: null
+   #Property of Biopsy/Surgical Procedures Table:
+   Biopsy:
+     Desc: The removal of tissue specimens or fluid from the living body for microscopic examination, performed to establish a diagnosis.
+     Src: NA
+     Type:
+        - ""
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Cellular Immunotherapy Table:
+   AGE_AT_IMT_START:
+     Desc: Age of subject (in days) at the start of the immunotherapy.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Cellular Immunotherapy Table:
+   IMT_TYPE:
+     Desc: The type of cellular immunotherapy.
+     Src: NA
+     Type:
+        - "Chimeric Antigen Receptor T-cell Therapy"
+        - "Donor Lymphocyte Infusion"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of File:
+   FILE_NAME:
+     Desc: 
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of File:
+   FILE_TYPE:
+     Desc: 
+     Src: NA
+     Type:
+        - "BAM"
+        - "INDEX"
+        - "Pathology Report"
+     Req: null
+     Private: null
+   #Property of File:
+   FILE_DESCRIPTION:
+     Desc: 
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of File:
+   FILE_FORMAT:
+     Desc: 
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of File:
+   FILE_SIZE:
+     Desc: 
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of File:
+   MD5SUM:
+     Desc: 
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of File:
+   FILE_STATUS:
+     Desc: 
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of File:
+   UUID:
+     Desc: 
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of File:
+   FILE_LOCATION:
+     Desc: 
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Disease Phase Timing Table:
+   AGE_AT_DISEASE_PHASE:
+     Desc: Age of subject (in days) at the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE:
+     Desc: The type of protocol treatment course administered.
+     Src: NA
+     Type:
+        - "Palliative Treatment"
+        - "Consolidation"
+        - "Maintenance"
+        - "Induction"
+        - "Stem Cell Transplant Conditioning"
+        - "Prephase"
+        - "Intensification"
+        - "Other"
+        - "Continuation"
+        - "Interim Maintenance"
+        - "Investigational Agent"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   COURSE_NUMBER:
+     Desc: The number assigned to a course of therapeutic agent administration, indicating where a particular course of treatment falls within a sequence of treatments.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Myeloid Sarcoma Involvement Table:
+   MYELOID_SARCOMA:
+     Desc: A tumor mass composed of myeloblasts or immature myeloid cells.  It occurs in extramedullary sites or the bone.  (WHO, 2001)
+     Src: NA
+     Type:
+        - "Unknown"
+        - "Not Reported"
+        - "No"
+        - "Yes"
+     Req: null
+     Private: null
+   #Property of Myeloid Sarcoma Involvement Table:
+   MYELOID_SARCOMA_SITE:
+     Desc: The site of the extramedullary myeloid sarcoma.
+     Src: NA
+     Type:
+        - "Orbit"
+        - "Bone"
+        - "Testis"
+        - "Central Nervous System"
+        - "Skin"
+        - "Other"
+        - "Unknown"
+        - "Not Reported"
+     Req: null
+     Private: null
+   #Property of Subject Characteristics Table:
+   PCDC_SUBJECT_ID:
+     Desc: A unique identifier for a subject in a Pediatric Cancer Data Commons (PCDC) study.
+     Src: NA
+     Type: string
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE:
+     Desc: The stage or period of an individual's disease.
+     Src: NA
+     Type:
+        - "Initial Diagnosis"
+        - "Relapse"
+        - "Relapse/Progression"
+        - "Progressive Disease"
+        - "Refractory"
+     Req: null
+     Private: null
+   #Property of Off Protocol Therapy/Study Table:
+   DISEASE_PHASE_NUMBER:
+     Desc: The number of the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Disease Phase Timing Table:
+   AGE_AT_DISEASE_PHASE:
+     Desc: Age of subject (in days) at the disease phase.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
+   #Property of Disease Phase Timing Table:
+   YEAR_AT_DISEASE_PHASE:
+     Desc: The year when a disease phase was assigned to an individual's condition.
+     Src: NA
+     Type: number
+     Req: null
+     Private: null
