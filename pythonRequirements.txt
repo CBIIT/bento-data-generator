@@ -3,3 +3,4 @@ PyYAML
 typing
 pandas
 openpyxl
+jupyter_client==5.3.1
