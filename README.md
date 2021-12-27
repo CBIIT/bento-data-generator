@@ -9,5 +9,5 @@ To run the Jupyter Notebook in Docker, the user should take the following steps:
 ```docker images```<br/>
 (4) The user can use the command below to run the images. After the user types the command, the console will give the user serval URLs. The user should copy-paste the last URL to the browser to get the Jupyter Notebook. The user can press control + c to stop the image.<br/>
 ```docker run -v ${PWD}:/home/jovyan -it -p 8888:8888 datagenerator```<br/>
-If the user are using Windows Command Prompt, the use should use the command below instead.
+If the user are using Windows Command Prompt, the use should use the command below instead.<br/>
 ```docker run -v "%cd%":/home/jovyan -it -p 8888:8888 datagenerator```<br/>
