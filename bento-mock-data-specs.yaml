@@ -1,0 +1,201 @@
+---
+HeadNode:
+  name: institution
+  count: 1
+  Prefix: BENTO-INSTN
+
+#Nodes to be included in the data graph.
+#Only nodes in the IncludeNodes section will be created.
+#Includes nodes in the hierarchy in which they occur in the model.
+IncludeNodes:
+  - institution
+  - program
+  - laboratory_procedure
+  - study
+  - study_subject
+  - stratification_factor
+  - sample
+  - follow_up
+  - diagnosis
+  - demographic_data
+  - file
+  - therapeutic_procedure
+
+#Properties for which synthetic values need to be created.
+#Assumption: property names are duplicated among node types, ie, a property never belongs
+#to more than one node type.
+
+IncludeProperties:
+  - institution_name
+  - institution_url
+  - institution_acronymn
+  - program_id
+  - program_name
+  - program_acronym
+  - program_full_description
+  - program_external_url
+  - program_short_description
+  - start_date
+  - end_date
+  - index_date
+  - dbgap_accession_number
+  - sponsor
+  - state
+  - in_review
+  - program_sort_order
+  - pubmed_id
+  - laboratory_procedure_type
+  - laboratory_procedure_target_type
+  - test_name
+  - study_acronym
+  - study_full_description
+  - study_name
+  - study_short_description
+  - study_type
+  - study_sort_order
+  - study_subject_source_id
+  - consent_type
+  - lost_to_follow_up
+  - status
+  - disease_type
+  - disease_subtype
+  - taxon
+  - primary_site
+  - in_analysis
+  - case_report_form_submitted
+  - consent_withdrawn
+  - days_to_progression
+  - days_to_recurrence
+  - dfs_event_indicator
+  - days_to_distant_recurrence
+  - distant_recurrence_indicator
+  - recurrence_free_indicator
+  - dfs_event_type
+  - first_recurrence_type
+  - tissue_type
+  - sample_type
+  - composition
+  - method_of_sample_procurement
+  - sample_anatomic_site
+  - grouped_recurrence_score
+  - stratification_code
+  - menopausal_status_stratification
+  - planned_chemotherapy_stratification
+  - planned_radiotherapy_stratification
+  - tumor_size_stratification
+  - age_at_index
+  - menopause_status
+  - cause_of_death
+  - survival_time
+  - race
+  - ethnicity
+  - vital_status
+  - gender
+  - tumor_grade
+  - tumor_largest_dimension_diameter
+  - er_status
+  - nuclear_grade
+  - pr_status
+  - recurrence_score
+  - tumor_size_group
+  - primary_surgical_procedure
+  - days_to_treatment_start
+  - received_chemotherapy
+  - chemotherapy_regimen_group
+  - chemotherapy_regimen
+  - all_endocrine_therapy_stopped
+  - endocrine_therapy_type
+  - uuid
+  - file_size
+  - md5sum
+  - file_status
+  - file_location
+  - file_format
+  - acl
+  - file_description
+  - file_type
+
+
+#Relationship specifications. For example: how many studies per program; how many cases per studies.
+# This also includes specifications on how these node counts should be generated.
+# 1. SrcNodeCount: fixed, indicates that the "count" variable holds the counts.
+# 2. SrcNodeCount: random, indicates that counts are generated from a drawing from a uniform distribution 
+#    between the variable minCount and maxCount (both inclusive).
+# 3. All relationships among the included nodes will automatically be created.
+# 4. Do not specify relationships between nodes of the same type, e.g between two samples, two visits etc.
+
+RelationshipSpecs:
+  institution:
+    program:
+      EdgeType: program_of_institution
+      SrcNodeCount: fixed
+      count: 1
+      Prefix: BENTO
+  program:
+    study:
+      EdgeType: study_of_program
+      SrcNodeCount: fixed
+      count: 2
+      Prefix: BENTO-STUDY
+    laboratory_procedure:
+      EdgeType: laboratory_procedure_of_program
+      SrcNodeCount: fixed
+      count: 2
+      Prefix: BENTO-LAB
+  laboratory_procedure:
+    file:
+      EdgeType: file_of_laboratory_procedure
+      SrcNodeCount: fixed
+      count: 4
+      Prefix: BENTO-FILE
+    sample:
+      EdgeType: sample_processed_by
+      SrcNodeCount: fixed
+      count: 2
+      Prefix: BENTO-BIOS
+  study:
+    study_subject:
+      EdgeType: study_subject_of_study
+      SrcNodeCount: fixed
+      count: 2
+      Prefix: BENTO-CASE
+  study_subject:
+    follow_up:
+      EdgeType: fu_of_study_subject
+      SrcNodeCount: fixed
+      count: 2
+      Prefix: BENTO-FU
+    diagnosis:
+      EdgeType: diagnosis_of_study_subject
+      SrcNodeCount: fixed
+      count: 2
+      Prefix: BENTO-DX
+    demographic_data:
+      EdgeType: demographic_of_study_subject
+      SrcNodeCount: fixed
+      count: 2
+      Prefix: BENTO-DEMO
+    sample:
+      EdgeType: sample_of_study_subject
+      SrcNodeCount: fixed
+      count: 2
+      Prefix: BENTO-BIOS
+    stratification_factor:
+      EdgeType: sf_of_study_subject
+      SrcNodeCount: fixed
+      count: 2
+      Prefix: BENTO-STRAT
+  sample:
+    file:
+      EdgeType: file_of_sample
+      SrcNodeCount: fixed
+      count: 2
+      Prefix: BENTO-FILE
+  diagnosis:
+    therapeutic_procedure:
+      EdgeType: file_of_sample
+      SrcNodeCount: fixed
+      count: 2
+      Prefix: BENTO-RX
+#Create DestinationLeafNodes:
+#IncludeAdditionalRelationships:
