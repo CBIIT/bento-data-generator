@@ -334,7 +334,7 @@ RelationshipSpecs:
     Subject_Characteristics_Table:
       EdgeType: of_programs
       SrcNodeCount: fixed
-      count: 20
+      count: 6
       Prefix: Subject
   Subject_Characteristics_Table:
     Transfusion_Medicine_Procedures_Table:
@@ -369,9 +369,8 @@ RelationshipSpecs:
       Prefix: SMNT
     Adverse_Events_Table:
       EdgeType: of_subject
-      SrcNodeCount: random
-      minCount: 2
-      maxCount: 5
+      SrcNodeCount: fixed
+      count: 1
       Prefix: AET
     Vitals_Table:
       EdgeType: of_subject
@@ -411,9 +410,8 @@ RelationshipSpecs:
       Prefix: ET
     Demographics_Table:
       EdgeType: of_subject
-      SrcNodeCount: random
-      minCount: 2
-      maxCount: 5
+      SrcNodeCount: fixed
+      count: 1
       Prefix: DT
     Non_Protocol_Therapy_Table:
       EdgeType: of_subject
@@ -495,9 +493,8 @@ RelationshipSpecs:
       Prefix: LT
     Disease_Characteristics_Table:
       EdgeType: of_subject
-      SrcNodeCount: random
-      minCount: 2
-      maxCount: 5
+      SrcNodeCount: fixed
+      count: 1
       Prefix: DCT
     Total_Dose_Table:
       EdgeType: of_subject
@@ -531,9 +528,8 @@ RelationshipSpecs:
       Prefix: MSIT
     Disease_Phase_Timing_Table:
       EdgeType: of_subject
-      SrcNodeCount: random
-      minCount: 2
-      maxCount: 5
+      SrcNodeCount: fixed
+      count: 1
       Prefix: DPTT
 
 
