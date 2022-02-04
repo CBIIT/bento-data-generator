@@ -26,94 +26,106 @@ IncludeNodes:
 #to more than one node type.
 
 IncludeProperties:
-  - institution_name
-  - institution_url
-  - institution_acronymn
-  - program_id
-  - program_name
-  - program_acronym
-  - program_full_description
-  - program_external_url
-  - program_short_description
-  - start_date
-  - end_date
-  - index_date
-  - dbgap_accession_number
-  - sponsor
-  - state
-  - in_review
-  - program_sort_order
-  - pubmed_id
-  - laboratory_procedure_type
-  - laboratory_procedure_target_type
-  - test_name
-  - study_acronym
-  - study_full_description
-  - study_name
-  - study_short_description
-  - study_type
-  - study_sort_order
-  - study_subject_source_id
-  - consent_type
-  - lost_to_follow_up
-  - status
-  - disease_type
-  - disease_subtype
-  - taxon
-  - primary_site
-  - in_analysis
-  - case_report_form_submitted
-  - consent_withdrawn
-  - days_to_progression
-  - days_to_recurrence
-  - dfs_event_indicator
-  - days_to_distant_recurrence
-  - distant_recurrence_indicator
-  - recurrence_free_indicator
-  - dfs_event_type
-  - first_recurrence_type
-  - tissue_type
-  - sample_type
-  - composition
-  - method_of_sample_procurement
-  - sample_anatomic_site
-  - grouped_recurrence_score
-  - stratification_code
-  - menopausal_status_stratification
-  - planned_chemotherapy_stratification
-  - planned_radiotherapy_stratification
-  - tumor_size_stratification
-  - age_at_index
-  - menopause_status
-  - cause_of_death
-  - survival_time
-  - race
-  - ethnicity
-  - vital_status
-  - gender
-  - tumor_grade
-  - tumor_largest_dimension_diameter
-  - er_status
-  - nuclear_grade
-  - pr_status
-  - recurrence_score
-  - tumor_size_group
-  - primary_surgical_procedure
-  - days_to_treatment_start
-  - received_chemotherapy
-  - chemotherapy_regimen_group
-  - chemotherapy_regimen
-  - all_endocrine_therapy_stopped
-  - endocrine_therapy_type
-  - uuid
-  - file_size
-  - md5sum
-  - file_status
-  - file_location
-  - file_format
-  - acl
-  - file_description
-  - file_type
+    institution:
+      - institution_name
+      - institution_url
+      - institution_acronymn
+    program:
+      - program_id
+      - program_name
+      - program_acronym
+      - program_full_description
+      - program_external_url
+      - program_short_description
+      - start_date
+      - end_date
+      - index_date
+      - dbgap_accession_number
+      - sponsor
+      - state
+      - in_review
+      - program_sort_order
+      - pubmed_id
+    laboratory_procedure:
+      - laboratory_procedure_type
+      - laboratory_procedure_target_type
+      - test_name
+    study:
+      - study_acronym
+      - study_full_description
+      - study_name
+      - study_short_description
+      - study_type
+      - study_sort_order
+    study_subject:
+      - study_subject_source_id
+      - consent_type
+      - lost_to_follow_up
+      - status
+      - disease_type
+      - disease_subtype
+      - taxon
+      - primary_site
+      - in_analysis
+      - case_report_form_submitted
+      - consent_withdrawn
+    follow_up:
+      - days_to_progression
+      - days_to_recurrence
+      - dfs_event_indicator
+      - days_to_distant_recurrence
+      - distant_recurrence_indicator
+      - recurrence_free_indicator
+      - dfs_event_type
+      - first_recurrence_type
+    sample:
+      - tissue_type
+      - sample_type
+      - composition
+      - method_of_sample_procurement
+      - sample_anatomic_site
+    stratification_factor:
+      - grouped_recurrence_score
+      - stratification_code
+      - menopausal_status_stratification
+      - planned_chemotherapy_stratification
+      - planned_radiotherapy_stratification
+      - tumor_size_stratification
+    demographic_data:
+      - age_at_index
+      - menopause_status
+      - cause_of_death
+      - survival_time
+      - race
+      - ethnicity
+      - vital_status
+      - gender
+    diagnosis:
+      - tumor_grade
+      - tumor_largest_dimension_diameter
+      - er_status
+      - nuclear_grade
+      - pr_status
+      - recurrence_score
+      - tumor_size_group
+    therapeutic_procedure:
+      - primary_surgical_procedure
+      - days_to_treatment_start
+      - received_chemotherapy
+      - chemotherapy_regimen_group
+      - chemotherapy_regimen
+      - all_endocrine_therapy_stopped
+      - endocrine_therapy_type
+    file:
+      - uuid
+      - file_size
+      - md5sum
+      - file_status
+      - file_location
+      - file_format
+      - acl
+      - file_description
+      - file_type
 
 
 #Relationship specifications. For example: how many studies per program; how many cases per studies.
