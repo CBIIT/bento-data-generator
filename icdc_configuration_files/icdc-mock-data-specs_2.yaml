@@ -1,0 +1,114 @@
+---
+HeadNode:
+  name: program
+  count: 1
+  Prefix: Program
+
+#Nodes to be included in the data graph.
+#Only nodes in the IncludeNodes section will be created.
+#Includes nodes in the hierarchy in which they occur in the model.
+IncludeNodes:
+  - program
+  - study
+  - case
+  - demographic
+  - diagnosis
+  - sample
+  - file
+
+#Properties for which synthetic values need to be created.
+#Assumption: property names are duplicated among node types, ie, a property never belongs
+#to more than one node type.
+
+IncludeProperties:
+    case:
+      - patient_id
+    demographic:
+      - breed
+      - neutered_indicator
+      - patient_age_at_enrollment
+      - sex
+      - weight
+    diagnosis:
+      - best_response
+      - disease_term
+      - primary_disease_site
+      - stage_of_disease
+    file:
+      - file_format
+      - file_name
+      - file_size
+      - file_type
+    program:
+      - program_acronym
+      - program_full_description
+      - program_name
+      - program_short_description
+    study:
+      - general_sample_pathology
+      - necropsy_sample
+      - percentage_tumor
+      - physical_sample_type
+      - sample_chronology
+      - sample_preservation
+      - sample_site
+      - specific_sample_pathology
+      - summarized_sample_type
+      - tumor_grade
+      - tumor_sample_origin
+    study:
+      - accession_id
+      - clinical_study_description
+      - clinical_study_name
+      - clinical_study_type
+      - study_disposition
+
+#Relationship specifications. For example: how many studies per program; how many cases per studies.
+# This also includes specifications on how these node counts should be generated.
+# 1. SrcNodeCount: fixed, indicates that the "count" variable holds the counts.
+# 2. SrcNodeCount: random, indicates that counts are generated from a drawing from a uniform distribution 
+#    between the variable minCount and maxCount (both inclusive).
+# 3. All relationships among the included nodes will automatically be created.
+# 4. Do not specify relationships between nodes of the same type, e.g between two samples, two visits etc.
+
+RelationshipSpecs:
+  program:
+    study:
+      EdgeType: member_of
+      SrcNodeCount: fixed
+      count: 2
+      Prefix: ICDC
+  study:
+    case:
+      EdgeType: member_of
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: CA
+  case:
+    sample:
+      EdgeType: of_case
+      SrcNodeCount: random
+      minCount: 2
+      maxCount: 5
+      Prefix: SA
+    diagnosis:
+      EdgeType: of_case
+      SrcNodeCount: fixed
+      count: 1
+      Prefix: DI
+    demographic:
+      EdgeType: of_case
+      SrcNodeCount: fixed
+      count: 1
+      Prefix: DE
+  sample:
+    file:
+      EdgeType: of_sample
+      SrcNodeCount: random
+      minCount: 5
+      maxCount: 10
+      Prefix: F
+
+#Create DestinationLeafNodes:
+#IncludeAdditionalRelationships:
