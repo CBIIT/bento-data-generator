@@ -1,0 +1,564 @@
+Nodes:
+  Transfusion_Medicine_Procedures_Table:
+    Category:
+    Props:
+      - AGE_AT_TMP_START
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - TMP_TYPE
+      - TMP_PRODUCT
+  Subject_Response_Table:
+    Category:
+    Props:
+      - AGE_AT_RESPONSE
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - RESPONSE_CATEGORY
+      - RESPONSE
+      - BM_PCT_BLASTS_AT_RESPONSE
+      - BM_ANALYSIS_METHOD_AT_RESPONSE
+      - ANC_AT_RESPONSE
+      - ANC_THRESHOLD_AT_RESPONSE
+      - PLATELET_COUNT_AT_RESPONSE
+      - PLATELET_THRESHOLD_AT_RESPONSE
+      - RESPONSE_CRITERIA
+      - RESPONSE_CRITERIA_VERSION
+      - RESPONSE_METHOD
+  Growing_Teratoma_Syndrome_Table:
+    Category:
+    Props:
+      - AGE_AT_GTS
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - GTS_TREATMENT
+  Cytology_Table:
+    Category:
+    Props:
+      - AGE_AT_CYTOLOGY
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - MALIGNANT_CELLS
+      - CYTOLOGY_SPEC_TYPE
+  Secondary_Malignant_Neoplasm_Table:
+    Category:
+    Props:
+      - AGE_AT_SMN
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - SMN_ICD_O_MORPH
+      - SMN_ICD_O_TOP
+      - SMN_FIELD
+  Adverse_Events_Table:
+    Category:
+    Props:
+      - AGE_AT_AE
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - ADVERSE_EVENT
+      - AE_CODE
+      - AE_SYSTEM
+      - AE_SYSTEM_VERSION
+      - AE_GRADE
+      - AE_ATTRIBUTION
+      - AE_OUTCOME
+      - AE_ICU
+      - AE_MEDICATION
+      - AE_INTERVENTION
+      - AE_MED_INTERVENTION_DETAIL
+      - AE_PATHOGEN
+      - AE_PATHOGEN_CONFIRMATION
+      - GVHD_ACUITY
+      - GVHD_ORGAN
+      - AGE_AT_AE_RESOLVED
+      - AVN_JOINT
+      - AVN_JOINT_LATERALITY
+      - AVN_METHOD
+      - ORTHOPEDIC_PROCEDURE
+      - INFECTION_CLASSIFICATION
+  Vitals_Table:
+    Category:
+    Props:
+      - AGE_AT_VITALS
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - VITALS_TEST
+      - VITALS_RESULT
+      - VITALS_RESULT_NUMERIC
+      - VITALS_RESULT_UNIT
+  Radiation_Therapy_Table:
+    Category:
+    Props:
+      - AGE_AT_RT_START
+      - AGE_AT_RT_END
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - RT_SITE
+      - RT_DOSE
+      - RT_UNIT
+      - TUMOR_CLASSIFICATION
+      - TUMOR_TISSUE_TYPE
+      - RT_LATERALITY
+      - ENERGY_TYPE
+      - NUM_FRACTION
+      - TRANSPOSITION_ORGAN
+      - BOOST
+  Molecular_Analysis_Table:
+    Category:
+    Props:
+      - AGE_AT_MOLECULAR_ANALYSIS
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - MOLECULAR_ANALYSIS_METHOD
+      - ISCN
+      - INDEPEN_ABB
+      - NUM_METAPHASES
+      - MOLECULAR_ABNORMALITY
+      - CHROMOSOME
+      - GENE1
+      - GENE2
+      - VARIANT_TYPE
+      - GENETIC_SEQ
+      - AA_MUTATION
+      - MOLECULAR_ABNORMALITY_RESULT
+      - ALLELIC_RATIO
+      - TUMOR_CLASSIFICATION
+      - KARYOTYPE_STATUS
+      - NUM_CHROMOSOMES
+      - MOLECULAR_ANALYSIS_SAMPLE_SOURCE
+      - DNA_INDEX
+      - TRANSLOCATION_STATUS
+  Subject_Characteristics_Table:
+    Category:
+    Props:
+      - PCDC_SUBJECT_ID
+      - HONEST_BROKER_SUBJECT_ID
+      - DATA_CONTRIBUTOR_ID
+      - AGE_AT_ENROLLMENT
+      - TREATMENT_ARM
+      - ENROLLED_STATUS
+      - YEAR_AT_ENROLLMENT
+  Stem_Cell_Transplant_Table:
+    Category:
+    Props:
+      - AGE_AT_SCT
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - SCT_TYPE
+      - SCT_SOURCE
+      - SCT_DONOR_RELATIONSHIP
+      - HLA_MATCH
+      - NUMBER_HLA
+      - NUMBER_MATCHES
+      - HLA_A_RESULT
+      - HLA_B_RESULT
+      - HLA_C_RESULT
+      - HLA_DRB1_RESULT
+      - HLA_DQ_RESULT
+      - SCT_CONDITIONING_TYPE
+      - SCT_TBI
+      - SCT_CD34_COLL
+      - SCT_CD34_TRANSPLANT
+      - SCT_CYCLES
+  Concomitant_Medications_Table:
+    Category:
+    Props:
+      - AGE_AT_MEDICATION_START
+      - AGE_AT_MEDICATION_END
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - MEDICATION
+      - MEDICATION_ADMN_STATUS
+  Echocardiogram_Table:
+    Category:
+    Props:
+      - AGE_AT_ECHO
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - ECHO_TEST
+      - ECHO_RESULT
+      - ECHO_RESULT_NUMERIC
+      - ECHO_RESULT_UNIT
+  Demographics_Table:
+    Category:
+    Props:
+      - SEX
+      - RACE
+      - ETHNICITY
+  Non_Protocol_Therapy_Table:
+    Category:
+    Props:
+      - NPT_TIMING
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - NPT_TYPE
+  Tumor_Assessment_Table:
+    Category:
+    Props:
+      - AGE_AT_TUMOR_ASSESSMENT
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - TUMOR_DETECTION_METHOD
+      - TUMOR_CLASSIFICATION
+      - TUMOR_TISSUE_TYPE
+      - TUMOR_SITE
+      - TUMOR_LATERALITY
+      - SITE_WITHIN_BONE
+      - FRACTURE
+      - LONGEST_DIAM_DIM1
+      - LONGEST_DIAM_DIM2
+      - LONGEST_DIAM_DIM3
+      - COMPUTED_VOLUME
+      - ESTIMATED_VOLUME
+      - TUMOR_VOLUME
+      - JOINT_INVOLVEMENT
+      - NODAL_INVOLVEMENT
+      - SKIP_LESION
+      - IPSILATERAL_NODULES
+      - PLEURAL_EFFUSION
+      - PLEURAL_CYTOLOGY
+      - PERITONEAL_EFFUSION
+      - PERITONEAL_CYTOLOGY
+      - EXTENSION_SITE
+      - NODAL_SITE
+  Histology_Table:
+    Category:
+    Props:
+      - AGE_AT_HIST_ASSESSMENT
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - HISTOLOGY
+      - HIST_ASSESSMENT_REVIEW
+      - HISTOLOGY_RESULT
+      - HISTOLOGY_RESULT_NUMERIC
+      - HISTOLOGY_RESULT_UNIT
+      - HIST_ICD_O_MORPH
+      - HISTOLOGY_GRADE
+      - MATURE_GLIAL_IMPLANTS
+      - SOMATIC_MALIGNANCY_TYPE
+  Study:
+    Category:
+    Props:
+      - STUDY_ID
+      - STUDY_Description
+  Staging_Table:
+    Category:
+    Props:
+      - AGE_AT_STAGING
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - STAGE_SYSTEM
+      - STAGE
+  Patient_Reported_Outcomes_Metadata_Table:
+    Category:
+    Props:
+      - STUDY_ID
+      - PRO_MEASURES
+  Program:
+    Category:
+    Props:
+      - PROGRAM_ID
+      - Cancer
+      - Headquarters
+      - Consortium
+      - Consortium_Manager
+  Survival_Characteristics_Table:
+    Category:
+    Props:
+      - AGE_AT_LKSS
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - LKSS
+      - AGE_LOST_TO_FOLLOW_UP
+      - CAUSE_OF_DEATH
+      - TRM_TYPE
+      - CAUSE_OF_DEATH_DETAIL
+      - CAUSE_OF_DEATH_RANKING
+      - LKSS_WITH_DISEASE
+  Non_protocol_Therapy_Table_2:
+    Category:
+    Props:
+      - NPT_TIMING
+      - NPT_TYPE
+      - Radiation_Therapy
+  Course_Timing_Table:
+    Category:
+    Props:
+      - COURSE
+      - COURSE_NUMBER
+      - AGE_AT_COURSE_START
+      - AGE_AT_COURSE_END
+      - AGE_AT_COURSE_ANC_500
+      - AGE_AT_TXASSIGN
+  Immunohistochemistry_Table:
+    Category:
+    Props:
+      - AGE_AT_IHC
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - IHC_TEST
+      - IHC_RESULT
+      - IHC_RESULT_NUMERIC
+  Off_Protocol_Therapy_Study_Table:
+    Category:
+    Props:
+      - AGE_OFF
+      - OFF_TYPE
+      - REASON_OFF
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - Adverse_Event
+      - ANOTHER_STUDY
+  Medical_History_Table:
+    Category:
+    Props:
+      - MEDICAL_HISTORY
+      - DYSGENETIC_GONAD
+  Minimal_Residual_Disease_Table:
+    Category:
+    Props:
+      - AGE_AT_MRD_ASSESSMENT
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - MRD_METHOD
+      - FLOW_CYTOMETRY_TYPE
+      - MRD_RESULT
+      - MRD_RESULT_NUMERIC
+      - MRD_RESULT_UNIT
+      - MRD_SENSITIVTY
+      - MRD_SAMPLE_SOURCE
+      - MRD_MOLECULAR_MARKERS
+  Labs_Table:
+    Category:
+    Props:
+      - AGE_AT_LAB
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - LAB_CAT
+      - LAB_TEST
+      - LAB_SPEC_TYPE
+      - LAB_RESULT
+      - LAB_RESULT_NUMERIC
+      - LAB_RESULT_UNIT
+      - LAB_METHOD
+      - TRAUMATIC_TAP
+      - THRESHOLD_HIGH
+      - LAB_SEQ_METHOD
+      - THRESHOLD_LOW
+      - PMID_REF
+      - BM_MORPHOLOGY
+  Disease_Characteristics_Table:
+    Category:
+    Props:
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - FAB_TYPE
+      - WHO_AML
+      - DETECTION_METHOD
+      - DISEASE_SITE
+      - CNS_DISEASE_STATUS
+      - MPAL
+      - MLDS
+      - TAMDS
+      - SECONDARY_AML
+      - LANSKY
+      - KARNOFSKY
+      - GPOH_SCORE
+      - IGCCC_RISK_GROUP
+      - MAGIC_RISK_GROUP
+      - ALL_TYPE
+      - HIST_ICD_O_MORPH
+      - BULK_MED_MASS
+      - PRIOR_STEROIDS_WEEK
+      - PRIOR_STEROIDS_MONTH
+  Total_Dose_Table:
+    Category:
+    Props:
+      - AGE_AT_TOTAL_DOSE_START
+      - AGE_A_TOTAL_DOSE_END
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - ROUTE
+      - ANTINEOPLASTIC_AGENT
+      - NUMBER_DOSES
+      - TOTAL_DOSE_ADMINISTERED
+      - TOTAL_DOSE_INTENDED
+      - TOTAL_DOSE_UNITS
+  Biopsy_Surgical_Procedures_Table:
+    Category:
+    Props:
+      - AGE_AT_PROCEDURE
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - TUMOR_CLASSIFICATION
+      - TUMOR_TISSUE_TYPE
+      - PROCEDURE_SITE
+      - PROCEDURE_LATERALITY
+      - PROCEDURE_TYPE
+      - SURGERY_TYPE_LIMB
+      - AMPUTATION_TYPE
+      - SURGERY_TYPE_LIMB_SALVAGE
+      - RECONSTRUCTION_TYPE
+      - PROCEDURE_EXTENT
+      - MARGINS
+      - BIOPSY_TYPE
+      - MET_NON_LUNG_MGMT
+      - MET_LUNG_MGMT
+      - LOCALIZATION_TECHNIQUE
+      - Biopsy
+  Cellular_Immunotherapy_Table:
+    Category:
+    Props:
+      - AGE_AT_IMT_START
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - IMT_TYPE
+  File:
+    Category:
+    Props:
+      - FILE_NAME
+      - FILE_TYPE
+      - FILE_DESCRIPTION
+      - FILE_FORMAT
+      - FILE_SIZE
+      - MD5SUM
+      - FILE_STATUS
+      - UUID
+      - FILE_LOCATION
+  Myeloid_Sarcoma_Involvement_Table:
+    Category:
+    Props:
+      - AGE_AT_DISEASE_PHASE
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - COURSE
+      - COURSE_NUMBER
+      - MYELOID_SARCOMA
+      - MYELOID_SARCOMA_SITE
+  Disease_Phase_Timing_Table:
+    Category:
+    Props:
+      - DISEASE_PHASE
+      - DISEASE_PHASE_NUMBER
+      - AGE_AT_DISEASE_PHASE
+      - YEAR_AT_DISEASE_PHASE
+Relationships:
+  of_programs:
+    Mul: many_to_one
+    Ends:
+      - Src: Subject_Characteristics_Table
+        Dst: Program
+      - Src: Study
+        Dst: Program
+      - Src: Subject_Characteristics_Table
+        Dst: Study
+  of_subject:
+    Mul: many_to_one
+    Ends:
+      - Src: Transfusion_Medicine_Procedures_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Subject_Response_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Growing_Teratoma_Syndrome_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Cytology_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Secondary_Malignant_Neoplasm_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Adverse_Events_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Vitals_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Radiation_Therapy_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Molecular_Analysis_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Stem_Cell_Transplant_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Concomitant_Medications_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Echocardiogram_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Demographics_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Non_Protocol_Therapy_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Tumor_Assessment_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Histology_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Staging_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Patient_Reported_Outcomes_Metadata_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Survival_Characteristics_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Non_protocol_Therapy_Table_2
+        Dst: Subject_Characteristics_Table
+      - Src: Course_Timing_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Immunohistochemistry_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Off_Protocol_Therapy_Study_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Medical_History_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Minimal_Residual_Disease_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Labs_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Disease_Characteristics_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Total_Dose_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Biopsy_Surgical_Procedures_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Cellular_Immunotherapy_Table
+        Dst: Subject_Characteristics_Table
+      - Src: File
+        Dst: Subject_Characteristics_Table
+      - Src: Myeloid_Sarcoma_Involvement_Table
+        Dst: Subject_Characteristics_Table
+      - Src: Disease_Phase_Timing_Table
+        Dst: Subject_Characteristics_Table

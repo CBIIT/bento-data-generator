@@ -1,0 +1,6 @@
+NODE_FILE: C3DC-config/c3dc_Model.yml
+PROP_FILE: C3DC-config/c3dc_Model_Props.yml
+ID_FILE: C3DC-config/props-pcdc-mock.yml
+DATA_SPEC_FILE: C3DC-config/C3DC-mock-data-specs.yaml
+SYNTHETIC_DATA_FILE: C3DC-config/C3DC-synthetic_data_values.xlsx
+OUTPUT_FOLDER: ./c3dc-data/
