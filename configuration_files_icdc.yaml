@@ -1,0 +1,6 @@
+NODE_FILE: ./icdc_configuration_files/icdc-model.yaml
+PROP_FILE: ./icdc_configuration_files/icdc-model-props.yaml
+SYNTHETIC_DATA_FILE: ./icdc_configuration_files/synthetic_data_values.xlsx
+DATA_SPEC_FILE: ./icdc_configuration_files/icdc-mock-data-specs_2.yaml
+ID_FILE: ./icdc_configuration_files/props-icdc-pmvp.yml
+OUTPUT_FOLDER: ./icdc_data_files/

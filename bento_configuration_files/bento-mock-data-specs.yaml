@@ -117,6 +117,7 @@ IncludeProperties:
       - all_endocrine_therapy_stopped
       - endocrine_therapy_type
     file:
+      - file_name
       - uuid
       - file_size
       - md5sum
@@ -185,7 +186,7 @@ RelationshipSpecs:
     demographic_data:
       EdgeType: demographic_of_study_subject
       SrcNodeCount: fixed
-      count: 2
+      count: 1
       Prefix: BENTO-DEMO
     sample:
       EdgeType: sample_of_study_subject
@@ -195,7 +196,7 @@ RelationshipSpecs:
     stratification_factor:
       EdgeType: sf_of_study_subject
       SrcNodeCount: fixed
-      count: 2
+      count: 1
       Prefix: BENTO-STRAT
   sample:
     file:
