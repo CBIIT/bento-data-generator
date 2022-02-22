@@ -44,7 +44,7 @@ IncludeProperties:
       - program_full_description
       - program_name
       - program_short_description
-    study:
+    sample:
       - general_sample_pathology
       - necropsy_sample
       - percentage_tumor
