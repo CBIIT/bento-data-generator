@@ -136,7 +136,41 @@ IncludeProperties:
 #    between the variable minCount and maxCount (both inclusive).
 # 3. All relationships among the included nodes will automatically be created.
 # 4. Do not specify relationships between nodes of the same type, e.g between two samples, two visits etc.
-
+AbsoluteNodeCount:
+  demographic_data:
+    NodeCount: 40
+    Distribution: fixed
+  diagnosis:
+    NodeCount: 80
+    Distribution: fixed
+  file:
+    NodeCount: 1200
+    Distribution: fixed
+  follow_up:
+    NodeCount: 80
+    Distribution: fixed
+  laboratory_procedure:
+    NodeCount: 2
+    Distribution: fixed
+  program:
+    NodeCount: 1
+    Distribution: fixed
+  sample:
+    NodeCount: 120
+    Distribution: fixed
+  stratification_factor:
+    NodeCount: 40
+    Distribution: fixed
+  study:
+    NodeCount: 2
+    Distribution: fixed
+  study_subject:
+    NodeCount: 40
+    Distribution: fixed
+  therapeutic_procedure:
+    NodeCount: 160
+    Distribution: fixed
+  
 RelationshipSpecs:
   institution:
     program:
