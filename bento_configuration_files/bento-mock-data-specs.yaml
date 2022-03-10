@@ -8,18 +8,39 @@ HeadNode:
 #Only nodes in the IncludeNodes section will be created.
 #Includes nodes in the hierarchy in which they occur in the model.
 IncludeNodes:
-  - institution
-  - program
-  - laboratory_procedure
-  - study
-  - study_subject
-  - stratification_factor
-  - sample
-  - follow_up
-  - diagnosis
-  - demographic_data
-  - file
-  - therapeutic_procedure
+  program:
+    NodeCount: 1
+    Prefix: BENTO
+  laboratory_procedure:
+    NodeCount: 2
+    Prefix: BENTO-LAB
+  study:
+    NodeCount: 2
+    Prefix: BENTO-STUDY
+  study_subject:
+    NodeCount: 40
+    Prefix: BENTO-CASE
+  stratification_factor:
+    NodeCount: 40
+    Prefix: BENTO-STRAT
+  sample:
+    NodeCount: 120
+    Prefix: BENTO-BIOS
+  follow_up:
+    NodeCount: 80
+    Prefix: BENTO-FU
+  diagnosis:
+    NodeCount: 80
+    Prefix: BENTO-DX
+  demographic_data:
+    NodeCount: 40
+    Prefix: BENTO-DEMO
+  file:
+    NodeCount: 1200
+    Prefix: BENTO-FILE
+  therapeutic_procedure:
+    NodeCount: 160
+    Prefix: BENTO-RX
 
 #Properties for which synthetic values need to be created.
 #Assumption: property names are duplicated among node types, ie, a property never belongs
@@ -133,116 +154,56 @@ IncludeProperties:
 # This also includes specifications on how these node counts should be generated.
 # 1. SrcNodeCount: fixed, indicates that the "count" variable holds the counts.
 # 2. SrcNodeCount: random, indicates that counts are generated from a drawing from a uniform distribution 
-#    between the variable minCount and maxCount (both inclusive).
 # 3. All relationships among the included nodes will automatically be created.
 # 4. Do not specify relationships between nodes of the same type, e.g between two samples, two visits etc.
-AbsoluteNodeCount:
-  demographic_data:
-    NodeCount: 40
-    Distribution: fixed
-  diagnosis:
-    NodeCount: 80
-    Distribution: fixed
-  file:
-    NodeCount: 1200
-    Distribution: fixed
-  follow_up:
-    NodeCount: 80
-    Distribution: fixed
-  laboratory_procedure:
-    NodeCount: 2
-    Distribution: fixed
-  program:
-    NodeCount: 1
-    Distribution: fixed
-  sample:
-    NodeCount: 120
-    Distribution: fixed
-  stratification_factor:
-    NodeCount: 40
-    Distribution: fixed
-  study:
-    NodeCount: 2
-    Distribution: fixed
-  study_subject:
-    NodeCount: 40
-    Distribution: fixed
-  therapeutic_procedure:
-    NodeCount: 160
-    Distribution: fixed
-  
+
 RelationshipSpecs:
   institution:
     program:
       EdgeType: program_of_institution
       SrcNodeCount: fixed
-      count: 1
-      Prefix: BENTO
   program:
     study:
       EdgeType: study_of_program
       SrcNodeCount: fixed
-      count: 2
-      Prefix: BENTO-STUDY
     laboratory_procedure:
       EdgeType: laboratory_procedure_of_program
       SrcNodeCount: fixed
-      count: 2
-      Prefix: BENTO-LAB
   laboratory_procedure:
     file:
       EdgeType: file_of_laboratory_procedure
       SrcNodeCount: fixed
-      count: 4
-      Prefix: BENTO-FILE
     sample:
       EdgeType: sample_processed_by
       SrcNodeCount: fixed
-      count: 2
-      Prefix: BENTO-BIOS
   study:
     study_subject:
       EdgeType: study_subject_of_study
       SrcNodeCount: fixed
-      count: 2
-      Prefix: BENTO-CASE
   study_subject:
     follow_up:
       EdgeType: fu_of_study_subject
-      SrcNodeCount: fixed
-      count: 2
-      Prefix: BENTO-FU
+      SrcNodeCount: fixed   
     diagnosis:
       EdgeType: diagnosis_of_study_subject
       SrcNodeCount: fixed
-      count: 2
-      Prefix: BENTO-DX
     demographic_data:
       EdgeType: demographic_of_study_subject
       SrcNodeCount: fixed
-      count: 1
-      Prefix: BENTO-DEMO
     sample:
       EdgeType: sample_of_study_subject
       SrcNodeCount: fixed
-      count: 2
-      Prefix: BENTO-BIOS
     stratification_factor:
       EdgeType: sf_of_study_subject
       SrcNodeCount: fixed
-      count: 1
-      Prefix: BENTO-STRAT
   sample:
     file:
       EdgeType: file_of_sample
       SrcNodeCount: fixed
-      count: 2
-      Prefix: BENTO-FILE
   diagnosis:
     therapeutic_procedure:
       EdgeType: file_of_sample
       SrcNodeCount: fixed
-      count: 2
-      Prefix: BENTO-RX
+
 #Create DestinationLeafNodes:
 #IncludeAdditionalRelationships:
