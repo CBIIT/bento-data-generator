@@ -1,6 +1,0 @@
-NODE_FILE: ./bento_configuration_files/bento_tailorx_model_file.yaml
-PROP_FILE: ./bento_configuration_files/bento_tailorx_model_properties.yaml
-SYNTHETIC_DATA_FILE: ./bento_configuration_files/bento_synthetic_data_values.xlsx
-DATA_SPEC_FILE: ./bento_configuration_files/bento-mock-data-specs.yaml
-ID_FILE: ./bento_configuration_files/props-bento-ext.yml
-OUTPUT_FOLDER: ./bento_data_files/
