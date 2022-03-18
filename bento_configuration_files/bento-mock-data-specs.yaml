@@ -160,49 +160,36 @@ IncludeProperties:
 RelationshipSpecs:
   institution:
     program:
-      EdgeType: program_of_institution
       SrcNodeCount: fixed
   program:
     study:
-      EdgeType: study_of_program
       SrcNodeCount: fixed
     laboratory_procedure:
-      EdgeType: laboratory_procedure_of_program
       SrcNodeCount: fixed
   laboratory_procedure:
     file:
-      EdgeType: file_of_laboratory_procedure
       SrcNodeCount: fixed
     sample:
-      EdgeType: sample_processed_by
       SrcNodeCount: fixed
   study:
     study_subject:
-      EdgeType: study_subject_of_study
       SrcNodeCount: fixed
   study_subject:
     follow_up:
-      EdgeType: fu_of_study_subject
       SrcNodeCount: fixed   
     diagnosis:
-      EdgeType: diagnosis_of_study_subject
       SrcNodeCount: fixed
     demographic_data:
-      EdgeType: demographic_of_study_subject
       SrcNodeCount: fixed
     sample:
-      EdgeType: sample_of_study_subject
       SrcNodeCount: fixed
     stratification_factor:
-      EdgeType: sf_of_study_subject
       SrcNodeCount: fixed
   sample:
     file:
-      EdgeType: file_of_sample
       SrcNodeCount: fixed
   diagnosis:
     therapeutic_procedure:
-      EdgeType: file_of_sample
       SrcNodeCount: fixed
 
 #Create DestinationLeafNodes:

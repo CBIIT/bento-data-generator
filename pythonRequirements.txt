@@ -4,3 +4,5 @@ typing
 pandas
 openpyxl
 pystrich
+neo4j
+requests

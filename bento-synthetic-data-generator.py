@@ -463,6 +463,17 @@ includeNodes = data_spec['IncludeNodes']
 # In[23]:
 
 
+def findEdgeType(node_data, src_node_type, dst_node_type):
+    for edge_type in node_data['Relationships']:
+        if node_data['Relationships'][edge_type]['Ends'][0]['Src'] == src_node_type and node_data['Relationships'][edge_type]['Ends'][0]['Dst'] == dst_node_type:
+            return edge_type
+    return None
+    
+
+
+# In[24]:
+
+
 #Function to create a skeleton data graph.
 #Create a skeleton data graph.
 def SpawnNodes():
@@ -520,10 +531,11 @@ def SpawnNodes():
                         dict_of_data_nodes[src_node_type][node_index].parent_node_id_list.append(dst_data_nodes_list[parent_node_index].node_id)
                         node_index += 1
                     edge_id = "edge" + "_" + str(random.randint(10**5, 10**6))
-                    edge_type = edge_specs[dst_node_type][src_node_type]['EdgeType']
+                    edge_type = findEdgeType(node_data, src_node_type, dst_node_type)
+                    # edge_type = edge_specs[dst_node_type][src_node_type]['EdgeType']
                     edge_attributes = {}
                     data_edge = DataEdge(edge_id = edge_id, edge_type = edge_type, source_node = src_data_node, 
-                                     destination_node = dict_of_data_nodes[src_node_type], edge_attributes = edge_attributes) #edge created.
+                                     destination_node = dst_data_nodes_list[parent_node_index], edge_attributes = edge_attributes) #edge created.
                     dict_of_data_edges[edge_id] = data_edge #edge added to the dict of edges.
                 children.append(src_node_type)
             created_children.append(dst_node_type)
@@ -531,14 +543,14 @@ def SpawnNodes():
     return data_graph
 
 
-# In[24]:
+# In[25]:
 
 
 #Create skeleton data graph
 data_graph = SpawnNodes()
 
 
-# In[25]:
+# In[26]:
 
 
 #Examine skeleton data graph
@@ -547,7 +559,7 @@ print(data_graph.summary())
 ######END SPAWN SECTION######
 
 
-# In[26]:
+# In[27]:
 
 
 ID_FILE = configuration_files['ID_FILE']
@@ -583,7 +595,7 @@ for node_type in data_graph.dict_of_data_nodes:
         node_id_field_dict[node_type] = id_field_data['Properties']['id_fields'][node_type]
 
 
-# In[27]:
+# In[28]:
 
 
 def GetParentIDField(node_type, index):
@@ -598,14 +610,14 @@ def GetNodeIDField(node_type):
         return 'node_id'
 
 
-# In[28]:
+# In[29]:
 
 
 ######BEGIN FILL SECTION######
 includePropsList = data_spec['IncludeProperties']
 
 
-# In[29]:
+# In[30]:
 
 
 data_graph.fill_graph(listOfProps = includePropsList, 
@@ -614,7 +626,7 @@ data_graph.fill_graph(listOfProps = includePropsList,
 ######END FILL SECTION######
 
 
-# In[30]:
+# In[31]:
 
 
 ######PRINT DATA FILES######
@@ -683,4 +695,67 @@ for node_type in data_graph.dict_of_data_nodes:
     if not os.path.exists(configuration_files['OUTPUT_FOLDER']):
         os.mkdir(configuration_files['OUTPUT_FOLDER'])
     df.to_csv(file_name, sep = "\t", index = False)
+
+
+# In[32]:
+
+
+from data_loader import DataLoader
+from icdc_schema import ICDC_Schema
+from neo4j import GraphDatabase
+from props import Props
+import logging
+
+
+# In[33]:
+
+
+file_list = [f for f in os.listdir(configuration_files['OUTPUT_FOLDER']) if os.path.isfile(os.path.join(configuration_files['OUTPUT_FOLDER'], f))]
+for i in range(0, len(file_list)):
+    file_list[i] = configuration_files['OUTPUT_FOLDER'] + file_list[i]
+uri = 'bolt://localhost:7687'
+user = 'neo4j'
+password = 'neo4j'
+driver = GraphDatabase.driver(uri, auth = (user, password))
+props = Props(configuration_files['ID_FILE'])
+schema = ICDC_Schema([configuration_files['NODE_FILE'], configuration_files['PROP_FILE']], props)
+loader = DataLoader(driver, schema)
+fileValidationResult = loader.validate_files(False, file_list, 0)
+
+
+# In[34]:
+
+
+def relationshipValidation(dict_of_data_edges, node_data, includeNodes):
+    for edge in dict_of_data_edges.values():
+        mul = node_data['Relationships'][edge.edge_type]['Mul']
+        prefix = includeNodes[edge.source_node.node_type]['Prefix']
+        child_node_id_list = []
+        for child_node_id in edge.destination_node.child_node_id_list:
+            if prefix in child_node_id:
+                child_node_id_list.append(child_node_id)
+        if mul == 'one_to_one' and len(child_node_id_list) > 1:
+            logging.error(edge.source_node.node_type + ' ' + 'one_to_one relationship failed, parent already has a child!')
+            return False
+    return True
+
+
+# In[35]:
+
+
+relationshipValidationResult = relationshipValidation(dict_of_data_edges, node_data, includeNodes)
+if not relationshipValidationResult or not fileValidationResult:
+    print('Validation fail, delete all files inside the data folder.')
+    mydir = os.getcwd() + configuration_files['OUTPUT_FOLDER']
+    filelist = [ f for f in os.listdir(mydir) if f.endswith(".tsv") ]
+    for f in filelist:
+        os.remove(os.path.join(mydir, f))
+else:
+    print('Validation success')
+
+
+# In[ ]:
+
+
+
 
