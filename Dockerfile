@@ -8,4 +8,4 @@ COPY pythonRequirements.txt ./pythonRequirements.txt
 
 RUN pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r pythonRequirements.txt
 
-CMD [ "python", "./bento-synthetic-data-generator.py" ]
+CMD [ "python", "./bento-synthetic-data-generator.py", "configuration_files_bento.yaml" ]

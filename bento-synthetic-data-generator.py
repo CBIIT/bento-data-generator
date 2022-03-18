@@ -12,7 +12,9 @@ import random
 import pandas as pd
 import sys
 from openpyxl import load_workbook, Workbook
+import pprint
 import os
+import argparse
 
 
 # In[2]:
@@ -238,6 +240,7 @@ class Graph:
 
 
 ######BEGIN READ SECTION######
+print('BEGIN READ SECTION')
 dict_of_model_properties = {}
 dict_of_model_nodes = {}
 model_graph = {}
@@ -245,8 +248,11 @@ model_graph = {}
 
 # In[10]:
 
-
-configuration_files = 'configuration_files_bento.yaml'
+parser = argparse.ArgumentParser()
+parser.add_argument('configuration_file')
+args = parser.parse_args()
+# configuration_files = 'configuration_files_bento.yaml'
+configuration_files = args.configuration_file
 with open(configuration_files) as f:
     configuration_files = yaml.load(f, Loader=yaml.FullLoader)
 
@@ -395,6 +401,7 @@ for edge_name in edges.keys():
     
     model_graph[edge_name] = ModelEdge(name = edge_name, ends_list = Ends_list, properties_list = Property_list)
 #END READ MODEL FILES
+print('END READ SECTION')
 ######END READ SECTION######
 
 
@@ -402,6 +409,7 @@ for edge_name in edges.keys():
 
 
 ######BEGIN SPAWN SECTION######
+print('BEGIN SPAWN SECTION')
 dict_of_data_nodes = defaultdict(list)
 dict_of_data_edges = {}
 
@@ -555,7 +563,9 @@ data_graph = SpawnNodes()
 
 #Examine skeleton data graph
 # data_graph.summary()
-print(data_graph.summary())
+summary = data_graph.summary()
+pprint.pprint(summary)
+print('END SPAWN SECTION')
 ######END SPAWN SECTION######
 
 
@@ -614,6 +624,7 @@ def GetNodeIDField(node_type):
 
 
 ######BEGIN FILL SECTION######
+print('BEGIN FILL SECTION')
 includePropsList = data_spec['IncludeProperties']
 
 
@@ -623,6 +634,7 @@ includePropsList = data_spec['IncludeProperties']
 data_graph.fill_graph(listOfProps = includePropsList, 
                       model_nodes_dict = dict_of_model_nodes, 
                       model_props_dict = dict_of_model_properties)
+print('END FILL SECTION')
 ######END FILL SECTION######
 
 
@@ -630,6 +642,7 @@ data_graph.fill_graph(listOfProps = includePropsList,
 
 
 ######PRINT DATA FILES######
+print('PRINT DATA FILES')
 child_node_id_dict = {}
 child_node_id_list = []
 for node_type in data_graph.dict_of_data_nodes:
@@ -700,6 +713,8 @@ for node_type in data_graph.dict_of_data_nodes:
 # In[32]:
 
 
+######VALIDATE DATA FILES######
+print('VALIDATE DATA FILES')
 from data_loader import DataLoader
 from icdc_schema import ICDC_Schema
 from neo4j import GraphDatabase
@@ -713,13 +728,9 @@ import logging
 file_list = [f for f in os.listdir(configuration_files['OUTPUT_FOLDER']) if os.path.isfile(os.path.join(configuration_files['OUTPUT_FOLDER'], f))]
 for i in range(0, len(file_list)):
     file_list[i] = configuration_files['OUTPUT_FOLDER'] + file_list[i]
-uri = 'bolt://localhost:7687'
-user = 'neo4j'
-password = 'neo4j'
-driver = GraphDatabase.driver(uri, auth = (user, password))
 props = Props(configuration_files['ID_FILE'])
 schema = ICDC_Schema([configuration_files['NODE_FILE'], configuration_files['PROP_FILE']], props)
-loader = DataLoader(driver, schema)
+loader = DataLoader(None, schema)
 fileValidationResult = loader.validate_files(False, file_list, 0)
 
 
