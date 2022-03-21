@@ -670,7 +670,7 @@ for node_type in data_graph.dict_of_data_nodes:
             if len(data_graph.dict_of_data_nodes[node_type]) > len(trim_res):
                 error_message = 'node ' + node_type + ' is running out of all usable node_ids from ' + GetNodeIDField(node_type) + '.'
                 # delete all previous generate tsv files
-                mydir = os.getcwd() + configuration_files['OUTPUT_FOLDER']
+                mydir = os.path.abspath(configuration_files['OUTPUT_FOLDER'])
                 filelist = [ f for f in os.listdir(mydir) if f.endswith(".tsv") ]
                 for f in filelist:
                     os.remove(os.path.join(mydir, f))
@@ -757,7 +757,7 @@ def relationshipValidation(dict_of_data_edges, node_data, includeNodes):
 relationshipValidationResult = relationshipValidation(dict_of_data_edges, node_data, includeNodes)
 if not relationshipValidationResult or not fileValidationResult:
     print('Validation fail, delete all files inside the data folder.')
-    mydir = os.getcwd() + configuration_files['OUTPUT_FOLDER']
+    mydir = os.path.abspath(configuration_files['OUTPUT_FOLDER'])
     filelist = [ f for f in os.listdir(mydir) if f.endswith(".tsv") ]
     for f in filelist:
         os.remove(os.path.join(mydir, f))
