@@ -724,8 +724,7 @@ import logging
 
 # In[33]:
 
-
-file_list = [f for f in os.listdir(configuration_files['OUTPUT_FOLDER']) if os.path.isfile(os.path.join(configuration_files['OUTPUT_FOLDER'], f))]
+file_list = [f for f in os.listdir(configuration_files['OUTPUT_FOLDER']) if f.endswith('.tsv')]
 for i in range(0, len(file_list)):
     file_list[i] = configuration_files['OUTPUT_FOLDER'] + file_list[i]
 props = Props(configuration_files['ID_FILE'])
