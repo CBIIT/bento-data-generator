@@ -3,4 +3,6 @@ PyYAML
 typing
 pandas
 openpyxl
-jupyter_client
+pystrich
+neo4j
+requests
