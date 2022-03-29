@@ -282,10 +282,14 @@ synthetic_values_df = pd.read_excel(io = SYNTHETIC_DATA_FILE,
 with open(PROP_FILE) as f:
     property_data = yaml.load(f, Loader=yaml.FullLoader)
     for property_name in property_data['PropDefinitions'].keys():
-        property_value_type = property_data['PropDefinitions'][property_name]['Type']
+        try:
+            property_value_type = property_data['PropDefinitions'][property_name]['Type']
+        except:
+            property_value_type = 'string'
+            print(property_name)
         name = property_name
         desc = ""
-        req= ""
+        req = ""
         value_type = ""
         value_list = []
         synthetic_value_list = []
@@ -313,11 +317,11 @@ with open(PROP_FILE) as f:
                 maximum = property_data['PropDefinitions'][property_name]['maximum']
             if property_name in synthetic_values_df.columns:
                 synthetic_value_list = [x for x in synthetic_values_df[property_name].tolist() if x != '']
-                
+
         if type(property_value_type) is list:
             value_type = "list"
             value_list = property_value_type
-            #add section on reading the url to create a value list if property_value_type contains a url.
+            # add section on reading the url to create a value list if property_value_type contains a url.
             if 'Desc' in property_data['PropDefinitions'][property_name]:
                 desc = property_data['PropDefinitions'][property_name]['Desc']
             if 'Req' in property_data['PropDefinitions'][property_name]:
@@ -326,7 +330,7 @@ with open(PROP_FILE) as f:
                 private = property_data['PropDefinitions'][property_name]['Private']
             if property_name in synthetic_values_df.columns:
                 synthetic_value_list = [x for x in synthetic_values_df[property_name].tolist() if x != '']
-                
+
         if type(property_value_type) is dict:
             if 'Desc' in property_data['PropDefinitions'][property_name]:
                 desc = property_data['PropDefinitions'][property_name]['Desc']
@@ -347,13 +351,14 @@ with open(PROP_FILE) as f:
                 maximum = property_data['PropDefinitions'][property_name]['maximum']
             if property_name in synthetic_values_df.columns:
                 synthetic_value_list = [x for x in synthetic_values_df[property_name].tolist() if x != '']
-            
-        dict_of_model_properties[property_name] = ModelProperty(name = name, desc = desc, 
-                                                                    value_type = value_type, value_list = value_list,
-                                                                    units = units, url = url, req = req, private = private, minimum = minimum, maximum = maximum,
-                                                                    exclusiveMinimum = exclusiveMinimum, exclusiveMaximum = exclusiveMaximum, synthetic_value_list = synthetic_value_list)
-        
 
+        dict_of_model_properties[property_name] = ModelProperty(name=name, desc=desc,
+                                                                value_type=value_type, value_list=value_list,
+                                                                units=units, url=url, req=req, private=private,
+                                                                minimum=minimum, maximum=maximum,
+                                                                exclusiveMinimum=exclusiveMinimum,
+                                                                exclusiveMaximum=exclusiveMaximum,
+                                                                synthetic_value_list=synthetic_value_list)
 
 # In[14]:
 
@@ -473,8 +478,9 @@ includeNodes = data_spec['IncludeNodes']
 
 def findEdgeType(node_data, src_node_type, dst_node_type):
     for edge_type in node_data['Relationships']:
-        if node_data['Relationships'][edge_type]['Ends'][0]['Src'] == src_node_type and node_data['Relationships'][edge_type]['Ends'][0]['Dst'] == dst_node_type:
-            return edge_type
+        for ends in node_data['Relationships'][edge_type]['Ends']:
+            if ends['Src'] == src_node_type and ends['Dst'] == dst_node_type:
+                return edge_type
     return None
     
 
