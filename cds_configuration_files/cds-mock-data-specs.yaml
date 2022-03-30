@@ -37,6 +37,8 @@ IncludeProperties:
     - phs_accession
     - bioproject_id
     - index_date
+    - acl
+    - experimental_strategy_and_data_subtype
   participant:
     - participant_id
     - ethnicity

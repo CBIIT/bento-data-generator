@@ -2,7 +2,7 @@ PropDefinitions:
   # file
   drs_url :
     Desc: DRS url pointing to this file
-    Type: url
+    Type: string
   file_description:
     Desc: Human-readable description of file
     Type: string
@@ -10,7 +10,7 @@ PropDefinitions:
     Type: string
   file_size:
     Desc: File size in bytes
-    Type: integer
+    Type: number
   file_type:
     Desc: File type from enumerated list
     Enum:
@@ -18,19 +18,16 @@ PropDefinitions:
     Type: string
   internal_url:
     Desc: Sytem-local url for this file
-    Type: url
+    Type: string
   md5sum:
     Desc: MD5 hex digest for this file
-    Type:
-      pattern: "^[0-9a-fA-F]{32}$"
+    Type: string
   sra_run_accession:
     Desc: SRA run accession ID for run containing this file
-    Type:
-      pattern: "^SRR[0-9]+$"
+    Type: string
   sra_study_accession:
     Desc: SRA study accession ID for study containing this file
-    Type:
-      pattern: "^SRP[0-9]+$"
+    Type: string
   # participant
   ethnicity:
     Desc: OMB Ethinicity designator
@@ -46,10 +43,21 @@ PropDefinitions:
     Type: string
   race:
     Desc: OMB Race designator
+    # Type:
+     # value_type: list
+      #item_type:
+       # - TBD
     Type:
-      value_type: list
-      item_type:
-        - TBD
+      - "White"
+      - "American Indian or Alaska Native"
+      - "Black or African American"
+      - "Asian"
+      - "Native Hawaiian or Other Pacific Islander"
+      - "Other"
+      - "Unknown"
+      - "Not Reported"
+      - "Not Allowed to Collect"
+      - "Multirace"
   participant_id:
     Desc: Identifier for this subject, as submitted by the requestor
     Type: string
@@ -68,10 +76,10 @@ PropDefinitions:
       units: ['yr','mon']
   days_to_last_known_status:
     Desc: Days to last known subject status, relative to study index date
-    Type: integer
+    Type: number
   days_to_recurrence:
     Desc: Days to disease recurrence, relative to study index date
-    Type: integer
+    Type: number
   incidence_type:
     Desc: For this diagnosis, disease incidence relative to prior status of subject
     Enum:
@@ -123,8 +131,7 @@ PropDefinitions:
   # study
   bioproject_id:
     Desc: NCBI BioProject accession ID
-    Type:
-      pattern: "^PRJNA[0-9]+$"
+    Type: string
   index_date:
     Desc: Index date (Day 0) to which all dates are relative, for this study
     Enum:
@@ -135,8 +142,7 @@ PropDefinitions:
     Type: string
   phs_accession:
     Desc: PHS accession number (a.k.a dbGaP accession)
-    Type:
-      pattern: "^phs[0-9]+([.]v[0-9]+)*$"
+    Type: string
   study_acronym:
     Desc: Short acronym or other study desginator
     Type: string
@@ -145,9 +151,15 @@ PropDefinitions:
     Type: string
   study_external_url:
     Desc: Website or other url relevant to study
-    Type: url
+    Type: string
   study_title:
     Desc: Official name of study
+    Type: string
+  acl:
+    Desc: acl
+    Type: string
+  experimental_strategy_and_data_subtype:
+    Desc: experimental_strategy_and_data_subtype
     Type: string
   # submission
   design_description:
@@ -304,17 +316,15 @@ PropDefinitions:
       item_type: string
   sra_experiment_accession:
     Desc: NCBI SRA experiment accession ID for this submission
-    Type:
-      pattern: "^SRX[0-9]+$"
+    Type: string
       
   # sample
   biosample_accession:
     Desc: NCBI BioSample accession ID for this sample
-    Type:
-      pattern: "^SAMN[0-9]+$"
+    Type: string
   days_to_collection:
     Desc: Number of days to collection, relative to index date
-    Type: integer
+    Type: number
   sample_anatomic_site:
     Desc: Anatomic site from which sample was collected
     Enum:
@@ -626,7 +636,7 @@ PropDefinitions:
   # treatment
   days_to_treatment:
     Desc: Days to this procedure, relative to index date
-    Type: integer
+    Type: number
   treatment_outcome:
     Desc: Health outcome of this procedure
     Enum:
@@ -651,10 +661,10 @@ PropDefinitions:
     Type: number
   number_of_bp:
     Desc: Total number of unique bases read
-    Type: integer
+    Type: number
   number_of_reads:
     Desc: Total number of reads performed
-    Type: integer
+    Type: number
   # cds requestor
   cds_requestor:
     Desc: Identifies the user requesting storage in CDS

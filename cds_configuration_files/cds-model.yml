@@ -9,6 +9,8 @@ Nodes:
       - phs_accession
       - bioproject_id
       - index_date # what are relative dates relative to? dx date, collection date, etc.
+      - acl
+      - experimental_strategy_and_data_subtype
   study_admin:
     Props:
       - cds_requestor
