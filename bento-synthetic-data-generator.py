@@ -73,6 +73,9 @@ class ModelProperty:
         if self.value_type == 'boolean':
             property_data_value = random.choice([True, False])
             return property_data_value
+        if self.value_type == 'integer':
+            property_data_value = random.randint(10,1000)
+            return property_data_value
 
 
 # In[3]:
@@ -195,7 +198,26 @@ class Graph:
             for data_node in listOfDataNodes:
                 for prop in listOfNodeProps:
                     if prop.name in listOfProps[data_node.node_type]:
-                        data_node.node_attributes[prop.name] = model_props_dict[prop.name].emit_value()
+                        if model_props_dict[prop.name].emit_value() != None:
+                            data_node.node_attributes[prop.name] = model_props_dict[prop.name].emit_value()
+                            # print(data_node.node_attributes[prop.name])
+                        else:
+                            # if the value type can no be identified, then change type to string
+                            base_string_list = ["a_bene_placito",
+                            "barba_crescit_caput_nescit",
+                            "cacatum_non_est_pictum",
+                            "damnant_quod_non_intellegunt","e_causa_ignota",
+                            "faber_est_suae_quisque_fortunae",
+                            "Gallia_est_omnis_divisa_in_partes_tres","haec_olim_meminisse_iuvabit",
+                            "id_quod_plerumque_accidit","imperium_in_imperio","labor_ipse_voluptas",
+                            "Macte_animo_Generose_puer_sic_itur_ad_astra","nanos_gigantum_humeris_insidentes",
+                            "nascentes_morimur_finisque_ab_origine_pendet","O_Tite_tute_Tati_tibi_tanta_tyranne_tulisti",
+                            "Obedientia_civium_urbis_felicitas","pace_tua","saltus_in_demonstrando",
+                            "salus_in_arduis","sapiens_qui_prospicit","scientia_et_labor","scientia_et_sapientia",
+                            "scientia_imperii_decus_et_tutamen","scientia,_aere_perennius","scientiae_cedit_mare",
+                            "scientiae_et_patriae"]
+                            property_data_string_value = random.choice(base_string_list)
+                            data_node.node_attributes[prop.name] = property_data_string_value
         return
     
     def get_dict_of_data_nodes(self):
@@ -233,6 +255,7 @@ class Graph:
             summary['Edges Summary'].update({edge_type: edge_type_count})
         
         return summary
+            
             
 
 
@@ -285,11 +308,14 @@ with open(PROP_FILE) as f:
         try:
             property_value_type = property_data['PropDefinitions'][property_name]['Type']
         except:
-            property_value_type = 'string'
-            print(property_name)
+            try:
+                property_value_type = property_data['PropDefinitions'][property_name]['Enum']
+            except:
+                property_value_type = 'string'
+                print(property_name)
         name = property_name
         desc = ""
-        req = ""
+        req= ""
         value_type = ""
         value_list = []
         synthetic_value_list = []
@@ -317,11 +343,11 @@ with open(PROP_FILE) as f:
                 maximum = property_data['PropDefinitions'][property_name]['maximum']
             if property_name in synthetic_values_df.columns:
                 synthetic_value_list = [x for x in synthetic_values_df[property_name].tolist() if x != '']
-
+                
         if type(property_value_type) is list:
             value_type = "list"
             value_list = property_value_type
-            # add section on reading the url to create a value list if property_value_type contains a url.
+            #add section on reading the url to create a value list if property_value_type contains a url.
             if 'Desc' in property_data['PropDefinitions'][property_name]:
                 desc = property_data['PropDefinitions'][property_name]['Desc']
             if 'Req' in property_data['PropDefinitions'][property_name]:
@@ -330,7 +356,7 @@ with open(PROP_FILE) as f:
                 private = property_data['PropDefinitions'][property_name]['Private']
             if property_name in synthetic_values_df.columns:
                 synthetic_value_list = [x for x in synthetic_values_df[property_name].tolist() if x != '']
-
+                
         if type(property_value_type) is dict:
             if 'Desc' in property_data['PropDefinitions'][property_name]:
                 desc = property_data['PropDefinitions'][property_name]['Desc']
@@ -351,14 +377,11 @@ with open(PROP_FILE) as f:
                 maximum = property_data['PropDefinitions'][property_name]['maximum']
             if property_name in synthetic_values_df.columns:
                 synthetic_value_list = [x for x in synthetic_values_df[property_name].tolist() if x != '']
-
-        dict_of_model_properties[property_name] = ModelProperty(name=name, desc=desc,
-                                                                value_type=value_type, value_list=value_list,
-                                                                units=units, url=url, req=req, private=private,
-                                                                minimum=minimum, maximum=maximum,
-                                                                exclusiveMinimum=exclusiveMinimum,
-                                                                exclusiveMaximum=exclusiveMaximum,
-                                                                synthetic_value_list=synthetic_value_list)
+            
+        dict_of_model_properties[property_name] = ModelProperty(name = name, desc = desc, 
+                                                                    value_type = value_type, value_list = value_list,
+                                                                    units = units, url = url, req = req, private = private, minimum = minimum, maximum = maximum,
+                                                                    exclusiveMinimum = exclusiveMinimum, exclusiveMaximum = exclusiveMaximum, synthetic_value_list = synthetic_value_list)
 
 # In[14]:
 
