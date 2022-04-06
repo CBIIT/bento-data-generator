@@ -73,6 +73,9 @@ class ModelProperty:
         if self.value_type == 'boolean':
             property_data_value = random.choice([True, False])
             return property_data_value
+        if self.value_type == 'integer':
+            property_data_value = random.randint(10,1000)
+            return property_data_value
 
 
 # In[3]:
@@ -195,7 +198,26 @@ class Graph:
             for data_node in listOfDataNodes:
                 for prop in listOfNodeProps:
                     if prop.name in listOfProps[data_node.node_type]:
-                        data_node.node_attributes[prop.name] = model_props_dict[prop.name].emit_value()
+                        if model_props_dict[prop.name].emit_value() != None:
+                            data_node.node_attributes[prop.name] = model_props_dict[prop.name].emit_value()
+                            # print(data_node.node_attributes[prop.name])
+                        else:
+                            # if the value type can no be identified, then change type to string
+                            base_string_list = ["a_bene_placito",
+                            "barba_crescit_caput_nescit",
+                            "cacatum_non_est_pictum",
+                            "damnant_quod_non_intellegunt","e_causa_ignota",
+                            "faber_est_suae_quisque_fortunae",
+                            "Gallia_est_omnis_divisa_in_partes_tres","haec_olim_meminisse_iuvabit",
+                            "id_quod_plerumque_accidit","imperium_in_imperio","labor_ipse_voluptas",
+                            "Macte_animo_Generose_puer_sic_itur_ad_astra","nanos_gigantum_humeris_insidentes",
+                            "nascentes_morimur_finisque_ab_origine_pendet","O_Tite_tute_Tati_tibi_tanta_tyranne_tulisti",
+                            "Obedientia_civium_urbis_felicitas","pace_tua","saltus_in_demonstrando",
+                            "salus_in_arduis","sapiens_qui_prospicit","scientia_et_labor","scientia_et_sapientia",
+                            "scientia_imperii_decus_et_tutamen","scientia,_aere_perennius","scientiae_cedit_mare",
+                            "scientiae_et_patriae"]
+                            property_data_string_value = random.choice(base_string_list)
+                            data_node.node_attributes[prop.name] = property_data_string_value
         return
     
     def get_dict_of_data_nodes(self):
@@ -233,6 +255,7 @@ class Graph:
             summary['Edges Summary'].update({edge_type: edge_type_count})
         
         return summary
+            
             
 
 
@@ -282,7 +305,14 @@ synthetic_values_df = pd.read_excel(io = SYNTHETIC_DATA_FILE,
 with open(PROP_FILE) as f:
     property_data = yaml.load(f, Loader=yaml.FullLoader)
     for property_name in property_data['PropDefinitions'].keys():
-        property_value_type = property_data['PropDefinitions'][property_name]['Type']
+        try:
+            property_value_type = property_data['PropDefinitions'][property_name]['Type']
+        except:
+            try:
+                property_value_type = property_data['PropDefinitions'][property_name]['Enum']
+            except:
+                property_value_type = 'string'
+                print(property_name)
         name = property_name
         desc = ""
         req= ""
@@ -352,8 +382,6 @@ with open(PROP_FILE) as f:
                                                                     value_type = value_type, value_list = value_list,
                                                                     units = units, url = url, req = req, private = private, minimum = minimum, maximum = maximum,
                                                                     exclusiveMinimum = exclusiveMinimum, exclusiveMaximum = exclusiveMaximum, synthetic_value_list = synthetic_value_list)
-        
-
 
 # In[14]:
 
@@ -473,8 +501,9 @@ includeNodes = data_spec['IncludeNodes']
 
 def findEdgeType(node_data, src_node_type, dst_node_type):
     for edge_type in node_data['Relationships']:
-        if node_data['Relationships'][edge_type]['Ends'][0]['Src'] == src_node_type and node_data['Relationships'][edge_type]['Ends'][0]['Dst'] == dst_node_type:
-            return edge_type
+        for ends in node_data['Relationships'][edge_type]['Ends']:
+            if ends['Src'] == src_node_type and ends['Dst'] == dst_node_type:
+                return edge_type
     return None
     
 

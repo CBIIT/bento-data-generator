@@ -1,0 +1,6 @@
+NODE_FILE: ./cds_configuration_files/cds-model.yml
+PROP_FILE: ./cds_configuration_files/cds-model-props.yml
+SYNTHETIC_DATA_FILE: ./cds_configuration_files/cds-synthetic_data_values.xlsx
+DATA_SPEC_FILE: ./cds_configuration_files/cds-mock-data-specs.yaml
+ID_FILE: ./cds_configuration_files/props-cds.yml
+OUTPUT_FOLDER: ./cds_data_files/
