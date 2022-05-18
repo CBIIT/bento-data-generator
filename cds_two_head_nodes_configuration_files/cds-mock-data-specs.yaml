@@ -3,6 +3,9 @@ HeadNode:
 - name: study
   count: 4
   Prefix: CDS
+- name: participant
+  count: 4
+  Prefix: CDS-CASE
   
 #Nodes to be included in the data graph.
 #Only nodes in the IncludeNodes section will be created.
@@ -90,7 +93,7 @@ IncludeProperties:
 
 RelationshipSpecs:
   study:
-    participant:
+    sample:
       SrcNodeCount: fixed
   participant:
     diagnosis:

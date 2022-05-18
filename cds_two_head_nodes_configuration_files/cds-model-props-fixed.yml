@@ -1,0 +1,704 @@
+PropDefinitions:
+  # file
+  drs_url :
+    Desc: DRS url pointing to this file
+    Type: string
+  file_description:
+    Desc: Human-readable description of file
+    Type: string
+  file_name:
+    Type: string
+  file_size:
+    Desc: File size in bytes
+    Type: number
+  file_type:
+    Desc: File type from enumerated list
+    Enum:
+      - TBD
+    Type: string
+  internal_url:
+    Desc: Sytem-local url for this file
+    Type: string
+  md5sum:
+    Desc: MD5 hex digest for this file
+    Type: string
+  sra_run_accession:
+    Desc: SRA run accession ID for run containing this file
+    Type: string
+  sra_study_accession:
+    Desc: SRA study accession ID for study containing this file
+    Type: string
+  # participant
+  ethnicity:
+    Desc: OMB Ethinicity designator
+    Enum:
+      - TBD
+    Type: string
+  gender:
+    Desc: Biological gender at birth
+    Enum:
+      - Male
+      - Female
+      - Unknown
+    Type: string
+  race:
+    Desc: OMB Race designator
+    # Type:
+     # value_type: list
+      #item_type:
+       # - TBD
+    Type:
+      - "White"
+      - "American Indian or Alaska Native"
+      - "Black or African American"
+      - "Asian"
+      - "Native Hawaiian or Other Pacific Islander"
+      - "Other"
+      - "Unknown"
+      - "Not Reported"
+      - "Not Allowed to Collect"
+      - "Multirace"
+  participant_id:
+    Desc: Identifier for this subject, as submitted by the requestor
+    Type: string
+  vital_status:
+    Desc: Vital status as of last known follow up
+    Enum:
+      - Alive
+      - Deceased
+      - Unknown
+    Type: string
+  # diagnosis
+  age_at_diagnosis:
+    Desc: Age of subject at this diagnosis
+    Type:
+      value_type: number
+      units: ['yr','mon']
+  days_to_last_known_status:
+    Desc: Days to last known subject status, relative to study index date
+    Type: number
+  days_to_recurrence:
+    Desc: Days to disease recurrence, relative to study index date
+    Type: number
+  incidence_type:
+    Desc: For this diagnosis, disease incidence relative to prior status of subject
+    Enum:
+      - primary
+      - progression
+      - recurrence
+      - metastasis
+      - remission
+      - no_disease
+    Type: string
+  last_known_disease_status:
+    Desc: Last known disease incidence for this subject and diagnosis
+    Enum:
+      - primary
+      - progression
+      - recurrence
+      - metastasis
+      - remission
+      - no_disease
+    Type: string
+  primary_diagnosis:
+    Desc: Primary disease diagnosed for this diagnosis and subject
+    Enum:
+      # reuse ICD-O-3 value_set
+      - TBD
+    Type: string
+  primary_site:
+    Desc: Anatomical site of disease in primary diagnosis for this diagnosis
+    Enum:
+      # reuse GDC anatomical site list
+      - TBD
+    Type: string
+  tumor_grade:
+    Desc: Tumor grade, in disease-appropriate grading system
+    Enum:
+      - TBD
+    Type: string
+  tumor_morphology:
+    Desc: ICD-O-3 Morphology term associated with this diagnosis
+    Enum:
+      # ICD-O-3 M
+      - TBD
+    Type: string
+  tumor_stage:
+    Desc: Tumor stage, in disease-appropriate staging system
+    Enum:
+      - TBD
+    Type: string
+  # study
+  bioproject_id:
+    Desc: NCBI BioProject accession ID
+    Type: string
+  index_date:
+    Desc: Index date (Day 0) to which all dates are relative, for this study
+    Enum:
+      - date_of_diagnosis
+      - date_of_enrollment
+      - date_of_collection
+      - date_of_birth
+    Type: string
+  phs_accession:
+    Desc: PHS accession number (a.k.a dbGaP accession)
+    Type: string
+  study_acronym:
+    Desc: Short acronym or other study desginator
+    Type: string
+  study_description:
+    Desc: Human-readable study description
+    Type: string
+  study_external_url:
+    Desc: Website or other url relevant to study
+    Type: string
+  study_title:
+    Desc: Official name of study
+    Type: string
+  acl:
+    Desc: acl
+    Type: string
+  experimental_strategy_and_data_subtype:
+    Desc: experimental_strategy_and_data_subtype
+    Type: string
+  # submission
+  design_description:
+    Desc: Human-readable description of methods used to create sequencing library
+    Type: string
+  image_modality:
+    Desc: Image modality
+    Type: string
+  image_series_id:
+    Desc: Image series id
+    Type: string
+  platform:
+    Desc: Instrument platform or manufacturer
+    Enum:
+      - LS454
+      - ILLUMINA
+      - HELICOS
+      - ABI_SOLID
+      - COMPLETE_GENOMICS
+      - PACBIO_SMRT
+      - ION_TORRENT
+      - CAPILLARY
+      - OXFORD_NANOPORE
+      - BGISEQ
+    Type: string
+  instrument_model:
+    Desc: Instrument model
+    Enum:
+      - 454 GS
+      - 454 GS 20
+      - 454 GS FLX
+      - 454 GS FLX+
+      - 454 GS FLX Titanium
+      - 454 GS Junior
+      - HiSeq X Five
+      - HiSeq X Ten
+      - Illumina Genome Analyzer
+      - Illumina Genome Analyzer II
+      - Illumina Genome Analyzer IIx
+      - Illumina HiScanSQ
+      - Illumina HiSeq 1000
+      - Illumina HiSeq 1500
+      - Illumina HiSeq 2000
+      - Illumina HiSeq 2500
+      - Illumina HiSeq 3000
+      - Illumina HiSeq 4000
+      - Illumina iSeq 100
+      - Illumina NovaSeq 6000
+      - Illumina MiniSeq
+      - Illumina MiSeq
+      - NextSeq 500
+      - NextSeq 550
+      - Helicos HeliScope
+      - AB 5500 Genetic Analyzer
+      - AB 5500xl Genetic Analyzer
+      - AB 5500x-Wl Genetic Analyzer
+      - AB SOLiD 3 Plus System
+      - AB SOLiD 4 System
+      - AB SOLiD 4hq System
+      - AB SOLiD PI System
+      - AB SOLiD System
+      - AB SOLiD System 2.0
+      - AB SOLiD System 3.0
+      - Complete Genomics
+      - PacBio RS
+      - PacBio RS II
+      - PacBio Sequel
+      - PacBio Sequel II
+      - Ion Torrent PGM
+      - Ion Torrent Proton
+      - Ion Torrent S5 XL
+      - Ion Torrent S5
+      - AB 310 Genetic Analyzer
+      - AB 3130 Genetic Analyzer
+      - AB 3130xL Genetic Analyzer
+      - AB 3500 Genetic Analyzer
+      - AB 3500xL Genetic Analyzer
+      - AB 3730 Genetic Analyzer
+      - AB 3730xL Genetic Analyzer
+      - GridION
+      - MinION
+      - PromethION
+      - BGISEQ-500
+      - DNBSEQ-G400
+      - DNBSEQ-T7
+      - DNBSEQ-G50
+      - MGISEQ-2000RS
+    Type: string      
+  library_id:
+    Desc: Library identifier as submitted by requestor
+    Type: string
+  library_layout:
+    Desc: Library layout as submitted by requestor
+    Type: string
+  library_source:
+    Desc: Source of material used to create library
+    Enum:
+      - GENOMIC
+      - TRANSCRIPTOMIC
+      - METAGENOMIC
+      - METATRANSCRIPTOMIC
+      - SYNTHETIC
+      - VIRAL RNA
+      - GENOMIC SINGLE CELL
+      - TRANSCRIPTOMIC SINGLE CELL
+      - OTHER
+    Type: string      
+  library_strategy:
+    Desc: Nucleic acid capture or processing strategy for this library
+    Enum:
+      - WGA
+      - WGS
+      - WXS
+      - RNA-Seq
+      - miRNA-Seq
+      - WCS
+      - CLONE
+      - POOLCLONE
+      - AMPLICON
+      - CLONEEND
+      - FINISHING
+      - ChIP-Seq
+      - MNase-Seq
+      - DNase-Hypersensitivity
+      - Bisulfite-Seq
+      - Tn-Seq
+      - EST
+      - FL-cDNA
+      - CTS
+      - MRE-Seq
+      - MeDIP-Seq
+      - MBD-Seq
+      - Synthetic-Long-Read
+      - ATAC-seq
+      - ChIA-PET
+      - FAIRE-seq
+      - Hi-C
+      - ncRNA-Seq
+      - RAD-Seq
+      - RIP-Seq
+      - SELEX
+      - ssRNA-seq
+      - Targeted-Capture
+      - Tethered Chromatin Conformation Capture
+      - OTHER
+    Type: string      
+  protocol:
+    Desc: Link to protocol used
+    Type: url
+  software_packages:
+    Desc: List of software packages or algorithms used to process data
+    Type:
+      value_type: list
+      item_type: string
+  sra_experiment_accession:
+    Desc: NCBI SRA experiment accession ID for this submission
+    Type: string
+      
+  # sample
+  biosample_accession:
+    Desc: NCBI BioSample accession ID for this sample
+    Type: string
+  days_to_collection:
+    Desc: Number of days to collection, relative to index date
+    Type: number
+  sample_anatomic_site:
+    Desc: Anatomic site from which sample was collected
+    Enum:
+      # use GDC anatomic site list
+      - TBD
+    Type:
+      - "Abdomen"
+      - "Abdominal Wall"
+      - "Acetabulum"
+      - "Adenoid"
+      - "Adipose"
+      - "Adrenal"
+      - "Alveolar Ridge"
+      - "Amniotic Fluid"
+      - "Ampulla Of Vater"
+      - "Anal Sphincter"
+      - "Ankle"
+      - "Anorectum"
+      - "Antecubital Fossa"
+      - "Antrum"
+      - "Anus"
+      - "Aorta"
+      - "Aortic Body"
+      - "Appendix"
+      - "Aqueous Fluid"
+      - "Arm"
+      - "Artery"
+      - "Ascending Colon"
+      - "Ascending Colon Hepatic Flexure"
+      - "Auditory Canal"
+      - "Autonomic Nervous System"
+      - "Axilla"
+      - "Back"
+      - "Bile Duct"
+      - "Bladder"
+      - "Blood"
+      - "Blood Vessel"
+      - "Bone"
+      - "Bone Marrow"
+      - "Bowel"
+      - "Brain"
+      - "Brain Stem"
+      - "Breast"
+      - "Broad Ligament"
+      - "Bronchiole"
+      - "Bronchus"
+      - "Brow"
+      - "Buccal Cavity"
+      - "Buccal Mucosa"
+      - "Buttock"
+      - "Calf"
+      - "Capillary"
+      - "Cardia"
+      - "Carina"
+      - "Carotid Artery"
+      - "Carotid Body"
+      - "Cartilage"
+      - "Cecum"
+      - "Cell-Line"
+      - "Central Nervous System"
+      - "Cerebellum"
+      - "Cerebral Cortex"
+      - "Cerebrospinal Fluid"
+      - "Cerebrum"
+      - "Cervical Spine"
+      - "Cervix"
+      - "Chest"
+      - "Chest Wall"
+      - "Chin"
+      - "Clavicle"
+      - "Clitoris"
+      - "Colon"
+      - "Colon - Mucosa Only"
+      - "Common Duct"
+      - "Conjunctiva"
+      - "Connective Tissue"
+      - "Dermal"
+      - "Descending Colon"
+      - "Diaphragm"
+      - "Duodenum"
+      - "Ear"
+      - "Ear Canal"
+      - "Ear, Pinna (External)"
+      - "Effusion"
+      - "Elbow"
+      - "Endocrine Gland"
+      - "Epididymis"
+      - "Epidural Space"
+      - "Esophageal; Distal"
+      - "Esophageal; Mid"
+      - "Esophageal; Proximal"
+      - "Esophagogastric Junction"
+      - "Esophagus"
+      - "Esophagus - Mucosa Only"
+      - "Eye"
+      - "Fallopian Tube"
+      - "Femoral Artery"
+      - "Femoral Vein"
+      - "Femur"
+      - "Fibroblasts"
+      - "Fibula"
+      - "Finger"
+      - "Floor Of Mouth"
+      - "Fluid"
+      - "Foot"
+      - "Forearm"
+      - "Forehead"
+      - "Foreskin"
+      - "Frontal Cortex"
+      - "Frontal Lobe"
+      - "Fundus Of Stomach"
+      - "Gallbladder"
+      - "Ganglia"
+      - "Gastroesophageal Junction"
+      - "Gastrointestinal Tract"
+      - "Groin"
+      - "Gum"
+      - "Hand"
+      - "Hard Palate"
+      - "Head & Neck"
+      - "Head - Face Or Neck, Nos"
+      - "Heart"
+      - "Hepatic"
+      - "Hepatic Duct"
+      - "Hepatic Flexure"
+      - "Hepatic Vein"
+      - "Hip"
+      - "Hippocampus"
+      - "Humerus"
+      - "Hypopharynx"
+      - "Ileum"
+      - "Ilium"
+      - "Index Finger"
+      - "Ischium"
+      - "Islet Cells"
+      - "Jaw"
+      - "Jejunum"
+      - "Joint"
+      - "Kidney"
+      - "Knee"
+      - "Lacrimal Gland"
+      - "Large Bowel"
+      - "Laryngopharynx"
+      - "Larynx"
+      - "Leg"
+      - "Leptomeninges"
+      - "Ligament"
+      - "Lip"
+      - "Liver"
+      - "Lumbar Spine"
+      - "Lung"
+      - "Lymph Node"
+      - "Lymph Node(s) Axilla"
+      - "Lymph Node(s) Cervical"
+      - "Lymph Node(s) Distant"
+      - "Lymph Node(s) Epitrochlear"
+      - "Lymph Node(s) Femoral"
+      - "Lymph Node(s) Hilar"
+      - "Lymph Node(s) Iliac-Common"
+      - "Lymph Node(s) Iliac-External"
+      - "Lymph Node(s) Inguinal"
+      - "Lymph Node(s) Internal Mammary"
+      - "Lymph Node(s) Mammary"
+      - "Lymph Node(s) Mesenteric"
+      - "Lymph Node(s) Occipital"
+      - "Lymph Node(s) Paraaortic"
+      - "Lymph Node(s) Parotid"
+      - "Lymph Node(s) Pelvic"
+      - "Lymph Node(s) Popliteal"
+      - "Lymph Node(s) Regional"
+      - "Lymph Node(s) Retroperitoneal"
+      - "Lymph Node(s) Scalene"
+      - "Lymph Node(s) Splenic"
+      - "Lymph Node(s) Subclavicular"
+      - "Lymph Node(s) Submandibular"
+      - "Lymph Node(s) Supraclavicular"
+      - "Lymph Nodes(s) Mediastinal"
+      - "Mandible"
+      - "Maxilla"
+      - "Mediastinal Soft Tissue"
+      - "Mediastinum"
+      - "Mesentery"
+      - "Mesothelium"
+      - "Middle Finger"
+      - "Mitochondria"
+      - "Muscle"
+      - "Nails"
+      - "Nasal Cavity"
+      - "Nasal Soft Tissue"
+      - "Nasopharynx"
+      - "Neck"
+      - "Nerve"
+      - "Nerve(s) Cranial"
+      - "Occipital Cortex"
+      - "Ocular Orbits"
+      - "Omentum"
+      - "Oral Cavity"
+      - "Oral Cavity - Mucosa Only"
+      - "Oropharynx"
+      - "Other"
+      - "Ovary"
+      - "Palate"
+      - "Pancreas"
+      - "Paraspinal Ganglion"
+      - "Parathyroid"
+      - "Parotid Gland"
+      - "Patella"
+      - "Pelvis"
+      - "Penis"
+      - "Pericardium"
+      - "Periorbital Soft Tissue"
+      - "Peritoneal Cavity"
+      - "Peritoneum"
+      - "Pharynx"
+      - "Pineal"
+      - "Pineal Gland"
+      - "Pituitary Gland"
+      - "Placenta"
+      - "Pleura"
+      - "Popliteal Fossa"
+      - "Prostate"
+      - "Pylorus"
+      - "Rectosigmoid Junction"
+      - "Rectum"
+      - "Retina"
+      - "Retro-Orbital Region"
+      - "Retroperitoneum"
+      - "Rib"
+      - "Ring Finger"
+      - "Round Ligament"
+      - "Sacrum"
+      - "Salivary Gland"
+      - "Scalp"
+      - "Scapula"
+      - "Sciatic Nerve"
+      - "Scrotum"
+      - "Seminal Vesicle"
+      - "Shoulder"
+      - "Sigmoid Colon"
+      - "Sinus"
+      - "Sinus(es), Maxillary"
+      - "Skeletal Muscle"
+      - "Skin"
+      - "Skull"
+      - "Small Bowel"
+      - "Small Bowel - Mucosa Only"
+      - "Small Finger"
+      - "Soft Tissue"
+      - "Spinal Column"
+      - "Spinal Cord"
+      - "Spleen"
+      - "Splenic Flexure"
+      - "Sternum"
+      - "Stomach"
+      - "Stomach - Mucosa Only"
+      - "Subcutaneous Tissue"
+      - "Synovium"
+      - "Temporal Cortex"
+      - "Tendon"
+      - "Testis"
+      - "Thigh"
+      - "Thoracic Spine"
+      - "Thorax"
+      - "Throat"
+      - "Thumb"
+      - "Thymus"
+      - "Thyroid"
+      - "Tibia"
+      - "Tongue"
+      - "Tonsil"
+      - "Tonsil (Pharyngeal)"
+      - "Trachea / Major Bronchi"
+      - "Transverse Colon"
+      - "Trunk"
+      - "Umbilical Cord"
+      - "Ureter"
+      - "Urethra"
+      - "Urinary Tract"
+      - "Uterus"
+      - "Uvula"
+      - "Vagina"
+      - "Vas Deferens"
+      - "Vein"
+      - "Venous"
+      - "Vertebra"
+      - "Vulva"
+      - "White Blood Cells"
+      - "Wrist"
+      - "Unknown"
+      - "Not Reported"
+      - "Not Allowed To Collect"
+    Req: false
+    Private: false
+  sample_id:
+    Desc: Sample identifier as submitted by requestor
+    Type: string
+  sample_tumor_status:
+    Desc: Tumor or normal status
+    Enum:
+      - tumor
+      - normal
+    Type: string
+  sample_type:
+    Desc: Tissue type of this sample
+    Enum:
+      # use GDC list of tissue types
+      - TBD
+    Type: string
+  # treatment
+  days_to_treatment:
+    Desc: Days to this procedure, relative to index date
+    Type: number
+  treatment_outcome:
+    Desc: Health outcome of this procedure
+    Enum:
+      # use GDC outcome list?
+      - TBD
+    Type: string
+  treatment_type:
+    Desc: Type of treatment
+    Enum:
+      # use CMB list?
+      - TBD
+    Type: string
+  #genomic_details
+  genome_reference_or_accession:
+    Desc: Accession or name of genome reference or assembly used for alignment
+    Type: string
+  average_read_length:
+    Desc: Average sequence read length
+    Type: number
+  coverage:
+    Desc: Average depth of coverage on reference used
+    Type: number
+  number_of_bp:
+    Desc: Total number of unique bases read
+    Type: number
+  number_of_reads:
+    Desc: Total number of reads performed
+    Type: number
+  # cds requestor
+  cds_requestor:
+    Desc: Identifies the user requesting storage in CDS
+    Type: string
+  data_access_level:
+    Desc: Is data open, controlled, or mixed?
+    Enum:
+      - open
+      - controlled
+      - mixed
+    Type: string
+  data_types:
+    Desc: Data types for storage
+    Type:
+      value_type: list
+      item_type: string
+  file_types:
+    Desc: File types for storage
+    Type:
+      value_type: list
+      item_type: string
+  funding_agency:
+    Desc: Funding agency of the requestor study
+    Type: string
+  species:
+    Desc: Species binomial of study subjects
+    Type: string
+  study_type:
+    Desc: Adult human, pediatric, or other
+    Enum:
+      - adult
+      - pediatric
+      - other
+    Type: string
+  specimen_id:
+    Desc: Identifier for specimen (parent of sample) as provided by requestor
+    Type: string

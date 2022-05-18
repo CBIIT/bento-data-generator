@@ -1,6 +1,6 @@
 ---
 HeadNode:
-  name: institution
+- name: institution
   count: 1
   Prefix: BENTO-INSTN
 
