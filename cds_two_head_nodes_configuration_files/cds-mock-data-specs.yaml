@@ -11,9 +11,6 @@ HeadNode:
 #Only nodes in the IncludeNodes section will be created.
 #Includes nodes in the hierarchy in which they occur in the model.
 IncludeNodes:
-  participant:
-    NodeCount: 40
-    Prefix: CDS-CASE
   specimen:
     NodeCount: 40
     Prefix: CDS-SPECIMEN

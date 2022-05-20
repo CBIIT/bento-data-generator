@@ -15,6 +15,8 @@ from openpyxl import load_workbook, Workbook
 import pprint
 import os
 import argparse
+import logging
+
 
 
 # In[2]:
@@ -463,6 +465,9 @@ with open(DATA_SPEC_FILE) as f:
 #Create head data node object
 for head_node in data_spec['HeadNode']:
     head_node_type = head_node['name']
+    if head_node_type in data_spec['IncludeNodes'].keys():
+        logging.error('HeadNode ' + head_node_type + 'is in the IncludeNodes.')
+        sys.exit()
     head_node_count = head_node['count']
     id_prefix = head_node['Prefix']
     dst_node_type = head_node_type
@@ -749,7 +754,6 @@ from data_loader import DataLoader
 from icdc_schema import ICDC_Schema
 from neo4j import GraphDatabase
 from props import Props
-import logging
 
 
 # In[33]:
