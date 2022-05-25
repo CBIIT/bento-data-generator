@@ -1,6 +1,6 @@
 ---
 HeadNode:
-  name: program
+- name: program
   count: 1
   Prefix: Program
 

@@ -15,6 +15,8 @@ from openpyxl import load_workbook, Workbook
 import pprint
 import os
 import argparse
+import logging
+
 
 
 # In[2]:
@@ -461,24 +463,28 @@ with open(DATA_SPEC_FILE) as f:
 
 
 #Create head data node object
-head_node_type = data_spec['HeadNode']['name']
-head_node_count = data_spec['HeadNode']['count']
-id_prefix = data_spec['HeadNode']['Prefix']
-dst_node_type = head_node_type
-# random a set of id without duplicate
-node_id_number_list = random.sample(range(10**5, 10**6), head_node_count + 1)
-head_node_index = 0
-for count in range(head_node_count):
-    # node_id = id_prefix + "_" + str(random.randint(10**5, 10**6))
-    node_id = id_prefix + "-" + str(node_id_number_list[head_node_index])# for bento
-    head_node_index += 1
-    parent_node_id_list = []
-    child_node_id_list = []
-    node_type = head_node_type
-    node_attributes = {}
-    data_node = DataNode(node_id = node_id, parent_node_id_list = parent_node_id_list, child_node_id_list = child_node_id_list,
-                         node_type = node_type, node_attributes = {})
-    dict_of_data_nodes[head_node_type].append(data_node)
+for head_node in data_spec['HeadNode']:
+    head_node_type = head_node['name']
+    if head_node_type in data_spec['IncludeNodes'].keys():
+        logging.error('HeadNode ' + head_node_type + 'is in the IncludeNodes.')
+        sys.exit()
+    head_node_count = head_node['count']
+    id_prefix = head_node['Prefix']
+    dst_node_type = head_node_type
+    # random a set of id without duplicate
+    node_id_number_list = random.sample(range(10**5, 10**6), head_node_count + 1)
+    head_node_index = 0
+    for count in range(head_node_count):
+        # node_id = id_prefix + "_" + str(random.randint(10**5, 10**6))
+        node_id = id_prefix + "-" + str(node_id_number_list[head_node_index])# for bento
+        head_node_index += 1
+        parent_node_id_list = []
+        child_node_id_list = []
+        node_type = head_node_type
+        node_attributes = {}
+        data_node = DataNode(node_id = node_id, parent_node_id_list = parent_node_id_list, child_node_id_list = child_node_id_list,
+                             node_type = node_type, node_attributes = {})
+        dict_of_data_nodes[head_node_type].append(data_node)
 
 edge_specs = data_spec['RelationshipSpecs']
 
@@ -748,7 +754,6 @@ from data_loader import DataLoader
 from icdc_schema import ICDC_Schema
 from neo4j import GraphDatabase
 from props import Props
-import logging
 
 
 # In[33]:
