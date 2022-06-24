@@ -1,6 +1,7 @@
 # bento-synthetic-data-generator
 Code to generate synthetic data for the CRDC data models.
-To run the python script for generating Bento data in the local machine, the user can use the command ```python bento-synthetic-data-generator.py configuration_files_bento.yaml```<br/>
+To run the python script for generating Bento data in the local machine, the user can use the command <br/>
+```python bento-synthetic-data-generator.py configuration_files_bento.yaml```<br/>
 To run the python script in Docker, the user should take the following steps:<br/>
 (1) Install Docker if the user does not have Docker running in their system.<br/>
 (2) The user can build the docker images using the command below. Note that the user can give any name, not necessarily “datagenerator”. Be careful, do not forget the period!<br/>
