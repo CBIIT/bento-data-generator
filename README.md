@@ -1,6 +1,6 @@
 # bento-synthetic-data-generator
-Code to generate synthetic data for the CRDC data models.
-The user can run the command ````pip3 install -r requirements.txt```` to install dependencies.
+Code to generate synthetic data for the CRDC data models.<br/>
+The user can run the command ````pip3 install -r requirements.txt```` to install dependencies.<br/>
 To run the python script for generating Bento data in the local machine, the user can use the command <br/>
 ```python bento-synthetic-data-generator.py configuration_files_bento.yaml```<br/>
 To run the python script in Docker, the user should take the following steps:<br/>
