@@ -6,3 +6,4 @@ openpyxl
 pystrich
 neo4j
 requests
+urllib3>=1.26.5
