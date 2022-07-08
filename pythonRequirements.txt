@@ -1,5 +1,5 @@
 dataclasses
-PyYAML
+PyYAML>=5.4
 typing
 pandas
 openpyxl
