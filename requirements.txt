@@ -18,7 +18,7 @@ neobolt=1.7.17=pypi_0
 neotime=1.7.4=pypi_0
 networkx=2.5=py_0
 openssl=1.1.1l=h9ed2024_0
-pip=20.2.1=py38_0
+pip>=21.1
 python=3.8.11=h88f2d9e_1
 python-dateutil=2.8.1=pypi_0
 python_abi=3.8=1_cp38
