@@ -1,5 +1,13 @@
 Handle: CDS
 Nodes:
+  program:
+    Props:
+      - program_name
+      - program_acronym
+      - program_short_description
+      - program_full_description
+      - program_external_url
+      - program_sort_order
   study:
     Props:
       - study_name
@@ -28,24 +36,27 @@ Nodes:
       - data_access_level
       - cds_primary_bucket
       - cds_secondary_bucket
-      - cds_tertiary_bucket      
+      - cds_tertiary_bucket
       - number_of_participants
       - number_of_samples
       - study_data_types
-      - experimental_strategy_and_data_subtypes
       - file_types_and_format
       - size_of_data_being_uploaded
+      - acl
+      - study_access
   participant:
     Props:
+      - study_participant_id
       - participant_id
       - race
       - gender
       - ethnicity
       #  - vital_status
       - dbGaP_subject_id
-      
+
   diagnosis: # may have multiple dxs for multiple timepoints?
     Props:
+      - study_diagnosis_id
       - diagnosis_id
       - disease_type
       - vital_status
@@ -82,7 +93,7 @@ Nodes:
       - sample_age_at_collection
       - derived_from_specimen
       - biosample_accession
-      
+
   file:
     Props:
       - file_id
@@ -92,6 +103,8 @@ Nodes:
       - file_size
       - md5sum
       - file_url_in_cds
+      - experimental_strategy_and_data_subtypes
+      #- file_access
 
   genomic_info:
     Props:
@@ -111,11 +124,19 @@ Nodes:
       - instrument_model
       - sequence_alignment_software
 Relationships:
+  of_program:
+    Props: null
+    Mul: many_to_one
+    Ends:
+      - Src: study
+        Dst: program
   of_study:
     Props: null
     Mul: many_to_one
     Ends:
       - Src: participant
+        Dst: study
+      - Src: file
         Dst: study
   of_participant:
     Props: null
@@ -133,19 +154,13 @@ Relationships:
     Ends:
       - Src: sample
         Dst: specimen
-  from_sample:
+  of_sample:
     Props: null
-    Mul: many_to_many
+    Mul: many_to_one
     Ends:
       - Src: file
         Dst: sample
-  from_genomic_info:
-    Props: null
-    Mul: many_to_many
-    Ends:
-      - Src: file
-        Dst: genomic_info
-  in_genomic_info:
+  of_genomic_info:
     Props: null
     Mul: many_to_many
     Ends:
