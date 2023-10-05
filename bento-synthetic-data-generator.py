@@ -41,10 +41,13 @@ class ModelProperty:
     exclusiveMinimum:  str = field(default = "")
     exclusiveMaximum:  str = field(default = "")
     
-    def emit_value(self):
-        property_data_value = ""
-        if self.synthetic_value_list:
+    def emit_value(self, test_pop):
+        if test_pop and self.synthetic_value_list:
             property_data_value = random.choice(self.synthetic_value_list)
+            return property_data_value
+        if not test_pop and self.synthetic_value_list:
+            #property_data_value = random.choice(self.synthetic_value_list)
+            property_data_value = self.synthetic_value_list.pop()
             return property_data_value
         if self.value_list:
             property_data_value = random.choice(self.value_list)
@@ -200,9 +203,9 @@ class Graph:
             for data_node in listOfDataNodes:
                 for prop in listOfNodeProps:
                     if prop.name in listOfProps[data_node.node_type]:
-                        if model_props_dict[prop.name].emit_value() != None:
-                            data_node.node_attributes[prop.name] = model_props_dict[prop.name].emit_value()
-                            # print(data_node.node_attributes[prop.name])
+                        if model_props_dict[prop.name].emit_value(True) != None:
+                            data_node.node_attributes[prop.name] = model_props_dict[prop.name].emit_value(False)
+
                         else:
                             # if the value type can no be identified, then change type to string
                             base_string_list = ["a_bene_placito",
@@ -281,6 +284,9 @@ configuration_files = args.configuration_file
 with open(configuration_files) as f:
     configuration_files = yaml.load(f, Loader=yaml.FullLoader)
 
+ID_FILE = configuration_files['ID_FILE']
+with open(ID_FILE) as f:
+    id_field_data = yaml.load(f, Loader=yaml.FullLoader)
 
 # In[11]:
 
@@ -410,6 +416,7 @@ for node_name in nodes.keys():
 
 
 edges = node_data['Relationships']
+print(node_data['Relationships'])
 
 for edge_name in edges.keys():
     Ends_list = []
@@ -450,7 +457,12 @@ dict_of_data_edges = {}
 #READ DATA SPECS FILE
 #FOR BENTO
 DATA_SPEC_FILE = configuration_files['DATA_SPEC_FILE']
-
+def synthetic_node_id_list_func(id_field_data, src_node_type, node_counter, synthetic_values_df):
+    if id_field_data['Properties']['id_fields'][src_node_type] in synthetic_values_df.columns:
+                        synthetic_node_id_list = [x for x in synthetic_values_df[id_field_data['Properties']['id_fields'][src_node_type]].tolist() if x != '']
+                        if len(synthetic_node_id_list) >= node_counter:
+                            return synthetic_node_id_list
+    return list()
 
 # In[19]:
 
@@ -474,9 +486,13 @@ for head_node in data_spec['HeadNode']:
     # random a set of id without duplicate
     node_id_number_list = random.sample(range(10**5, 10**6), head_node_count + 1)
     head_node_index = 0
+    synthetic_node_id_list = synthetic_node_id_list_func(id_field_data, head_node_type, head_node_count, synthetic_values_df)
     for count in range(head_node_count):
         # node_id = id_prefix + "_" + str(random.randint(10**5, 10**6))
-        node_id = id_prefix + "-" + str(node_id_number_list[head_node_index])# for bento
+        if len(synthetic_node_id_list) > 0:
+            node_id = synthetic_node_id_list.pop()
+        else:
+            node_id = id_prefix + "-" + str(node_id_number_list[head_node_index])# for bento
         head_node_index += 1
         parent_node_id_list = []
         child_node_id_list = []
@@ -530,7 +546,10 @@ def SpawnNodes():
                 # print(dst_node_type, src_node_type)
                 node_counter = includeNodes[src_node_type]['NodeCount']
                 node_distribution = edge_specs[dst_node_type][src_node_type]['SrcNodeCount']
-                id_prefix = includeNodes[src_node_type]['Prefix']
+                try:
+                    id_prefix = includeNodes[src_node_type]['Prefix']
+                except Exception as e:
+                    id_prefix = ""
                 # random a set of id without duplicate
                 node_id_number_list = random.sample(range(10**5, 10**6), node_counter)
                 node_index = 0
@@ -544,7 +563,10 @@ def SpawnNodes():
                     random_split_points = random.sample(node_counter_list, parent_node_length - 1)
                     random_split_points.sort()
                     random_split_points_index = 0
+                synthetic_node_id_list = synthetic_node_id_list_func(id_field_data, src_node_type, node_counter, synthetic_values_df)
+                
                 for count in range(node_counter):
+                    
                     if node_distribution == 'fixed':
                         if node_index % step == 0 and node_index != 0:
                             parent_node_index += 1
@@ -557,7 +579,13 @@ def SpawnNodes():
                     if parent_node_index > parent_node_length - 1:
                             parent_node_index = parent_node_length - 1
                     # node_id = id_prefix + "_" + str(random.randint(10**5, 10**6))
-                    node_id = id_prefix + "-" + str(node_id_number_list[node_index])
+                    if len(synthetic_node_id_list) > 0:
+                        node_id = synthetic_node_id_list.pop()
+                    elif id_prefix != "":
+                        node_id = id_prefix + "-" + str(node_id_number_list[node_index])
+                    else:
+                        node_id = node_id_number_list[node_index]
+                        print(node_id)
                     if src_node_type not in children:
                         node_index += 1
                         parent_node_id_list = []
@@ -607,9 +635,6 @@ print('END SPAWN SECTION')
 # In[27]:
 
 
-ID_FILE = configuration_files['ID_FILE']
-with open(ID_FILE) as f:
-    id_field_data = yaml.load(f, Loader=yaml.FullLoader)
 
 relationship_node_dict = {}
 node_id_field_dict = {}
@@ -678,55 +703,22 @@ print('END FILL SECTION')
 
 ######PRINT DATA FILES######
 print('PRINT DATA FILES')
-child_node_id_dict = {}
-child_node_id_list = []
 for node_type in data_graph.dict_of_data_nodes:
+    print(node_type)
     node_values_dict = defaultdict(list)
     df = pd.DataFrame()
     position = 0
     for node in data_graph.dict_of_data_nodes[node_type]:
         node_values_dict['type'].append(node.node_type)
+        if node_type == "study":
+            print(node)
         if node.parent_node_id_list:
             index = 0
             for parent_node_id in node.parent_node_id_list:
-                if node.node_id not in child_node_id_list:
-                    node_values_dict[GetParentIDField(node_type, index)].append(parent_node_id) #parent
-                else:
-                    node_values_dict[GetParentIDField(node_type, index)].append(child_node_id_dict[node.node_id])
-                    data_graph.dict_of_data_nodes[node_type][position].parent_node_id_list[0] = child_node_id_dict[node.node_id]
+                node_values_dict[GetParentIDField(node_type, index)].append(parent_node_id) #parent
                 index += 1
         if GetNodeIDField(node_type) not in node.node_attributes:
             node_values_dict[GetNodeIDField(node_type)].append(node.node_id) #node
-        if GetNodeIDField(node_type) in node.node_attributes and GetNodeIDField(node_type) in synthetic_values_df.keys():
-            res = synthetic_values_df[GetNodeIDField(node_type)].tolist()
-            # res = synthetic_values_df[GetNodeIDField(node_type)].tolist()
-            trim_res = [i for i in res if i]
-            # if the node_type has more nodes than the values of all usable node_id
-            if len(data_graph.dict_of_data_nodes[node_type]) > len(trim_res):
-                error_message = 'node ' + node_type + ' is running out of all usable node_ids from ' + GetNodeIDField(node_type) + '.'
-                # delete all previous generate tsv files
-                mydir = os.path.abspath(configuration_files['OUTPUT_FOLDER'])
-                filelist = [ f for f in os.listdir(mydir) if f.endswith(".tsv") ]
-                for f in filelist:
-                    os.remove(os.path.join(mydir, f))
-                sys.exit(error_message)
-            new_node_id_list = []
-            for new_node in data_graph.dict_of_data_nodes[node_type]:
-                new_node_id_list.append(new_node.node_attributes[GetNodeIDField(node_type)])
-            new_node_id_list_counter = Counter(new_node_id_list)
-            reselect_value = False
-            #Check if the new node_id list has duplicate node_id
-            for value in new_node_id_list_counter.values():
-                if value > 1:
-                    reselect_value = True
-            if reselect_value == True:
-                new_value_list = random.sample(trim_res, len(new_node_id_list))
-                for i in range(len(data_graph.dict_of_data_nodes[node_type])):
-                    data_graph.dict_of_data_nodes[node_type][i].node_attributes[GetNodeIDField(node_type)] = new_value_list[i]
-            data_graph.dict_of_data_nodes[node_type][position].node_id = data_graph.dict_of_data_nodes[node_type][position].node_attributes[GetNodeIDField(node_type)]
-            for child_node_id in data_graph.dict_of_data_nodes[node_type][position].child_node_id_list:
-                child_node_id_list.append(child_node_id)
-                child_node_id_dict[child_node_id] = data_graph.dict_of_data_nodes[node_type][position].node_id
         if GetNodeIDField(node_type) in node.node_attributes and GetNodeIDField(node_type) not in synthetic_values_df.keys():
             # if the user adds the id field into the data spec document accidentally
             del node.node_attributes[GetNodeIDField(node_type)]
@@ -749,6 +741,7 @@ for node_type in data_graph.dict_of_data_nodes:
 
 
 ######VALIDATE DATA FILES######
+
 print('VALIDATE DATA FILES')
 from data_loader import DataLoader
 from icdc_schema import ICDC_Schema
@@ -775,9 +768,13 @@ def relationshipValidation(dict_of_data_edges, node_data, includeNodes):
         mul = node_data['Relationships'][edge.edge_type]['Mul']
         prefix = includeNodes[edge.source_node.node_type]['Prefix']
         child_node_id_list = []
+        #print(edge.destination_node)
         for child_node_id in edge.destination_node.child_node_id_list:
-            if prefix in child_node_id:
-                child_node_id_list.append(child_node_id)
+            try:
+                if prefix in child_node_id:
+                    child_node_id_list.append(child_node_id)
+            except Exception as e:
+                a=1
         if mul == 'one_to_one' and len(child_node_id_list) > 1:
             logging.error(edge.source_node.node_type + ' ' + 'one_to_one relationship failed, parent already has a child!')
             return False
@@ -785,7 +782,6 @@ def relationshipValidation(dict_of_data_edges, node_data, includeNodes):
 
 
 # In[35]:
-
 
 relationshipValidationResult = relationshipValidation(dict_of_data_edges, node_data, includeNodes)
 if not relationshipValidationResult or not fileValidationResult:
@@ -796,6 +792,7 @@ if not relationshipValidationResult or not fileValidationResult:
         os.remove(os.path.join(mydir, f))
 else:
     print('Validation success')
+
 
 
 # In[ ]:
