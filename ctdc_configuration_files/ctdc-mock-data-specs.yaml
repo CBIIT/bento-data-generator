@@ -10,34 +10,37 @@ HeadNode:
 #Includes nodes in the hierarchy in which they occur in the model.
 IncludeNodes:
   subject:
-    NodeCount: 64
+    NodeCount: 150
     Prefix: CTDC-SUBJECT
   demographic:
-    NodeCount: 64
+    NodeCount: 150
     Prefix: CTDC-DEMOGRAPHIC
   exposure:
-    NodeCount: 128
+    NodeCount: 200
     Prefix: CTDC-EXPOSURE
   diagnosis:
-    NodeCount: 128
+    NodeCount: 150
     Prefix: CTDC-DIAGNOSIS
   targeted_therapy:
-    NodeCount: 128
+    NodeCount: 58
+    ManyToManyCount: 300
     Prefix: CTDC-TARGETED-THERAPY
-  surgical_procedure:
-    NodeCount: 128
-    Prefix: CTDC-SURGICAL-PROCEDURE
-  radiological_procedure:
-    NodeCount: 128
-    Prefix: CTDC-RADIOLOGICAL-PROCEDURE
+  surgery:
+    NodeCount: 66
+    ManyToManyCount: 300
+    Prefix: CTDC-SURGERY
+  radiotherapy:
+    NodeCount: 22
+    ManyToManyCount: 200
+    Prefix: CTDC-RADIOTHERAPY
   subject_status:
-    NodeCount: 64
+    NodeCount: 150
     Prefix: CTDC-SUBJECT-STATUS
   specimen:
-    NodeCount: 128
+    NodeCount: 300
     Prefix: CTDC-SPECIMEN
   data_file:
-    NodeCount: 256
+    NodeCount: 1000
     Prefix: CTDC-DATA-FILE
   associated_link:
     NodeCount: 3
@@ -45,9 +48,10 @@ IncludeNodes:
   image_collection:
     NodeCount: 12
     Prefix: CTDC-IMAGE-COLLECTION
-  therapy:
-    NodeCount: 128
-    Prefix: CTDC-THERAPY
+  non_targeted_therapy:
+    NodeCount: 40
+    ManyToManyCount: 300
+    Prefix: CTDC-NON-TARGETED-THERAPY
   principal_investigator:
     NodeCount: 8
     Prefix: CTDC-PRINCIPAL-INVESTIGATOR
@@ -76,12 +80,12 @@ IncludeProperties:
     - associated_link_url
 
   image_collection:
+    - image_collection_id
     - image_collection_name
     - image_type_included
     - image_collection_url
     - repository_name
     - collection_access
-    - image_collection_id
   
   subject:
     - subject_id
@@ -92,10 +96,19 @@ IncludeProperties:
 
   demographic:
     - demographic_id
-    - sex
-    - reported_gender #10748236
+    #- age_at_diagnosis
+    - age_at_enrollment
     - race
     - ethnicity
+    - sex
+    - reported_gender #10748236
+    - height
+    - weight
+    - body_surface_area
+    - occupation
+    - income
+    - highest_level_of_education
+    #- site_of_enrollment
     - ncbi_taxonomy_id #10543100
     - ncbi_taxonomy_name #10543082
 
@@ -106,34 +119,56 @@ IncludeProperties:
   
   diagnosis:
     - diagnosis_id
+    - primary_diagnosis_disease_group
     - icd_10_disease_code #11479873
     - meddra_disease_code
     - ctep_disease_code
+    - snomed_disease_term
     - snomed_disease_code # this is disease plus stage as presented within the CMB Catalog
-    - stage_of_disease
-    - diagnosis_date # quantified in days indexed to date of trial enrollment
     - icd_o_primary_site #11341616
     - primary_disease_site
-    - histological_subtype #7344580
+    - histology
     - date_of_confirmation_of_histology #6409589
+    - histological_subtype #7344580
+    - stage_of_disease
     - tumor_grade #11325685
+    - diagnosis_date # quantified in days indexed to date of trial enrollment 
     - subject_age_at_diagnosis #10609539
 
   targeted_therapy:
     - targeted_therapy_id
     - targeted_therapy #6400634
+    - targeted_therapy_dose
+    - targeted_therapy_frequency
+    - targeted_therapy_start_and_end
+    - best_response_to_targeted_therapy
 
-  therapy:
-    - therapy_id
-    - therapy #6400634
+  non_targeted_therapy:
+    - non_targeted_therapy_id
+    - non_targeted_therapy #6400634
+    - non_targeted_therapy_dose
+    - non_targeted_therapy_frequency
+    - non_targeted_therapy_start_and_end
+    - best_response_to_non_targeted_therapy
 
-  surgical_procedure:
+  surgery:
     - surgical_procedure_id
-    - surgical_procedure_name #6411539
+    - surgical_procedure #6411539
+    - surgical_procedure_date
+    - surgical_procedure_anatomical_location
+    - surgical_procedure_therapeutic
+    - surgical_procedure_findings
+    - extent_of_residual_disease  
 
-  radiological_procedure:
+  radiotherapy:
     - radiological_procedure_id
-    - radiological_procedure_name #6411539
+    - radiological_procedure #6411539
+    - radiological_procedure_anatomical_location
+    - radiation_dose
+    - radiation_frequency
+    - radiation_extent
+    - radiotherapy_start_and_end
+    - best_response_to_radiotherapy
 
   subject_status:
     - subject_status_id
@@ -145,23 +180,18 @@ IncludeProperties:
   specimen:
     - specimen_id
     - parent_specimen_id
-    # - days_from_diagnosis_to_specimen_collection #11253404
-    # - diagnosis_date # from the CMB perspective, this is supposedly equivalent to the above, but because of the way this date is indexed to enrollment date, it should not be a specimen property
-    # - days_from_first_subject_visit_to_specimen_collection #11248874
-    # - days_from_first_treatment_to_specimen_collection #11250807
-    # - days_from_initial_genomic_sequencing_to_Specimen_collection #11250807
-    # - days_from_recurrence_to_specimen_collection #11251133
-    # - days_from_specimen_collection_to_initial_pathologic_diagnosis #11253404
-    - collection_date # from the CMB perspective, this is equivalent to the above, with collection date indexed to enrollment date caDSR 6401821
-    - icd_o_3_tissue_morphology # 11326261
+    - parent_specimen_type # this refers to the nature of the specimen originally isolated from the participant, and from which various aliquots and/or derivative biospecimens were subseuqently isolated
+    - specimen_type # this refers to the nature of the sub-specimen that was actually subject to downstream analysis
     - obi_specimen_type #11253427 not a good match to the caDSR term referenced by the CDE's ID
-    - specimen_category # confusingly close to the CMB Catalog Site's "Tissue Category" i.e. the indicator as to normal vs primary vs metastatic, but acceptable terms for caDSR 7069877, quoted as a reference for "specimen category" uses terms that do not relate to "tissue category"
-    - type_of_tissue #caDSR 7003892 this looks very much like the CMB Catalog Site's "Tissue Category"
+    # - specimen_category # confusingly close to the CMB Catalog Site's "Tissue Category" i.e. the indicator as to normal vs primary vs metastatic, but acceptable terms for caDSR 7069877, quoted as a reference for "specimen category" uses terms that do not relate to "tissue category"
     - anatomical_collection_site
-    - parent_specimen_type
-    - specimen_type
+    - type_of_tissue #caDSR 7003892 this looks very much like the CMB Catalog Site's "Tissue Category"
     - tissue_category # this would be the Catalog Site's "Tissue Category" i.e. the indicator as to normal vs primary vs metastatic, which appears within at least two of the DDs as Tissue Type
+    - icd_o_3_tissue_morphology # 11326261
     - assessment_timepoint # this appears to be the Catalog Site's "Collection Timepoint" caDSR 7065963
+    - collection_date # from the CMB perspective, this is equivalent to the above, with collection date indexed to enrollment date caDSR 6401821
+    - collection_method
+    - fixative
 
   data_file:
     - data_file_name #11284037
@@ -177,7 +207,7 @@ IncludeProperties:
 
 #Relationship specifications. For example: how many studies per program; how many cases per studies.
 # This also includes specifications on how these node counts should be generated.
-# 1. SrcNodeCount: fixed, indicates that the "count" variable holds the counts.
+# 1. SrcNodeCount: random, indicates that the "count" variable holds the counts.
 # 2. SrcNodeCount: random, indicates that counts are generated from a drawing from a uniform distribution 
 # 3. All relationships among the included nodes will automatically be created.
 # 4. Do not specify relationships between nodes of the same type, e.g between two samples, two visits etc.
@@ -185,37 +215,39 @@ IncludeProperties:
 RelationshipSpecs:
   study:
     subject:
-      SrcNodeCount: fixed
-    data_file:
-      SrcNodeCount: fixed
+      SrcNodeCount: random
     associated_link:
-      SrcNodeCount: fixed
+      SrcNodeCount: random
     image_collection:
-      SrcNodeCount: fixed
+      SrcNodeCount: random
     principal_investigator:
-      SrcNodeCount: fixed
+      SrcNodeCount: random
   subject:
     data_file:
       SrcNodeCount: fixed
+      Exact_count: 150
+      one_to_one_count: 90
+      many_to_one_count: 30
     demographic:
       SrcNodeCount: fixed
     exposure:
-      SrcNodeCount: fixed
+      SrcNodeCount: random
     diagnosis:
       SrcNodeCount: fixed
     targeted_therapy:
-      SrcNodeCount: fixed
-    therapy:
-      SrcNodeCount: fixed
-    surgical_procedure:
-      SrcNodeCount: fixed
-    radiological_procedure:
-      SrcNodeCount: fixed
+      SrcNodeCount: random
+    non_targeted_therapy:
+      SrcNodeCount: random
+    surgery:
+      SrcNodeCount: random
+    radiotherapy:
+      SrcNodeCount: random
     subject_status:
       SrcNodeCount: fixed
     specimen:
-      SrcNodeCount: fixed
+      SrcNodeCount: random
   specimen:
     data_file:
-      SrcNodeCount: fixed
+      SrcNodeCount: random
+      Exact_count: 850
 

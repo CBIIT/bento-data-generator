@@ -16,7 +16,8 @@ import pprint
 import os
 import argparse
 import logging
-
+from datetime import datetime, timedelta
+import uuid
 
 
 # In[2]:
@@ -71,6 +72,8 @@ class ModelProperty:
         if self.value_type == 'number':
             if type(self.minimum) == float and type(self.maximum) == float:
                 property_data_value = random.uniform(self.minimum, self.maximum)
+            elif type(self.minimum) == int and type(self.maximum) == int:
+                property_data_value = random.uniform(float(self.minimum), float(self.maximum))
             else:
                 property_data_value = random.uniform(10.0,1000.0)
             property_data_value = round(property_data_value, 2)
@@ -79,7 +82,17 @@ class ModelProperty:
             property_data_value = random.choice([True, False])
             return property_data_value
         if self.value_type == 'integer':
-            property_data_value = random.randint(10,1000)
+            if type(self.minimum) == int and type(self.maximum) == int:
+                property_data_value = random.randint(self.minimum, self.maximum)
+            else:
+                property_data_value = random.randint(10,1000)
+            return property_data_value
+        if self.value_type == 'date':
+            start_date = datetime(2019, 1, 1)
+            end_date = datetime(2023, 12, 31)
+            days_between = (end_date - start_date).days
+            random_days = random.randint(0, days_between)
+            property_data_value = start_date + timedelta(days=random_days)
             return property_data_value
 
 
@@ -126,6 +139,7 @@ class DataNode:
     child_node_id_list: list
     node_type: str
     node_attributes: dict
+    edge_id_list: list
 
 
 # In[7]:
@@ -200,29 +214,40 @@ class Graph:
         for node_type in self.dict_of_data_nodes:
             listOfNodeProps = model_nodes_dict[node_type].properties
             listOfDataNodes = self.dict_of_data_nodes[node_type]
+            created_node_id_list = []
+            created_node_list = []
             for data_node in listOfDataNodes:
-                for prop in listOfNodeProps:
-                    if prop.name in listOfProps[data_node.node_type]:
-                        if model_props_dict[prop.name].emit_value(True) != None:
-                            data_node.node_attributes[prop.name] = model_props_dict[prop.name].emit_value(False)
+                if data_node.node_id not in created_node_id_list:
+                    created_node_id_list.append(data_node.node_id)
+                    for prop in listOfNodeProps:
+                        if prop.name in listOfProps[data_node.node_type]:
+                            if model_props_dict[prop.name].emit_value(True) != None:
+                                data_node.node_attributes[prop.name] = model_props_dict[prop.name].emit_value(False)
 
-                        else:
-                            # if the value type can no be identified, then change type to string
-                            base_string_list = ["a_bene_placito",
-                            "barba_crescit_caput_nescit",
-                            "cacatum_non_est_pictum",
-                            "damnant_quod_non_intellegunt","e_causa_ignota",
-                            "faber_est_suae_quisque_fortunae",
-                            "Gallia_est_omnis_divisa_in_partes_tres","haec_olim_meminisse_iuvabit",
-                            "id_quod_plerumque_accidit","imperium_in_imperio","labor_ipse_voluptas",
-                            "Macte_animo_Generose_puer_sic_itur_ad_astra","nanos_gigantum_humeris_insidentes",
-                            "nascentes_morimur_finisque_ab_origine_pendet","O_Tite_tute_Tati_tibi_tanta_tyranne_tulisti",
-                            "Obedientia_civium_urbis_felicitas","pace_tua","saltus_in_demonstrando",
-                            "salus_in_arduis","sapiens_qui_prospicit","scientia_et_labor","scientia_et_sapientia",
-                            "scientia_imperii_decus_et_tutamen","scientia,_aere_perennius","scientiae_cedit_mare",
-                            "scientiae_et_patriae"]
-                            property_data_string_value = random.choice(base_string_list)
-                            data_node.node_attributes[prop.name] = property_data_string_value
+                            else:
+                                # if the value type can no be identified, then change type to string
+                                base_string_list = ["a_bene_placito",
+                                "barba_crescit_caput_nescit",
+                                "cacatum_non_est_pictum",
+                                "damnant_quod_non_intellegunt","e_causa_ignota",
+                                "faber_est_suae_quisque_fortunae",
+                                "Gallia_est_omnis_divisa_in_partes_tres","haec_olim_meminisse_iuvabit",
+                                "id_quod_plerumque_accidit","imperium_in_imperio","labor_ipse_voluptas",
+                                "Macte_animo_Generose_puer_sic_itur_ad_astra","nanos_gigantum_humeris_insidentes",
+                                "nascentes_morimur_finisque_ab_origine_pendet","O_Tite_tute_Tati_tibi_tanta_tyranne_tulisti",
+                                "Obedientia_civium_urbis_felicitas","pace_tua","saltus_in_demonstrando",
+                                "salus_in_arduis","sapiens_qui_prospicit","scientia_et_labor","scientia_et_sapientia",
+                                "scientia_imperii_decus_et_tutamen","scientia,_aere_perennius","scientiae_cedit_mare",
+                                "scientiae_et_patriae"]
+                                property_data_string_value = random.choice(base_string_list)
+                                data_node.node_attributes[prop.name] = property_data_string_value
+                    created_node_list.append(data_node)
+                else:
+                    for created_node in created_node_list:
+                        if data_node.node_id == created_node.node_id:
+                            data_node.node_attributes = created_node.node_attributes
+
+            
         return
     
     def get_dict_of_data_nodes(self):
@@ -320,7 +345,6 @@ with open(PROP_FILE) as f:
                 property_value_type = property_data['PropDefinitions'][property_name]['Enum']
             except:
                 property_value_type = 'string'
-                print(property_name)
         name = property_name
         desc = ""
         req= ""
@@ -335,7 +359,7 @@ with open(PROP_FILE) as f:
         maximum = ""
         exclusiveMinimum = ""
         exclusiveMaximum = ""
-
+        #print(property_value_type)
         if type(property_value_type) is str:
             name = property_name
             value_type = property_value_type
@@ -416,7 +440,6 @@ for node_name in nodes.keys():
 
 
 edges = node_data['Relationships']
-print(node_data['Relationships'])
 
 for edge_name in edges.keys():
     Ends_list = []
@@ -499,7 +522,7 @@ for head_node in data_spec['HeadNode']:
         node_type = head_node_type
         node_attributes = {}
         data_node = DataNode(node_id = node_id, parent_node_id_list = parent_node_id_list, child_node_id_list = child_node_id_list,
-                             node_type = node_type, node_attributes = {})
+                             node_type = node_type, node_attributes = {}, edge_id_list = [])
         dict_of_data_nodes[head_node_type].append(data_node)
 
 edge_specs = data_spec['RelationshipSpecs']
@@ -545,6 +568,8 @@ def SpawnNodes():
             for src_node_type in edge_specs[dst_node_type].keys():
                 # print(dst_node_type, src_node_type)
                 node_counter = includeNodes[src_node_type]['NodeCount']
+                if "Exact_count" in edge_specs[dst_node_type][src_node_type].keys():
+                        node_counter = edge_specs[dst_node_type][src_node_type]['Exact_count']
                 node_distribution = edge_specs[dst_node_type][src_node_type]['SrcNodeCount']
                 try:
                     id_prefix = includeNodes[src_node_type]['Prefix']
@@ -556,8 +581,18 @@ def SpawnNodes():
                 parent_node_index = 0
                 parent_node_length = len(dst_data_nodes_list)
                 step = int(node_counter / parent_node_length)
+
+                many_to_many = False
                 # if the distribution is random
-                # print(node_counter, parent_node_length)
+                #print(node_counter, parent_node_length)
+                if node_counter < parent_node_length and "ManyToManyCount" in includeNodes[src_node_type].keys():
+                   node_counter = includeNodes[src_node_type]['ManyToManyCount']
+                   many_to_many = True
+                if many_to_many:
+                    expand_list = node_id_number_list
+                    for i in range(len(node_id_number_list), node_counter):
+                        expand_list.append(random.choice(node_id_number_list))
+                    node_id_number_list = expand_list
                 if node_distribution == 'random':
                     node_counter_list = range(node_counter)
                     random_split_points = random.sample(node_counter_list, parent_node_length - 1)
@@ -565,9 +600,11 @@ def SpawnNodes():
                     random_split_points_index = 0
                 synthetic_node_id_list = synthetic_node_id_list_func(id_field_data, src_node_type, node_counter, synthetic_values_df)
                 
-                for count in range(node_counter):
-                    
+                for count in range(0, node_counter):
                     if node_distribution == 'fixed':
+                        if "one_to_one_count" in edge_specs[dst_node_type][src_node_type].keys():
+                            if count > edge_specs[dst_node_type][src_node_type]['one_to_one_count']:
+                                step = (node_counter - edge_specs[dst_node_type][src_node_type]['one_to_one_count'])/edge_specs[dst_node_type][src_node_type]['many_to_one_count']
                         if node_index % step == 0 and node_index != 0:
                             parent_node_index += 1
                     elif node_distribution == 'random':
@@ -585,30 +622,36 @@ def SpawnNodes():
                         node_id = id_prefix + "-" + str(node_id_number_list[node_index])
                     else:
                         node_id = node_id_number_list[node_index]
-                        print(node_id)
+                    edge_id = "edge" + "_" + str(uuid.uuid4())
                     if src_node_type not in children:
                         node_index += 1
                         parent_node_id_list = []
+                        edge_id_list = [edge_id]
                         parent_node_id_list.append(dst_data_nodes_list[parent_node_index].node_id)
                         child_node_id_list = []
                         node_type = src_node_type
-                        node_attributes = {}
                         src_data_node = DataNode(node_id = node_id, parent_node_id_list = parent_node_id_list, child_node_id_list = child_node_id_list,
-                                             node_type = node_type, node_attributes = {}) #source node created.
+                                             node_type = node_type, node_attributes = {}, edge_id_list = edge_id_list) #source node created.
+                        
                         dict_of_data_nodes[src_node_type].append(src_data_node) #source node added to the dict of nodes.
-
                         dst_data_nodes_list[parent_node_index].child_node_id_list.append(node_id) #add created source node to the child nodes list for dst node.
+
+                    #elif src_node_type in children:
                     elif src_node_type in children:
+                        #print(len(dict_of_data_nodes[src_node_type]))
+                        #print(node_index)
                         dict_of_data_nodes[src_node_type][node_index].parent_node_id_list.append(dst_data_nodes_list[parent_node_index].node_id)
+                        dict_of_data_nodes[src_node_type][node_index].edge_id_list.append(edge_id)
                         node_index += 1
-                    edge_id = "edge" + "_" + str(random.randint(10**5, 10**6))
+                    
                     edge_type = findEdgeType(node_data, src_node_type, dst_node_type)
                     # edge_type = edge_specs[dst_node_type][src_node_type]['EdgeType']
                     edge_attributes = {}
                     data_edge = DataEdge(edge_id = edge_id, edge_type = edge_type, source_node = src_data_node, 
                                      destination_node = dst_data_nodes_list[parent_node_index], edge_attributes = edge_attributes) #edge created.
                     dict_of_data_edges[edge_id] = data_edge #edge added to the dict of edges.
-                children.append(src_node_type)
+                if count == includeNodes[src_node_type]['NodeCount'] - 1:
+                    children.append(src_node_type)
             created_children.append(dst_node_type)
     data_graph = Graph(dict_of_data_nodes = dict_of_data_nodes, dict_of_data_edges = dict_of_data_edges)
     return data_graph
@@ -666,8 +709,6 @@ for node_type in data_graph.dict_of_data_nodes:
 
 
 # In[28]:
-
-
 def GetParentIDField(node_type, index):
     if node_type in relationship_node_dict:
         return relationship_node_dict[node_type]['parent_id'][index]+'.'+relationship_node_dict[node_type]['parent_id_field'][index]
@@ -704,19 +745,48 @@ print('END FILL SECTION')
 ######PRINT DATA FILES######
 print('PRINT DATA FILES')
 for node_type in data_graph.dict_of_data_nodes:
-    print(node_type)
     node_values_dict = defaultdict(list)
     df = pd.DataFrame()
     position = 0
     for node in data_graph.dict_of_data_nodes[node_type]:
+        parent_node_type_list = []
+        for parent_node_type in edge_specs.keys():
+            for source_node_type in edge_specs[parent_node_type].keys():
+                if source_node_type == node_type:
+                    parent_node_type_list.append(parent_node_type)
+        #print(node_type)
+        #print(parent_node_type_list)
+        edge_specs[dst_node_type]
         node_values_dict['type'].append(node.node_type)
-        if node_type == "study":
-            print(node)
+        '''if node.node_type == "data_file":
+            
+            if node.node_attributes['data_file_type'] == 'Clinical Report':
+                #node.parent_node_id_list = [item if "SPECIMEN" not in item else None for item in node.parent_node_id_list]
+                print(node)
+            
+            if node.node_attributes['data_file_type'] != 'Clinical Report':
+                #node.parent_node_id_list = [item if "SUBJECT" not in item else None for item in node.parent_node_id_list]
+                #print(node)
+                print(dict_of_data_edges[node.edge_id_list[0]].destination_node)'''
         if node.parent_node_id_list:
             index = 0
+            created_parent_list = []
             for parent_node_id in node.parent_node_id_list:
-                node_values_dict[GetParentIDField(node_type, index)].append(parent_node_id) #parent
+                #print(node.edge_id_list)
+                parent_id_field = dict_of_data_edges[node.edge_id_list[index]].destination_node.node_type + "." + GetNodeIDField(dict_of_data_edges[node.edge_id_list[index]].destination_node.node_type)
+                node_values_dict[parent_id_field].append(parent_node_id) #parent
+                if dict_of_data_edges[node.edge_id_list[index]].destination_node.node_type not in created_parent_list:
+                    created_parent_list.append(dict_of_data_edges[node.edge_id_list[index]].destination_node.node_type)
                 index += 1
+            for ct in created_parent_list:
+                #print(created_parent_list)
+                #print(node)
+                parent_node_type_list.remove(ct)
+            if len(parent_node_type_list)>0:
+                for pt in parent_node_type_list:
+                    full_pt = pt + "." + GetNodeIDField(pt)
+                    node_values_dict[full_pt].append(None)
+                
         if GetNodeIDField(node_type) not in node.node_attributes:
             node_values_dict[GetNodeIDField(node_type)].append(node.node_id) #node
         if GetNodeIDField(node_type) in node.node_attributes and GetNodeIDField(node_type) not in synthetic_values_df.keys():
@@ -730,6 +800,8 @@ for node_type in data_graph.dict_of_data_nodes:
         position+=1
     for node_values_key in node_values_dict:
         df[node_values_key] = node_values_dict[node_values_key]
+        #print(node_values_dict[node_values_key])
+    #df = pd.DataFrame({ key:pd.Series(value) for key, value in  node_values_dict.items() })
     
     file_name = configuration_files['OUTPUT_FOLDER'] + node_type + ".tsv"
     if not os.path.exists(configuration_files['OUTPUT_FOLDER']):

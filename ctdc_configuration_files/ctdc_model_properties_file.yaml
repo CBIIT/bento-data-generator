@@ -3,7 +3,7 @@
 # Lower case names are labels for the entities
 
 PropDefinitions:
-  # name_of_node
+  # program
   program_name:
     Desc: The narrative title used to refer to a broad framework (an administrative umbrella) of goals under which related projects or other research activities are grouped. Example - Clinical Proteomic Tumor Analysis. <br>CDE ID = 11444542 
     Term:
@@ -312,8 +312,19 @@ PropDefinitions:
     Src: CMB
     Type: string
     Key: true
+  # age_at_diagnosis:
+  #   Desc: For subjects enrolled upon the CMB trial, the age of the subject as of the diagnosis which resulted in their enrollment being made. <br>NOT CURRENTLY ASSIGNED ANY CDE
+  #   Term:
+  #     - Origin: caDSR
+  #       Code: 'code/ID'
+  #       Value: Data Element Name  
+  #   Src: CMB
+  #   Type:
+  #     units:
+  #       - years
+  #     value_type: number
   age_at_enrollment:
-    Desc: Age of each subject as of being enrolled upon the study/trial. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Desc: The age of the subject as of enrollment, measured in years. <br>NOT CURRENTLY ASSIGNED ANY CDE
     Term:
       - Origin: caDSR
         Code: 'code/ID'
@@ -322,41 +333,9 @@ PropDefinitions:
     Type:
       units:
         - years
-      value_type: number
-    Req: 'Yes'
-  sex:
-    Desc: text CDE ID = 6343385
-    Term:
-      - Origin: caDSR
-        Code: '6343385'
-        Value: Sex  
-    Src: CMB
-    Enum:
-      - F 
-      - Female
-      - M
-      - Male
-      - U
-      - UNDIFFERENTIATED
-    Req: 'Yes'
-  reported_gender:
-    Desc: Characteristics of people that are socially constructed, including norms, behaviors, and roles based on their sex. As a social construct, these norms, behaviors, and roles vary from society to society and can change over time. <br>CDE ID = 10748236
-    Term:
-      - Origin: caDSR - CRDC
-        Code: '10748236'
-        Value: Person Reported Gender Type  
-    Src: DSS
-    Enum:
-      - Choose Not to Disclose
-      - Intersex
-      - Female
-      - Female-To-Male
-      - Male
-      - Male-To-Female
-      - None Of These Describe Me
-      - Non-Conforming Gender
-      - Refused to Answer
-      - Unknown
+      value_type: integer
+    minimum: 55
+    maximum: 75
     Req: 'Yes'
   race:
     Desc: The text for reporting information about race based on the Office of Management and Budget (OMB) categories. <br>Acceptable values taken straight from the CMB Catalog Site. <br>NOT CURRENTLY ASSIGNED ANY CDE
@@ -385,6 +364,129 @@ PropDefinitions:
       - Not reported
       - Unknown
     Req: 'Yes'
+  sex:
+    Desc: text CDE ID = 6343385
+    Term:
+      - Origin: caDSR
+        Code: '6343385'
+        Value: Sex  
+    Src: CMB
+    Enum:
+      #- F 
+      - Female #CMB
+      #- Intersex #CMB
+      #- M
+      - Male #CMB
+      #- U
+      #- UNDIFFERENTIATED
+      #- Unknown #CMB
+    Req: 'Yes'
+  reported_gender:
+    Desc: Characteristics of people that are socially constructed, including norms, behaviors, and roles based on their sex. As a social construct, these norms, behaviors, and roles vary from society to society and can change over time. <br>CDE ID = 10748236
+    Term:
+      - Origin: caDSR - CRDC
+        Code: '10748236'
+        Value: Person Reported Gender Type  
+    Src: DSS
+    Enum:
+      - Choose Not to Disclose # Response Declined per CMB?
+      - Female
+      - Female-To-Male # Female-to-Male Transsexual per CMB
+      - Intersex # Intersex per CMB
+      - Male
+      - Male-To-Female # Male-to-Female Transsexual per CMB
+      - None Of These Describe Me
+      - Non-Conforming Gender
+      - Refused to Answer # Response Declined per CMB?
+      - Unknown # Unknown per CMB
+    Req: 'Yes'
+  height:
+    Desc: The height of the subject as of enrollment, measured in cm. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type:
+      units:
+        - cm
+      value_type: number
+    minimum: 150
+    maximum: 200
+    Req: Preferred
+  weight:
+    Desc: The weight of the subject as of enrollment, measured in kg. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type:
+      units:
+        - kg
+      value_type: number
+    minimum: 45
+    maximum: 115
+    Req: Preferred
+  body_surface_area:
+    Desc: The body surface area of the subject as of enrollment, mathematically derived from the subject's height and weight, and expressed in square meters. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type:
+      units:
+        - m2
+      value_type: number
+    minimum: 1.6
+    maximum: 2.25
+    Req: Preferred
+  occupation:
+    Desc: text <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: string
+    Req: 'Yes'
+  income:
+    Desc: text <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: string
+    Req: Preferred
+  highest_level_of_education:
+    Desc: An indication as to the highest level of education attained by the subject. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Enum:
+      - No formal education
+      - Grade school
+      - Not high school graduate
+      - High school graduate (including equivalency)
+      - Some college or Associate degree
+      - Bachelor's degree
+      - Master's degree
+      - Doctoral or professional degree
+      - Declined to answer
+    Req: Preferred
+  # site_of_enrollment:
+  #   Desc: The identity of the hospital, medical center or clinic at which the subject was enrolled upon the study/trial. <br>NOT CURRENTLY ASSIGNED ANY CDE
+  #   Term:
+  #     - Origin: caDSR
+  #       Code: 'code/ID'
+  #       Value: Data Element Name  
+  #   Src: CMB
+  #   Type: string
+  #   Req: Preferred
   ncbi_taxonomy_id: # perhaps this a direct property of subject?
     Desc: A label provided by NCBI Taxonomy Database (https://www.ncbi.nlm.nih.gov/taxonomy/),  which uniquely identifies group or category, at any level, in a system for classifying plants or animals (including humans) providing ranked categories for the classification of organisms according to their suspected evolutionary relationships. <br>CDE ID = 10543100
     Term:
@@ -447,7 +549,7 @@ PropDefinitions:
     Req: 'Yes'  
   # diagnosis
   diagnosis_id:
-    Desc: A unique identifier of each demographic record, used to identify the correct demographic records during data updates. <br>The value of this property will generally be the same as the value of the subject_id property. <br>NO CDE REQUIRED <br>This property is used as the key via which child records, e.g. clinical reports, can be associated with the appropriate diagnosis record during data loading, and to identify the correct records during data updates.
+    Desc: A unique identifier of each diagnosisc record, used to identify the correct diagnosis records during data updates. <br>The value of this property will generally be the same as the value of the subject_id property. <br>NO CDE REQUIRED <br>This property is used as the key via which child records, e.g. clinical reports, can be associated with the appropriate diagnosis record during data loading, and to identify the correct records during data updates.
     Term:
       - Origin: caDSR
         Code: 'code/ID'
@@ -456,6 +558,22 @@ PropDefinitions:
     Type: string
     Req: 'Yes'
     Key: true
+  primary_diagnosis_disease_group:
+    Desc: Acceptable values currently specified, none of which are sourced from actual data, are to be used only for generation of mock data. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Enum:
+      - Disease Group 1
+      - Disease Group 2
+      - Disease Group 3
+      - Disease Group 4
+      - Disease Group 5
+      - Disease Group 6
+      - Disease Group 7
+    Req: 'Yes'
   icd_10_disease_code:
     Desc: An alphanumeric value from the tenth version of the International Classification of Disease (ICD-10-CM, the disease code subset of ICD-10) used to identify the diagnosis in humans. <br>CDE ID = 11479873
     Term:
@@ -500,6 +618,24 @@ PropDefinitions:
       - Prostate Carcinoma                              # meddra code 10036910
       - Small Cell Lung Carcinoma                       # meddra code 10041071 
     Req: 'Yes'  
+  snomed_disease_term:
+    Desc: Acceptable values currently specified, none of which are sourced from actual data, are to be used only for generation of mock data. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Enum:
+      - Acute Myeloid Leukemia Not Otherwise Specified  # meddra code 10000884
+      - Adenocarcinoma of the Gastroesophageal Junction # meddra code 10066354
+      - Colon Adenocarcinoma                            # meddra code 10010029
+      - Colorectal Carcinoma                            # meddra code 10010029
+      - Melanoma                                        # meddra code 10053571
+      - Non-Small Cell Lung Carcinoma                   # meddra code 10029514
+      - Plasma Cell Myeloma                             # meddra code 10028566
+      - Prostate Carcinoma                              # meddra code 10036910
+      - Small Cell Lung Carcinoma                       # meddra code 10041071 
+    Req: 'Yes'
   snomed_disease_code: 
     Desc: Strictly-speaking, a 9-digit numerical code for the primary disease with which the subject in question has been diagnosed. <br>Within the CMB Catalog Site, Disease Stage (SNOMED) is presented in the form of a human readable narrative statement of the primary disease which includes some histoligical detail and disease stage. <br>Acceptable values currently specified, all modified versions of the corresponding MEDDRA disease codes, are to be used only for generation of mock data. <br>CDE ID = 6642369
     Term:
@@ -516,34 +652,6 @@ PropDefinitions:
       - "123053571" #- Melanoma
       - "123028566" #- Plasma Cell Myeloma
       - "123036910" #- Prostate Carcinoma
-    Req: 'Yes'
-  stage_of_disease:
-    Desc: The stage of the primary disease with which the subject in question has been diagnosed. <br>Acceptable values currently specified, none of which are sourced from actual data, are to be used only for generation of mock data. <br>NOT CURRENTLY ASSIGNED ANY CDE
-    Src: CMB
-    Enum: 
-      - II
-      - IIa
-      - IIb
-      - III
-      - IIIa
-      - IIIb
-      - IV
-      - IVa
-      - IVb
-      - Unknown
-      - Not Determined
-    Req: 'Yes'
-  diagnosis_date:
-    Desc: text NOT CURRENTLY ASSIGNED ANY CDE
-    Term:
-      - Origin: caDSR
-        Code: 'code/ID'
-        Value: Data Element Name  
-    Src: CMB
-    Type:
-      units:
-        - days
-      value_type: number
     Req: 'Yes'
   icd_o_primary_site:
     Desc: The organ or part of the body where cancer begins as captured by the topography codes of the International Classification of Diseases for Oncology, 3rd Edition (ICD-O-3). <br>CDE ID = 11341616
@@ -572,14 +680,13 @@ PropDefinitions:
       - Prostate
       - Rectum
     Req: 'Yes'
-  histological_subtype:
-    Desc: Acceptable values currently specified, none of which are sourced from actual data, are to be used only for generation of mock data. <br>CDE ID = 7344580
+  histology:
+    Desc: Acceptable values currently specified, none of which are sourced from actual data, are to be used only for generation of mock data. <br>NOT CURRENTLY ASSIGNED ANY CDE
     Term:
       - Origin: caDSR
-        Code: '7344580'
+        Code: 'code/ID'
         Value: Data Element Name  
     Src: CMB
-    #Type: string
     Enum:
       - Acute Myeloid Leukemia - M3 eosinophilic variant
       - Acute Myeloid Leukemia - poorly-differentiated M1 variant
@@ -609,6 +716,47 @@ PropDefinitions:
         - days
       value_type: number
     Req: 'Yes'
+  histological_subtype:
+    Desc: Acceptable values currently specified, none of which are sourced from actual data, are to be used only for generation of mock data. <br>CDE ID = 7344580
+    Term:
+      - Origin: caDSR
+        Code: '7344580'
+        Value: Data Element Name  
+    Src: CMB
+    #Type: string
+    Enum:
+      - Acute Myeloid Leukemia - M3 eosinophilic variant
+      - Acute Myeloid Leukemia - poorly-differentiated M1 variant
+      - Acute Myeloid Leukemia - M5 granulocytic variant
+      - Adenocarcinoma
+      - Adenosquamous Carcinoma
+      - High-grade Carcinoma
+      - Invasive Adenocarcinoma
+      - Large Cell Carcinoma
+      - Melanoma
+      - Multiple Myeloma
+      - Non-Small Cell Carcinoma
+      - Plasma Cell Myeloma
+      - Prostate Carcinoma
+      - Small Cell Carcinoma
+      - Squamous Cell Carcinoma
+    Req: 'Yes'  
+  stage_of_disease:
+    Desc: The stage of the primary disease with which the subject in question has been diagnosed. <br>Acceptable values currently specified, none of which are sourced from actual data, are to be used only for generation of mock data. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Src: CMB
+    Enum: 
+      - II
+      - IIa
+      - IIb
+      - III
+      - IIIa
+      - IIIb
+      - IV
+      - IVa
+      - IVb
+      - Unknown
+      - Not Determined
+    Req: 'Yes'
   tumor_grade:
     Desc: A text term to express the degree of abnormality of cancer cells as a measure of differentiation and aggressiveness. <br>CDE ID = 11325685
     Term:
@@ -632,6 +780,18 @@ PropDefinitions:
       - Moderately Differentiated # from CMB Catalog Site
       - Poorly Differentiated # from CMB Catalog Site
       - Well Differentiated # from CMB Catalog Site
+    Req: 'Yes'
+  diagnosis_date:
+    Desc: text NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type:
+      units:
+        - days
+      value_type: number
     Req: 'Yes'
   subject_age_at_diagnosis:
     Desc: Age at the time of diagnosis expressed in number of days since birth. CMB data has this expressed in years not days! <br>CDE ID = 10609539
@@ -702,8 +862,9 @@ PropDefinitions:
     Src: CMB
     Type: string
     Req: 'Yes'
+    Key: true
   targeted_therapy: # CMTRT_DSL in CMB Data Submission - 5a_TargetedTherapyAdministration???
-    Desc: Acceptable values to be used for generation of mock data taken from TARGETED_THERAPY in CMB Version 2 DS 5a_TargetedTherapyAdministration <br>CDE ID = 6400634
+    Desc: The name of the therapeutic agent administered to a subject as a targeted therapy, i.e. one that is considered to have enhanced therapeutic effects upon the specific type of cancer with which the subject has been diagnosed, and/or upon that type of cancer specifically within the context of a given subject because of factors such as tumor histology, grade, gene expression and genetic make-up. <br>Acceptable values to be used for generation of mock data taken from TARGETED_THERAPY in CMB Version 2 DS 5a_TargetedTherapyAdministration <br>CDE ID = 6400634
     Term:
       - Origin: caDSR
         Code: '6400634'
@@ -771,8 +932,51 @@ PropDefinitions:
       - Selinexor
       - trametinib
     Req: 'Yes'
-  # therapy
-  therapy_id:
+  targeted_therapy_dose:
+    Desc: The dose at which the targeted therapeutic agent in question was administered, inclusive of the appropriate dosage units. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: string
+    Req: 'Yes'
+  targeted_therapy_frequency:
+    Desc: The frequency at which the targeted therapeutic agent in question was administered. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: string
+    Req: 'Yes'
+  targeted_therapy_start_and_end:
+    Desc: The timeframe over which the targeted therapy in question was administered, expressed as the number of days before or after study enrollment the targeted therapy was started, and the number of days before or after study enrollment the targeted therapy ended. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: string
+    Req: Preferred
+  best_response_to_targeted_therapy:
+    Desc: An indication as to the best overall response to treatment with the targeted therapy in question. <br>Acceptable values currently in place are taken directly from ICDC, if only to drive a discussion as to what values would be more/most appropriate. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Enum:
+      - Complete Response
+      - Partial Response
+      - Stable Disease
+      - Progressive Disease
+      - Not Determined
+      - Not Applicable
+      - Unknown
+    Req: Preferred
+  # non_targeted_therapy
+  non_targeted_therapy_id:
     Desc: A unique identifier of each non-targeted therapy record, used to identify the correct non-targeted therapy records during data updates. The value of this property will generally be based largely upon the value of the subject_id property. <br> NO CDE REQUIRED
     Term:
       - Origin: caDSR
@@ -781,8 +985,9 @@ PropDefinitions:
     Src: CMB
     Type: string
     Req: 'Yes'
-  therapy: 
-    Desc: Non-Targeted Therapy in CMB Data Submission <br>Acceptable values to be used for generation of mock data taken from THERAPY in CMB Version 2 DS 5a_NonTargetedTherapySupplement <br> CDE ID = 6400634
+    Key: true
+  non_targeted_therapy: 
+    Desc: The name of the therapeutic agent administered to a subject as a non-targeted therapy, i.e. one that is considered to be appropriate for and effective against the specific type of cancer with which the subject has been diagnose, but not to have significantly enhanced therapeutic effects upon that cancer in general or upon that cancer specifically within the context of a given subject. <br>Acceptable values to be used for generation of mock data taken from THERAPY in CMB Version 2 DS 5a_NonTargetedTherapySupplement <br> CDE ID = 6400634
     Term:
       - Origin: caDSR
         Code: '6400634'
@@ -832,7 +1037,50 @@ PropDefinitions:
       - bicalutamide
       - firmagon
     Req: 'Yes'
-  # surgical_procedure
+  non_targeted_therapy_dose:
+    Desc: The dose at which the non-targeted therapeutic agent in question was administered, inclusive of the appropriate dosage units. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: string
+    Req: 'Yes'
+  non_targeted_therapy_frequency:
+    Desc: The frequency at which the non-targeted therapeutic agent in question was administered. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: string
+    Req: 'Yes'
+  non_targeted_therapy_start_and_end:
+    Desc: The timeframe over which the non-targeted therapy in question was administered, expressed as the number of days before or after study enrollment the non-targeted therapy was started, and the number of days before or after study enrollment the non-targeted therapy ended. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: string
+    Req: Preferred
+  best_response_to_non_targeted_therapy:
+    Desc: An indication as to the best overall response to treatment with the non-targeted therapy in question. <br>Acceptable values currently in place are taken directly from ICDC, if only to drive a discussion as to what values would be more/most appropriate. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Enum:
+      - Complete Response
+      - Partial Response
+      - Stable Disease
+      - Progressive Disease
+      - Not Determined
+      - Not Applicable
+      - Unknown
+    Req: 'Yes'
+  # surgery
   surgical_procedure_id:
     Desc: A unique identifier of each surgical procedure record, used to identify the correct surgical procedure therapy records during data updates. The value of this property will generally be based largely upon the value of the subject_id property. <br> NO CDE REQUIRED
     Term:
@@ -842,8 +1090,9 @@ PropDefinitions:
     Src: CMB
     Type: string
     Req: 'Yes'
-  surgical_procedure_name: 
-    Desc: Acceptable values to be used for generation of mock data taken from SURG_PROC_NAME in CMB Version 2 DS 5a_NonTargetedSurgerySupplement <br>CDE ID = 6411539
+    Key: true
+  surgical_procedure: 
+    Desc: The name and/or a brief narrative description of the surgical procedure performed upon the subject. <br>Acceptable values to be used for generation of mock data taken from SURG_PROC_NAME in CMB Version 2 DS 5a_NonTargetedSurgerySupplement <br>CDE ID = 6411539
     Term:
       - Origin: caDSR
         Code: '6411539'
@@ -919,7 +1168,54 @@ PropDefinitions:
       - Port Placement, Laparoscopic loop colostomy and mobilization of the splenic flexure
       - Right sub trochanteric fracture ORIF w/ TFN
     Req: 'Yes'
-  # radiological_procedure
+  surgical_procedure_date:
+    Desc: The date upon which the surgical procedure in question was performed. EXPRESSED HOW? <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: date
+    Req: Preferred
+  surgical_procedure_anatomical_location:
+    Desc: The anatomical site or sites at which the surgical procedure in question was performed. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: string
+    Req: 'Yes'
+  surgical_procedure_therapeutic:
+    Desc: An indication as to whether the surgical procedure in question was performed with therapeutic intent. <br>NOT CURRENTLY ASSIGNED ANY CDEtext
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Enum:
+      - 'Yes'
+      - 'No'
+    Req: 'Yes'
+  surgical_procedure_findings:
+    Desc: A narrative description of any significant findings observed during the surgical procedure in question. <br>NOT CURRENTLY ASSIGNED ANY CDEtext
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: string
+    Req: Preferred
+  extent_of_residual_disease:
+    Desc: text <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: string
+    Req: Preferred
+  # radiotherapy
   radiological_procedure_id:
     Desc: A unique identifier of each radiological procedure record, used to identify the correct radiological procedure record during data updates. The value of this property will generally be based largely upon the value of the subject_id property. <br> NO CDE REQUIRED
     Term:
@@ -929,8 +1225,9 @@ PropDefinitions:
     Src: CMB
     Type: string
     Req: 'Yes'
-  radiological_procedure_name: # RAD_PROC_NAME in CMB Data Submission - 5a_NonTargetedRadiationSupplement
-    Desc: Acceptable values to be used for generation of mock data taken from RAD_PROC_NAME in CMB Version 2 DS 5a_NonTargetedRadiationSupplement <br>CDE ID = 6411539
+    Key: true
+  radiological_procedure: # RAD_PROC_NAME in CMB Data Submission - 5a_NonTargetedRadiationSupplement
+    Desc: The name and/or a brief narrative description of the radiological procedure performed upon the subject. <br>Acceptable values to be used for generation of mock data taken from RAD_PROC_NAME in CMB Version 2 DS 5a_NonTargetedRadiationSupplement <br>CDE ID = 6411539
     Term:
       - Origin: caDSR
         Code: '6411539'
@@ -961,6 +1258,67 @@ PropDefinitions:
       - CyberKnife SBRT
       - Prophylactic Cranial Radiation
     Req: 'Yes'   
+  radiological_procedure_anatomical_location:
+    Desc: The anatomical site or sites subject to the radiological procedure in question. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: string
+    Req: 'Yes'
+  radiation_dose:
+    Desc: The dose at which the radiotherapy in question was administered, inclusive of the appropriate dosage units. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: string
+    Req: 'Yes'
+  radiation_frequency:
+    Desc: The frequency at which the radiotherapy in question was administered. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: string
+    Req: 'Yes'
+  radiation_extent:
+    Desc: text
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: string
+    Req: 'Yes'
+  radiotherapy_start_and_end:
+    Desc: The timeframe over which the radiotherapy in question was administered, expressed as the number of days before or after study enrollment the radiotherapy was started, and the number of days before or after study enrollment the radiotherapy ended. <br>NOT CURRENTLY ASSIGNED ANY CDEtext
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: integer
+    Req: 'Yes'
+  best_response_to_radiotherapy:
+    Desc: An indication as to the best overall response to the radiotherapy in question. <br>Acceptable values currently in place are taken directly from ICDC, if only to drive a discussion as to what values would be more/most appropriate. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Enum:
+      - Complete Response
+      - Partial Response
+      - Stable Disease
+      - Progressive Disease
+      - Not Determined
+      - Not Applicable
+      - Unknown
+    Req: 'Yes'
   # subject_status
   subject_status_id:
     Desc: A unique identifier of each subject_status record, used to identify the correct subject_status records during data updates. The value of this property will generally be the same as the value of the subject_id property. <br> NO CDE REQUIRED
@@ -1078,6 +1436,215 @@ PropDefinitions:
     Src: CMB
     Type: string
     Req: 'Yes'
+  parent_specimen_type: # this refers to the nature of the specimen originally isolated from the participant, and from which various aliquots and/or derivative biospecimens were subseuqently isolated
+    Desc: Acceptable values taken straight from the CMB Catalog Site. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Enum:
+      - Bone Marrow Aspirate
+      - Cell Block
+      - EDTA Blood
+      - FFPE Block
+      - Formalin Bone Marrow Biopsy
+      - Formalin Fixed Tissue
+      - Snap Frozen Tissue
+      - Stained Bone Marrow Aspirate Slide
+      - Streck Blood
+      - Unstained Bone Marrow Aspirate Slide
+      - Unstained Slide
+    Req: 'Yes'
+  specimen_type: # this refers to the nature of the sub-specimen that was actually subject to downstream analysis
+    Desc: Acceptable values taken straight from the CMB Catalog Site. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Enum:
+      - BMMC
+      - Blood Pellet
+      - Cells
+      - Curl
+      - DNA
+      - FFPE Block
+      - Glass H&E Slide
+      - Glass Slide Smear
+      - Glass Unstained Slide
+      - PBMC
+      - Plasma
+      - Plasma-cf
+      - RNA
+      - Snap Frozen Unfixed Tissue
+      - Tissue Curl
+      - cDNA
+    Req: 'Yes'
+  obi_specimen_type:
+    Desc: This doesn't match the caDSR record of "Specimen Material OBIB Source" for CDE ID = 11253427 <br>The kind of material that forms the sample as captured in the Ontology for Biobanking (OBIB), a specimen subset of the Ontology for Biomedical Investigations (OBI).
+    Term:
+      - Origin: caDSR - CRDC
+        Code: '11253427'
+        Value: Specimen Type Text  
+    Src: DSS
+    Type: integer
+    Req: 'No'
+  # specimen_category:
+  #   Desc:  This in NOT the CMB Catalog Site's "Tissue Ccategory", the indicator as to normal vs primary vs metastatic. Not used within the CMB Catalog site itself, but defined within at least one of the associated Data Dictionaries. <br>CDE ID = 7069877
+  #   Term:
+  #     - Origin: caDSR
+  #       Code: '7069877D'
+  #       Value: Data Element Name  
+  #   Src: CMB DD
+  #   Enum:
+  #     - BLOOD
+  #     - BONE MARROW
+  #     - BUCCAL CELL SAMPLE
+  #     - CEREBROSPINAL FLUID
+  #     - FORMALIN FIXED PARAFFIN EMBEDDED TISSUE
+  #     - FORMALIN FIXED TISSUE
+  #     - FRESH TISSUE
+  #     - FROZEN TISSUE
+  #     - OTHER BODILY FLUIDs
+  #     - SALIVA
+  #     - STOOL
+  #     - URINE
+  #   Req: 'Yes'
+  anatomical_collection_site:
+    Desc: This is CMB's version of "sample site". <br>Acceptable values currently specified, none of which are sourced from actual data, are to be used only for generation of mock data. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    #Type: string
+    Enum:
+      - Bone Marrow
+      - Brain
+      - Bronchus
+      - Colon
+      - Duodenum
+      - Epidermis
+      - Esophagus
+      - Kidney
+      - Liver
+      - Lung
+      - Lymph Node
+      - Pancreas
+      - Prostate
+      - Rectum
+      - Stomach
+    Req: 'Yes'
+  type_of_tissue:
+    Desc:  This is caDSR's version of CMB Catalog's "Tissue Category". <br>Acceptable values taken from the caDSR's definition of the data element. <br>CDE ID = 7003892
+    Term:
+      - Origin: caDSR
+        Code: '7003892'
+        Value: Tissue Type  
+    Src: CMB DD
+    Enum:
+      - ANT # Adjacent Normal Tissue
+      - NORMAL
+      - METASTATIC
+      - OTHER
+      - PRIMARY
+    Req: 'Yes'
+  tissue_category: 
+    Desc: Based upon the values in use, this is CMB Catalog's version of caDSR "Tissue Type" aka CTDC "type_of_tissue". <br>Acceptable values taken straight from the CMB Catalog Site. <br>NOT CURRENTLY ASSIGNED ANY CDE
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Enum:
+      - Metastatic
+      - Normal
+      - Primary
+    Req: 'Yes'
+  icd_o_3_tissue_morphology:
+    Desc: The coded result of analyzing the microscopic anatomy of normal and abnormal cells and tissues of the specimen by examining a thin slice (section) under a light (optical) or electron microscope. The code represents the histology of the disease using the third edition of the International Classification of Diseases for Oncology. <br>Acceptable values currently specified, none of which are sourced from actual data, are to be used only for generation of mock data. <br>CDE ID = 11326261
+    Term:
+      - Origin: caDSR - CRDC
+        Code: '11326261'
+        Value: Specimen Tumor Tissue ICD-O-3 Morphology Code 
+    Src: DSS
+    #Type: string
+    # actually enumerated to a long list of ICD-O-3 codes, which is too long to specifiy here; we should instead just include the codes that will be seen in CMB data?
+    Enum:
+      - Acute Myeloid Leukemia - M3 eosinophilic variant
+      - Acute Myeloid Leukemia - poorly-differentiated M1 variant
+      - Acute Myeloid Leukemia - M5 granulocytic variant
+      - Adenocarcinoma
+      - Adenosquamous Carcinoma
+      - High-grade Carcinoma
+      - Invasive Adenocarcinoma
+      - Large Cell Carcinoma
+      - Metastatic Adenocarcinoma
+      - Metastatic Adenosquamous Carcinoma
+      - Metastatic High-grade Carcinoma
+      - Metastatic Invasive Adenocarcinoma
+      - Metastatic Large Cell Carcinoma
+      - Metastatic Melanoma
+      - Metastatic Non-Small Cell Carcinoma
+      - Metastatic Prostate Carcinoma
+      - Metastatic Small Cell Carcinoma
+      - Metastatic Squamous Cell Carcinoma
+      - Melanoma
+      - Multiple Myeloma
+      - Non-Small Cell Carcinoma
+      - Plasma Cell Myeloma
+      - Prostate Carcinoma
+      - Small Cell Carcinoma
+      - Squamous Cell Carcinoma
+    Req: 'No'
+  assessment_timepoint: 
+    Desc: CMB Catalog Site's "Collection Timepoint". <br>CDE ID = 7065963
+    Term:
+      - Origin: caDSR
+        Code: '7065963'
+        Value: Data Element Name  
+    Src: CMB
+    Enum:
+      - ARCHIVAL
+      - BASELINE
+      - ON TREATMENT
+      - PROGRESSION
+    Req: 'Yes'
+  collection_date: 
+    Desc: From the CMB perspective, this may be equivalent to "days_from_diagnosis_to_specimen_collection" (now block commented out) (CDE ID = 11253404), with collection date indexed to enrollment date. <br>CDE ID 6401821
+    Term:
+      - Origin: caDSR
+        Code: '6401821'
+        Value: Data Element Name  
+    Src: CMB
+    Type:
+      units:
+        - days
+      value_type: number
+    Req: 'Yes'
+  collection_method:
+    Desc: text
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Type: string
+    Req: 'Yes'
+  fixative:
+    Desc: text
+    Term:
+      - Origin: caDSR
+        Code: 'code/ID'
+        Value: Data Element Name  
+    Src: CMB
+    Enum:
+      - EDTA
+      - FFPE
+      - Formalin
+      - Streck
+    Req: 'Yes'
   # days_from_diagnosis_to_specimen_collection:
   #   Desc: The number of days from the date a sample was collected to the date of the initial pathologic diagnosis. <br>CDE ID = 11253404 ALL OF THIS IS INCORRECT BECAUSE THE INCORRECT CDE WAS REFERENCED; PER THE CORRECT CDE ID OF 11248865 THE PROPERTY DESCRIPTION SHOULD BE The number of days from the date the diagnosis was made to the date a sample was collected.
   #   Term:
@@ -1150,193 +1717,6 @@ PropDefinitions:
   #       - days
   #     value_type: number
   #   Req: 'No'
-  collection_date: 
-    Desc: From the CMB perspective, this may be equivalent to "days_from_diagnosis_to_specimen_collection" (now block commented out) (CDE ID = 11253404), with collection date indexed to enrollment date. <br>CDE ID 6401821
-    Term:
-      - Origin: caDSR
-        Code: '6401821'
-        Value: Data Element Name  
-    Src: CMB
-    Type:
-      units:
-        - days
-      value_type: number
-    Req: 'Yes'
-  icd_o_3_tissue_morphology:
-    Desc: The coded result of analyzing the microscopic anatomy of normal and abnormal cells and tissues of the specimen by examining a thin slice (section) under a light (optical) or electron microscope. The code represents the histology of the disease using the third edition of the International Classification of Diseases for Oncology. <br>Acceptable values currently specified, none of which are sourced from actual data, are to be used only for generation of mock data. <br>CDE ID = 11326261
-    Term:
-      - Origin: caDSR - CRDC
-        Code: '11326261'
-        Value: Specimen Tumor Tissue ICD-O-3 Morphology Code 
-    Src: DSS
-    #Type: string
-    # actually enumerated to a long list of ICD-O-3 codes, which is too long to specifiy here; we should instead just include the codes that will be seen in CMB data?
-    Enum:
-      - Acute Myeloid Leukemia - M3 eosinophilic variant
-      - Acute Myeloid Leukemia - poorly-differentiated M1 variant
-      - Acute Myeloid Leukemia - M5 granulocytic variant
-      - Adenocarcinoma
-      - Adenosquamous Carcinoma
-      - High-grade Carcinoma
-      - Invasive Adenocarcinoma
-      - Large Cell Carcinoma
-      - Metastatic Adenocarcinoma
-      - Metastatic Adenosquamous Carcinoma
-      - Metastatic High-grade Carcinoma
-      - Metastatic Invasive Adenocarcinoma
-      - Metastatic Large Cell Carcinoma
-      - Metastatic Melanoma
-      - Metastatic Non-Small Cell Carcinoma
-      - Metastatic Prostate Carcinoma
-      - Metastatic Small Cell Carcinoma
-      - Metastatic Squamous Cell Carcinoma
-      - Melanoma
-      - Multiple Myeloma
-      - Non-Small Cell Carcinoma
-      - Plasma Cell Myeloma
-      - Prostate Carcinoma
-      - Small Cell Carcinoma
-      - Squamous Cell Carcinoma
-    Req: 'No'
-  obi_specimen_type:
-    Desc: This doesn't match the caDSR record of "Specimen Material OBIB Source" for CDE ID = 11253427 <br>The kind of material that forms the sample as captured in the Ontology for Biobanking (OBIB), a specimen subset of the Ontology for Biomedical Investigations (OBI).
-    Term:
-      - Origin: caDSR - CRDC
-        Code: '11253427'
-        Value: Specimen Type Text  
-    Src: DSS
-    Type: integer
-    Req: 'No'
-  # specimen_category:
-  #   Desc:  This in NOT the CMB Catalog Site's "Tissue Ccategory", the indicator as to normal vs primary vs metastatic. Not used within the CMB Catalog site itself, but defined within at least one of the associated Data Dictionaries. <br>CDE ID = 7069877
-  #   Term:
-  #     - Origin: caDSR
-  #       Code: '7069877D'
-  #       Value: Data Element Name  
-  #   Src: CMB DD
-  #   Enum:
-  #     - BLOOD
-  #     - BONE MARROW
-  #     - BUCCAL CELL SAMPLE
-  #     - CEREBROSPINAL FLUID
-  #     - FORMALIN FIXED PARAFFIN EMBEDDED TISSUE
-  #     - FORMALIN FIXED TISSUE
-  #     - FRESH TISSUE
-  #     - FROZEN TISSUE
-  #     - OTHER BODILY FLUIDs
-  #     - SALIVA
-  #     - STOOL
-  #     - URINE
-  #   Req: 'Yes'
-  type_of_tissue:
-    Desc:  This is caDSR's version of CMB Catalog's "Tissue Category". <br>Acceptable values taken from the caDSR's definition of the data element. <br>CDE ID = 7003892
-    Term:
-      - Origin: caDSR
-        Code: '7003892'
-        Value: Tissue Type  
-    Src: CMB DD
-    Enum:
-      - ANT # Adjacent Normal Tissue
-      - NORMAL
-      - METASTATIC
-      - OTHER
-      - PRIMARY
-    Req: 'Yes'
-  anatomical_collection_site:
-    Desc: This is CMB's version of "sample site". <br>Acceptable values currently specified, none of which are sourced from actual data, are to be used only for generation of mock data. <br>NOT CURRENTLY ASSIGNED ANY CDE
-    Term:
-      - Origin: caDSR
-        Code: 'code/ID'
-        Value: Data Element Name  
-    Src: CMB
-    #Type: string
-    Enum:
-      - Bone Marrow
-      - Brain
-      - Bronchus
-      - Colon
-      - Duodenum
-      - Epidermis
-      - Esophagus
-      - Kidney
-      - Liver
-      - Lung
-      - Lymph Node
-      - Pancreas
-      - Prostate
-      - Rectum
-      - Stomach
-    Req: 'Yes'
-  parent_specimen_type: 
-    Desc: Acceptable values taken straight from the CMB Catalog Site. <br>NOT CURRENTLY ASSIGNED ANY CDE
-    Term:
-      - Origin: caDSR
-        Code: 'code/ID'
-        Value: Data Element Name  
-    Src: CMB
-    Enum:
-      - Bone Marrow Aspirate
-      - Cell Block
-      - EDTA Blood
-      - FFPE Block
-      - Formalin Bone Marrow Biopsy
-      - Formalin Fixed Tissue
-      - Snap Frozen Tissue
-      - Stained Bone Marrow Aspirate Slide
-      - Streck Blood
-      - Unstained Bone Marrow Aspirate Slide
-      - Unstained Slide
-    Req: 'Yes'
-  specimen_type: 
-    Desc: Acceptable values taken straight from the CMB Catalog Site. <br>NOT CURRENTLY ASSIGNED ANY CDE
-    Term:
-      - Origin: caDSR
-        Code: 'code/ID'
-        Value: Data Element Name  
-    Src: CMB
-    Enum:
-      - BMMC
-      - Blood Pellet
-      - Cells
-      - Curl
-      - DNA
-      - FFPE Block
-      - Glass H&E Slide
-      - Glass Slide Smear
-      - Glass Unstained Slide
-      - PBMC
-      - Plasma
-      - Plasma-cf
-      - RNA
-      - Snap Frozen Unfixed Tissue
-      - Tissue Curl
-      - cDNA
-    Req: 'Yes'
-  tissue_category: 
-    Desc: Based upon the values in use, this is CMB Catalog's version of caDSR "Tissue Type" aka CTDC "type_of_tissue". <br>Acceptable values taken straight from the CMB Catalog Site. <br>NOT CURRENTLY ASSIGNED ANY CDE
-    Term:
-      - Origin: caDSR
-        Code: 'code/ID'
-        Value: Data Element Name  
-    Src: CMB
-    Enum:
-      - Metastatic
-      - Normal
-      - Primary
-    Req: 'Yes'
-  assessment_timepoint: 
-    Desc: CMB Catalog Site's "Collection Timepoint". <br>CDE ID = 7065963
-    Term:
-      - Origin: caDSR
-        Code: '7065963'
-        Value: Data Element Name  
-    Src: CMB
-    Enum:
-      - ARCHIVAL
-      - BASELINE
-      - ON TREATMENT
-      - PROGRESSION
-    Req: 'Yes'  
   # data_file
   data_file_name:
     Desc: The literal label for an electronic data file. <br>CDE ID = 11284037
@@ -1357,7 +1737,11 @@ PropDefinitions:
     Enum:
       - Clinical Report
       - Variant Call File
-      - Investigator Report
+      #- Investigator Report
+      - DNA Methylation Analysis File
+      - Index File
+      - RNA Sequence File
+      - Whole Exome Sequence File
     Req: 'Yes'
   data_file_description:
     Desc: A free text field that can be used to document the content and other details about an electronic file that may not be captured elsewhere. For example, the file's derivation from a specimen of normal tissue versus tumor tissue. <br>CDE ID = 11280338
