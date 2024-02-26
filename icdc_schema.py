@@ -265,12 +265,17 @@ class ICDC_Schema:
                         if ITEM_TYPE in prop_desc:
                             item_type = self._get_item_type(prop_desc[ITEM_TYPE])
                             result[ITEM_TYPE] = item_type
+                        elif PROP_ENUM in prop_desc:
+                            item_type = self._get_item_type(prop_desc[PROP_ENUM])
+                            result[ITEM_TYPE] = item_type
                         if UNITS in prop_desc:
                             result[HAS_UNIT] = True
                 elif isinstance(prop_desc, list):
                     enum = set()
-                    for t in prop_desc:
-                        if not re.search(r'://', t):
+                    r_url = re.compile(r"://")
+                    url_list = list(filter(r_url.search, prop_desc))
+                    if not(len(prop_desc) == 1 and len(url_list) == 1):
+                        for t in prop_desc:
                             enum.add(t)
                     if len(enum) > 0:
                         result[ENUM] = enum
@@ -295,8 +300,10 @@ class ICDC_Schema:
             return {PROP_TYPE: self.map_type(item_type)}
         elif isinstance(item_type, list):
             enum = set()
-            for t in item_type:
-                if not re.search(r'://', t):
+            r_url = re.compile(r"://")
+            url_list = list(filter(r_url.search, item_type))
+            if not(len(item_type) == 1 and len(url_list) == 1):
+                for t in item_type:
                     enum.add(t)
             if len(enum) > 0:
                 return {PROP_TYPE: DEFAULT_TYPE, ENUM: enum}
@@ -370,24 +377,29 @@ class ICDC_Schema:
     def get_original_value_property_name(name):
         return name + '_original'
 
-    def validate_node(self, model_type, obj):
+    def validate_node(self, model_type, obj, verbose):
+        result = {'result': True, 'messages': [], 'warning': False, 'invalid_values': [], 'invalid_properties': [], 'invalid_reason': [], 'missing_properties': [], 'missing_reason': []}
         if not model_type or model_type not in self.nodes:
-            return {'result': False, 'messages': ['Node type: "{}" does not exist!'.format(model_type)]}
+            return {'result': False, 'messages': ['Node type: "{}" not found in data model'.format(model_type)], 'warning': False}
         if not obj:
-            return {'result': False, 'messages': ['Node is empty!']}
+            return {'result': False, 'messages': ['Node is empty!'], 'warning': False}
 
         if not isinstance(obj, dict):
-            return {'result': False, 'messages': ['Node is not a dict!']}
+            return {'result': False, 'messages': ['Node is not a dict!'], 'warning': False}
 
         # Make sure all required properties exist, and are not empty
-        result = {'result': True, 'messages': []}
+        
         for prop in self.nodes[model_type].get(REQUIRED, set()):
             if prop not in obj:
                 result['result'] = False
                 result['messages'].append('Missing required property: "{}"!'.format(prop))
+                result['missing_properties'].append(prop)
+                result['missing_reason'].append('property_missing')
             elif not obj[prop]:
                 result['result'] = False
                 result['messages'].append('Required property: "{}" is empty!'.format(prop))
+                result['missing_properties'].append(prop)
+                result['missing_reason'].append('value_empty')
 
         properties = self.nodes[model_type][PROPERTIES]
         # Validate all properties in given object
@@ -408,19 +420,44 @@ class ICDC_Schema:
                     continue
 
                 prop_type = self.relationship_props[rel_type][PROPERTIES][rel_prop]
-                if not self._validate_type(prop_type, value):
+                type_validation_result, error_type = self._validate_type(prop_type, value)
+                if not type_validation_result:
                     result['result'] = False
-                    result['messages'].append(
-                        'Property: "{}":"{}" is not a valid "{}" type!'.format(rel_prop, value, prop_type))
+                    result['invalid_values'].append(value)
+                    result['invalid_properties'].append(rel_prop)
+                    result['invalid_reason'].append(error_type)
+                    if not verbose:
+                        if error_type == "non_permissive_value":
+                            result['messages'].append(
+                                'Property: "{}":"{}" is not in permissible value list!'.format(rel_prop, value))
+                        elif error_type == "wrong_type":
+                            result['messages'].append(
+                                'Property: "{}":"{}" is in wrong type!'.format(rel_prop, value))
+                    else:
+                        result['messages'].append(
+                            'Property: "{}":"{}" is not a valid "{}" type!'.format(rel_prop, value, prop_type))
 
             elif key not in properties:
                 self.log.debug('Property "{}" is not in data model!'.format(key))
             else:
                 prop_type = properties[key]
-                if not self._validate_type(prop_type, value):
+                type_validation_result, error_type = self._validate_type(prop_type, value)
+                if not type_validation_result:
                     result['result'] = False
-                    result['messages'].append(
-                        'Property: "{}":"{}" is not a valid "{}" type!'.format(key, value, prop_type))
+                    result['invalid_values'].append(value)
+                    result['invalid_properties'].append(key)
+                    result['invalid_reason'].append(error_type)
+                    if not verbose:
+                        if error_type == "non_permissive_value":
+                            result['messages'].append(
+                                'Property: "{}":"{}" is not in permissible value list!'.format(key, value))
+                        elif error_type == "wrong_type":
+                            result['messages'].append(
+                                'Property: "{}":"{}" is in wrong type!'.format(key, value))
+                    else:
+                        result['messages'].append(
+                            'Property: "{}":"{}" is not a valid "{}" type!'.format(key, value, prop_type))
+
 
         return result
 
@@ -449,58 +486,63 @@ class ICDC_Schema:
         return True
 
     def _validate_type(self, model_type, str_value):
+        wrong_type = "wrong_type"
+        out_of_range = "out_of_range"
+        non_permissive_value = "non_permissive_value"
+        pass_type = "pass"
         if model_type[PROP_TYPE] == 'Float':
             try:
                 if str_value:
                     value = float(str_value)
                     if not self._validate_value_range(model_type, value):
-                        return False
+                        return False, out_of_range
             except ValueError:
-                return False
+                return False, wrong_type
         elif model_type[PROP_TYPE] == 'Int':
             try:
                 if str_value:
                     value = int(str_value)
                     if not self._validate_value_range(model_type, value):
-                        return False
+                        return False, out_of_range
             except ValueError:
-                return False
+                return False, wrong_type
         elif model_type[PROP_TYPE] == 'Boolean':
             if (str_value and not re.match(r'\byes\b|\btrue\b', str_value, re.IGNORECASE)
                     and not re.match(r'\bno\b|\bfalse\b', str_value, re.IGNORECASE)
                     and not re.match(r'\bltf\b', str_value, re.IGNORECASE)):
-                return False
+                return False, wrong_type
         elif model_type[PROP_TYPE] == 'Array':
             for item in get_list_values(str_value):
-                if not self._validate_type(model_type[ITEM_TYPE], item):
-                    return False
+                validation_result, error_type = self._validate_type(model_type[ITEM_TYPE], item)
+                if not validation_result:
+                    return False, wrong_type
 
         elif model_type[PROP_TYPE] == 'Object':
             if not isinstance(str_value, dict):
-                return False
+                return False, wrong_type
         elif model_type[PROP_TYPE] == 'String':
             if ENUM in model_type:
                 if not isinstance(str_value, str):
-                    return False
+                    return False, wrong_type
                 if str_value != '' and str_value not in model_type[ENUM]:
-                    return False
+                    return False, non_permissive_value
         elif model_type[PROP_TYPE] == 'Date':
             if not isinstance(str_value, str):
-                return False
+                return False, wrong_type
             try:
                 if str_value.strip() != '':
                     parse_date(str_value)
             except ValueError:
-                return False
+                return False, wrong_type
         elif model_type[PROP_TYPE] == 'DateTime':
             if not isinstance(str_value, str):
-                return False
+                return False, wrong_type
             try:
                 if str_value.strip() != '':
                     parse_date(str_value)
             except ValueError:
-                return False
-        return True
+                return False, wrong_type
+        return True, pass_type
 
     # Find relationship type from src to dest
     def get_relationship(self, src, dest):

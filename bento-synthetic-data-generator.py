@@ -829,7 +829,7 @@ for i in range(0, len(file_list)):
 props = Props(configuration_files['ID_FILE'])
 schema = ICDC_Schema([configuration_files['NODE_FILE'], configuration_files['PROP_FILE']], props)
 loader = DataLoader(None, schema)
-fileValidationResult = loader.validate_files(False, file_list, 0)
+fileValidationResult = loader.validate_files(False, file_list, 0, 'tmp', True)
 
 
 # In[34]:
@@ -864,11 +864,3 @@ if not relationshipValidationResult or not fileValidationResult:
         os.remove(os.path.join(mydir, f))
 else:
     print('Validation success')
-
-
-
-# In[ ]:
-
-
-
-
