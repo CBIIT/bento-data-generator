@@ -11,7 +11,7 @@ HeadNode:
 IncludeNodes:
   study:
     NodeCount: 1
-    Prefix: CDS-CASE
+    Prefix: CDS-STUDY
   participant:
     NodeCount: 40
     Prefix: CDS-CASE
