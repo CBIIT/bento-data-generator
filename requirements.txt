@@ -1,38 +1,5 @@
-# This file may be used to create an environment using:
-# $ conda create --name <env> --file <this file>
-# platform: osx-64
-boto3=1.14.38=pypi_0
-botocore=1.17.38=pypi_0
-ca-certificates=2020.10.14=0
-certifi=2020.6.20=py38_0
-chardet=3.0.4=pypi_0
-decorator=4.4.2=py_0
-docutils=0.15.2=pypi_0
-idna=2.10=pypi_0
-jmespath=0.10.0=pypi_0
-libcxx=12.0.0=h2f01273_0
-libffi=3.3=hb1e8313_2
-ncurses=6.2=h0a44026_1
-neo4j=1.7.6=pypi_0
-neobolt=1.7.17=pypi_0
-neotime=1.7.4=pypi_0
-networkx=2.5=py_0
-openssl=1.1.1l=h9ed2024_0
-pip>=21.1
-python=3.8.11=h88f2d9e_1
-python-dateutil=2.8.1=pypi_0
-python_abi=3.8=1_cp38
-pytz=2020.1=pypi_0
-pyyaml>=5.4
-readline=8.1=h9ed2024_0
-requests=2.24.0=pypi_0
-s3transfer=0.3.3=pypi_0
-setuptools=58.0.4=py38hecd8cb5_0
-six=1.15.0=pypi_0
-sqlite=3.36.0=hce871da_0
-tk=8.6.11=h7bc2e8c_0
-urllib3>=1.26.5
-validators=0.14.2=py_0
-wheel=0.37.0=pyhd3eb1b0_1
-xz=5.2.5=h1de35cc_0
-zlib=1.2.11=h1de35cc_3
+pandas
+pyyaml
+openpyxl
+requests
+neo4j
