@@ -236,12 +236,16 @@ RelationshipSpecs:
       SrcNodeCount: fixed
     targeted_therapy:
       SrcNodeCount: random
+      ManyToMany: True
     non_targeted_therapy:
       SrcNodeCount: random
+      ManyToMany: True
     surgery:
       SrcNodeCount: random
+      ManyToMany: True
     radiotherapy:
       SrcNodeCount: random
+      ManyToMany: True
     subject_status:
       SrcNodeCount: fixed
     specimen:

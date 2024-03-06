@@ -18,7 +18,7 @@ import argparse
 import logging
 from datetime import datetime, timedelta
 import uuid
-
+import copy
 
 # In[2]:
 
@@ -337,83 +337,83 @@ synthetic_values_df = pd.read_excel(io = SYNTHETIC_DATA_FILE,
 
 with open(PROP_FILE) as f:
     property_data = yaml.load(f, Loader=yaml.FullLoader)
-    for property_name in property_data['PropDefinitions'].keys():
+for property_name in property_data['PropDefinitions'].keys():
+    try:
+        property_value_type = property_data['PropDefinitions'][property_name]['Type']
+    except:
         try:
-            property_value_type = property_data['PropDefinitions'][property_name]['Type']
+            property_value_type = property_data['PropDefinitions'][property_name]['Enum']
         except:
-            try:
-                property_value_type = property_data['PropDefinitions'][property_name]['Enum']
-            except:
-                property_value_type = 'string'
+            property_value_type = 'string'
+    name = property_name
+    desc = ""
+    req= ""
+    value_type = ""
+    value_list = []
+    synthetic_value_list = []
+    units = []
+    private = ""
+    pattern = ""
+    url = ""
+    minimum = ""
+    maximum = ""
+    exclusiveMinimum = ""
+    exclusiveMaximum = ""
+    #print(property_value_type)
+    if type(property_value_type) is str:
         name = property_name
-        desc = ""
-        req= ""
-        value_type = ""
-        value_list = []
-        synthetic_value_list = []
-        units = []
-        private = ""
-        pattern = ""
-        url = ""
-        minimum = ""
-        maximum = ""
-        exclusiveMinimum = ""
-        exclusiveMaximum = ""
-        #print(property_value_type)
-        if type(property_value_type) is str:
-            name = property_name
-            value_type = property_value_type
-            if 'Desc' in property_data['PropDefinitions'][property_name]:
-                desc = property_data['PropDefinitions'][property_name]['Desc']
-            if 'Req' in property_data['PropDefinitions'][property_name]:
-                req = property_data['PropDefinitions'][property_name]['Req']
-            if 'Private' in property_data['PropDefinitions'][property_name]:
-                private = property_data['PropDefinitions'][property_name]['Private']
-            if 'minimum' in property_data['PropDefinitions'][property_name]:
-                minimum = property_data['PropDefinitions'][property_name]['minimum']
-            if 'maximum' in property_data['PropDefinitions'][property_name]:
-                maximum = property_data['PropDefinitions'][property_name]['maximum']
-            if property_name in synthetic_values_df.columns:
-                synthetic_value_list = [x for x in synthetic_values_df[property_name].tolist() if x != '']
-                
-        if type(property_value_type) is list:
-            value_type = "list"
-            value_list = property_value_type
-            #add section on reading the url to create a value list if property_value_type contains a url.
-            if 'Desc' in property_data['PropDefinitions'][property_name]:
-                desc = property_data['PropDefinitions'][property_name]['Desc']
-            if 'Req' in property_data['PropDefinitions'][property_name]:
-                req = property_data['PropDefinitions'][property_name]['Req']
-            if 'Private' in property_data['PropDefinitions'][property_name]:
-                private = property_data['PropDefinitions'][property_name]['Private']
-            if property_name in synthetic_values_df.columns:
-                synthetic_value_list = [x for x in synthetic_values_df[property_name].tolist() if x != '']
-                
-        if type(property_value_type) is dict:
-            if 'Desc' in property_data['PropDefinitions'][property_name]:
-                desc = property_data['PropDefinitions'][property_name]['Desc']
-            if 'value_type' in property_value_type:
-                value_type = property_value_type['value_type']
-            if 'units' in property_value_type:
-                units = property_value_type['units']
-            if 'pattern' in property_value_type:
-                pattern = property_value_type['pattern']
-                value_type = "regex"
-            if 'Req' in property_data['PropDefinitions'][property_name]:
-                req = property_data['PropDefinitions'][property_name]['Req']
-            if 'Private' in property_data['PropDefinitions'][property_name]:
-                private = property_data['PropDefinitions'][property_name]['Private']
-            if 'minimum' in property_data['PropDefinitions'][property_name]:
-                minimum = property_data['PropDefinitions'][property_name]['minimum']
-            if 'maximum' in property_data['PropDefinitions'][property_name]:
-                maximum = property_data['PropDefinitions'][property_name]['maximum']
-            if property_name in synthetic_values_df.columns:
-                synthetic_value_list = [x for x in synthetic_values_df[property_name].tolist() if x != '']
+        value_type = property_value_type
+        if 'Desc' in property_data['PropDefinitions'][property_name]:
+            desc = property_data['PropDefinitions'][property_name]['Desc']
+        if 'Req' in property_data['PropDefinitions'][property_name]:
+            req = property_data['PropDefinitions'][property_name]['Req']
+        if 'Private' in property_data['PropDefinitions'][property_name]:
+            private = property_data['PropDefinitions'][property_name]['Private']
+        if 'minimum' in property_data['PropDefinitions'][property_name]:
+            minimum = property_data['PropDefinitions'][property_name]['minimum']
+        if 'maximum' in property_data['PropDefinitions'][property_name]:
+            maximum = property_data['PropDefinitions'][property_name]['maximum']
+        if property_name in synthetic_values_df.columns:
+            synthetic_value_list = [x for x in synthetic_values_df[property_name].tolist() if x != '']
             
-        dict_of_model_properties[property_name] = ModelProperty(name = name, desc = desc, 
-                                                                    value_type = value_type, value_list = value_list,
-                                                                    units = units, url = url, req = req, private = private, minimum = minimum, maximum = maximum,
-                                                                    exclusiveMinimum = exclusiveMinimum, exclusiveMaximum = exclusiveMaximum, synthetic_value_list = synthetic_value_list)
+    if type(property_value_type) is list:
+        value_type = "list"
+        value_list = property_value_type
+        #add section on reading the url to create a value list if property_value_type contains a url.
+        if 'Desc' in property_data['PropDefinitions'][property_name]:
+            desc = property_data['PropDefinitions'][property_name]['Desc']
+        if 'Req' in property_data['PropDefinitions'][property_name]:
+            req = property_data['PropDefinitions'][property_name]['Req']
+        if 'Private' in property_data['PropDefinitions'][property_name]:
+            private = property_data['PropDefinitions'][property_name]['Private']
+        if property_name in synthetic_values_df.columns:
+            synthetic_value_list = [x for x in synthetic_values_df[property_name].tolist() if x != '']
+            
+    if type(property_value_type) is dict:
+        if 'Desc' in property_data['PropDefinitions'][property_name]:
+            desc = property_data['PropDefinitions'][property_name]['Desc']
+        if 'value_type' in property_value_type:
+            value_type = property_value_type['value_type']
+        if 'units' in property_value_type:
+            units = property_value_type['units']
+        if 'pattern' in property_value_type:
+            pattern = property_value_type['pattern']
+            value_type = "regex"
+        if 'Req' in property_data['PropDefinitions'][property_name]:
+            req = property_data['PropDefinitions'][property_name]['Req']
+        if 'Private' in property_data['PropDefinitions'][property_name]:
+            private = property_data['PropDefinitions'][property_name]['Private']
+        if 'minimum' in property_data['PropDefinitions'][property_name]:
+            minimum = property_data['PropDefinitions'][property_name]['minimum']
+        if 'maximum' in property_data['PropDefinitions'][property_name]:
+            maximum = property_data['PropDefinitions'][property_name]['maximum']
+        if property_name in synthetic_values_df.columns:
+            synthetic_value_list = [x for x in synthetic_values_df[property_name].tolist() if x != '']
+        
+    dict_of_model_properties[property_name] = ModelProperty(name = name, desc = desc, 
+                                                                value_type = value_type, value_list = value_list,
+                                                                units = units, url = url, req = req, private = private, minimum = minimum, maximum = maximum,
+                                                                exclusiveMinimum = exclusiveMinimum, exclusiveMaximum = exclusiveMaximum, synthetic_value_list = synthetic_value_list)
 
 # In[14]:
 
@@ -483,8 +483,8 @@ DATA_SPEC_FILE = configuration_files['DATA_SPEC_FILE']
 def synthetic_node_id_list_func(id_field_data, src_node_type, node_counter, synthetic_values_df):
     if id_field_data['Properties']['id_fields'][src_node_type] in synthetic_values_df.columns:
                         synthetic_node_id_list = [x for x in synthetic_values_df[id_field_data['Properties']['id_fields'][src_node_type]].tolist() if x != '']
-                        if len(synthetic_node_id_list) >= node_counter:
-                            return synthetic_node_id_list
+                        #if len(synthetic_node_id_list) >= node_counter:
+                        return synthetic_node_id_list
     return list()
 
 # In[19]:
@@ -555,7 +555,6 @@ def findEdgeType(node_data, src_node_type, dst_node_type):
 
 # In[24]:
 
-
 #Function to create a skeleton data graph.
 #Create a skeleton data graph.
 def SpawnNodes():
@@ -577,31 +576,73 @@ def SpawnNodes():
                     id_prefix = ""
                 # random a set of id without duplicate
                 node_id_number_list = random.sample(range(10**5, 10**6), node_counter)
+                old_node_id_list = []
+                for id in node_id_number_list:
+                    old_node_id_list.append(id)
+                old_node_id_dict = {}
                 node_index = 0
                 parent_node_index = 0
-                parent_node_length = len(dst_data_nodes_list)
+                #parent_node_length = len(dst_data_nodes_list)
+                if dst_node_type in includeNodes.keys():
+                    parent_node_length = includeNodes[dst_node_type]['NodeCount']
+                else:
+                    parent_node_length = len(dst_data_nodes_list)
                 step = int(node_counter / parent_node_length)
 
+                many_to_many_rel = False
                 many_to_many = False
+                #if "ManyToMany" in edge_specs[dst_node_type][src_node_type].keys():
+                #    many_to_many = edge_specs[dst_node_type][src_node_type]['ManyToMany']
+                #    many_to_many_list.append(dst_node_type)
                 # if the distribution is random
                 #print(node_counter, parent_node_length)
-                if node_counter < parent_node_length and "ManyToManyCount" in includeNodes[src_node_type].keys():
-                   node_counter = includeNodes[src_node_type]['ManyToManyCount']
-                   many_to_many = True
-                if many_to_many:
+                
+                if "ManyToManyCount" in includeNodes[src_node_type].keys():
+                    node_distribution = 'random'
+                    many_to_many = True
+                    node_counter = includeNodes[src_node_type]['ManyToManyCount']
                     expand_list = node_id_number_list
                     for i in range(len(node_id_number_list), node_counter):
                         expand_list.append(random.choice(node_id_number_list))
                     node_id_number_list = expand_list
+                    if "ManyToMany" in edge_specs[dst_node_type][src_node_type].keys():
+                        many_to_many_rel = edge_specs[dst_node_type][src_node_type]["ManyToMany"]
+
+
                 if node_distribution == 'random':
                     node_counter_list = range(node_counter)
                     random_split_points = random.sample(node_counter_list, parent_node_length - 1)
                     random_split_points.sort()
                     random_split_points_index = 0
+                
+                    
                 synthetic_node_id_list = synthetic_node_id_list_func(id_field_data, src_node_type, node_counter, synthetic_values_df)
                 
+                if node_distribution == 'random' and not many_to_many_rel and many_to_many:
+                    node_counter_list = range(len(old_node_id_list))
+                    random_split_points = random.sample(node_counter_list, parent_node_length - 1)
+                    random_split_points.sort()
+                    random_split_points_index = 0
+                    for index in range(0, len(old_node_id_list)):
+                        old_node_id = ""
+                        if len(synthetic_node_id_list) > 0:
+                            old_node_id = synthetic_node_id_list.pop()
+                        elif id_prefix != "":
+                            old_node_id = id_prefix + "-" + str(old_node_id_list[index])
+                        else:
+                            old_node_id = old_node_id_list[index]
+                        old_node_id_dict[str(old_node_id)] = dst_data_nodes_list[parent_node_index].node_id
+                        if index < len(random_split_points):
+                            if index == random_split_points[random_split_points_index]:
+                                random_split_points_index += 1
+                                parent_node_index += 1
+
+
+                node_id_list = []
+                if src_node_type in dict_of_data_nodes.keys():
+                    dict_of_data_nodes[src_node_type] = [copy.deepcopy(x) for x in dict_of_data_nodes[src_node_type]]
                 for count in range(0, node_counter):
-                    if node_distribution == 'fixed':
+                    if node_distribution == 'fixed' and not many_to_many:
                         if "one_to_one_count" in edge_specs[dst_node_type][src_node_type].keys():
                             if count > edge_specs[dst_node_type][src_node_type]['one_to_one_count']:
                                 step = (node_counter - edge_specs[dst_node_type][src_node_type]['one_to_one_count'])/edge_specs[dst_node_type][src_node_type]['many_to_one_count']
@@ -627,32 +668,43 @@ def SpawnNodes():
                         node_index += 1
                         parent_node_id_list = []
                         edge_id_list = [edge_id]
-                        parent_node_id_list.append(dst_data_nodes_list[parent_node_index].node_id)
+                        if not many_to_many_rel and many_to_many:
+                            parent_node_id_list.append(old_node_id_dict[node_id])
+                        else:
+                            parent_node_id_list.append(dst_data_nodes_list[parent_node_index].node_id)
                         child_node_id_list = []
                         node_type = src_node_type
                         src_data_node = DataNode(node_id = node_id, parent_node_id_list = parent_node_id_list, child_node_id_list = child_node_id_list,
-                                             node_type = node_type, node_attributes = {}, edge_id_list = edge_id_list) #source node created.
-                        
-                        dict_of_data_nodes[src_node_type].append(src_data_node) #source node added to the dict of nodes.
+                                                 node_type = node_type, node_attributes = {}, edge_id_list = edge_id_list) #source node created.
+                        if len(dict_of_data_nodes[src_node_type]) > 0:
+                            for created_node in dict_of_data_nodes[src_node_type]:
+                                if node_id == created_node.node_id and not many_to_many_rel:
+                                    src_data_node = created_node
+                                else:
+                                    node_id_list.append(node_id)
+                        dict_of_data_nodes[src_node_type].append(src_data_node) #source node added to the dict of nodes.         
                         dst_data_nodes_list[parent_node_index].child_node_id_list.append(node_id) #add created source node to the child nodes list for dst node.
 
                     #elif src_node_type in children:
-                    elif src_node_type in children:
-                        #print(len(dict_of_data_nodes[src_node_type]))
-                        #print(node_index)
-                        dict_of_data_nodes[src_node_type][node_index].parent_node_id_list.append(dst_data_nodes_list[parent_node_index].node_id)
+                    elif src_node_type in children: #and not many_to_many_rel:
+                        dict_of_data_nodes[src_node_type][node_index].parent_node_id_list.append(dst_data_nodes_list[parent_node_index].node_id)                  
                         dict_of_data_nodes[src_node_type][node_index].edge_id_list.append(edge_id)
                         node_index += 1
-                    
                     edge_type = findEdgeType(node_data, src_node_type, dst_node_type)
                     # edge_type = edge_specs[dst_node_type][src_node_type]['EdgeType']
                     edge_attributes = {}
                     data_edge = DataEdge(edge_id = edge_id, edge_type = edge_type, source_node = src_data_node, 
                                      destination_node = dst_data_nodes_list[parent_node_index], edge_attributes = edge_attributes) #edge created.
                     dict_of_data_edges[edge_id] = data_edge #edge added to the dict of edges.
-                if count == includeNodes[src_node_type]['NodeCount'] - 1:
-                    children.append(src_node_type)
+                    #node_index += 1
+                if many_to_many:
+                    if count == includeNodes[src_node_type]['ManyToManyCount'] - 1:
+                        children.append(src_node_type)
+                else:
+                    if count == includeNodes[src_node_type]['NodeCount'] - 1:
+                        children.append(src_node_type)
             created_children.append(dst_node_type)
+            
     data_graph = Graph(dict_of_data_nodes = dict_of_data_nodes, dict_of_data_edges = dict_of_data_edges)
     return data_graph
 
@@ -772,15 +824,12 @@ for node_type in data_graph.dict_of_data_nodes:
             index = 0
             created_parent_list = []
             for parent_node_id in node.parent_node_id_list:
-                #print(node.edge_id_list)
                 parent_id_field = dict_of_data_edges[node.edge_id_list[index]].destination_node.node_type + "." + GetNodeIDField(dict_of_data_edges[node.edge_id_list[index]].destination_node.node_type)
                 node_values_dict[parent_id_field].append(parent_node_id) #parent
                 if dict_of_data_edges[node.edge_id_list[index]].destination_node.node_type not in created_parent_list:
                     created_parent_list.append(dict_of_data_edges[node.edge_id_list[index]].destination_node.node_type)
                 index += 1
             for ct in created_parent_list:
-                #print(created_parent_list)
-                #print(node)
                 parent_node_type_list.remove(ct)
             if len(parent_node_type_list)>0:
                 for pt in parent_node_type_list:
@@ -789,7 +838,7 @@ for node_type in data_graph.dict_of_data_nodes:
                 
         if GetNodeIDField(node_type) not in node.node_attributes:
             node_values_dict[GetNodeIDField(node_type)].append(node.node_id) #node
-        if GetNodeIDField(node_type) in node.node_attributes and GetNodeIDField(node_type) not in synthetic_values_df.keys():
+        if GetNodeIDField(node_type) in node.node_attributes: # and GetNodeIDField(node_type) not in synthetic_values_df.keys():
             # if the user adds the id field into the data spec document accidentally
             del node.node_attributes[GetNodeIDField(node_type)]
             node_values_dict[GetNodeIDField(node_type)].append(node.node_id) #node
@@ -799,6 +848,7 @@ for node_type in data_graph.dict_of_data_nodes:
             node_values_dict[node_prop].append(node.node_attributes[node_prop])
         position+=1
     for node_values_key in node_values_dict:
+        #print(len(node_values_dict[node_values_key]))
         df[node_values_key] = node_values_dict[node_values_key]
         #print(node_values_dict[node_values_key])
     #df = pd.DataFrame({ key:pd.Series(value) for key, value in  node_values_dict.items() })
@@ -829,7 +879,7 @@ for i in range(0, len(file_list)):
 props = Props(configuration_files['ID_FILE'])
 schema = ICDC_Schema([configuration_files['NODE_FILE'], configuration_files['PROP_FILE']], props)
 loader = DataLoader(None, schema)
-fileValidationResult = loader.validate_files(False, file_list, 0)
+fileValidationResult = loader.validate_files(False, file_list, 1000000000, 'tmp', True)
 
 
 # In[34]:
@@ -856,19 +906,21 @@ def relationshipValidation(dict_of_data_edges, node_data, includeNodes):
 # In[35]:
 
 relationshipValidationResult = relationshipValidation(dict_of_data_edges, node_data, includeNodes)
-if not relationshipValidationResult or not fileValidationResult:
-    print('Validation fail, delete all files inside the data folder.')
-    mydir = os.path.abspath(configuration_files['OUTPUT_FOLDER'])
-    filelist = [ f for f in os.listdir(mydir) if f.endswith(".tsv") ]
-    for f in filelist:
-        os.remove(os.path.join(mydir, f))
+delete_error_file = True
+if "DELETE_ERROR_FILE" in configuration_files.keys():
+    delete_error_file = configuration_files["DELETE_ERROR_FILE"]
+
+if delete_error_file:
+    if not relationshipValidationResult or not fileValidationResult:
+        print('Validation fail, delete all files inside the data folder.')
+        mydir = os.path.abspath(configuration_files['OUTPUT_FOLDER'])
+        filelist = [ f for f in os.listdir(mydir) if f.endswith(".tsv") ]
+        for f in filelist:
+            os.remove(os.path.join(mydir, f))
+    else:
+        print('Validation success')
 else:
-    print('Validation success')
-
-
-
-# In[ ]:
-
-
-
-
+    if not relationshipValidationResult or not fileValidationResult:
+        print('Validation fail')
+    else:
+        print('Validation success')

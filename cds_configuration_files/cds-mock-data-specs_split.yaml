@@ -8,7 +8,6 @@ HeadNode:
 #Nodes to be included in the data graph.
 #Only nodes in the IncludeNodes section will be created.
 #Includes nodes in the hierarchy in which they occur in the model.
-#The parent nodes' NodeCount should not be smaller than the children nodes' NodeCount
 IncludeNodes:
   study:
     NodeCount: 1
@@ -260,8 +259,8 @@ IncludeProperties:
 
 #Relationship specifications. For example: how many studies per program; how many cases per studies.
 # This also includes specifications on how these node counts should be generated.
-# 1. SrcNodeCount: fixed, indicates that the parent_id will be evenly distributed
-# 2. SrcNodeCount: random, indicates that the parent_id will be randomly distributed
+# 1. SrcNodeCount: fixed, indicates that the "count" variable holds the counts.
+# 2. SrcNodeCount: random, indicates that counts are generated from a drawing from a uniform distribution 
 # 3. All relationships among the included nodes will automatically be created.
 # 4. Do not specify relationships between nodes of the same type, e.g between two samples, two visits etc.
 
@@ -269,6 +268,7 @@ RelationshipSpecs:
   program:
     study:
       SrcNodeCount: fixed
+      Exact_count: 50
   study:
     participant:
       SrcNodeCount: fixed
@@ -282,6 +282,7 @@ RelationshipSpecs:
   sample:
     file:
       SrcNodeCount: random
+      Exact_count: 150
   file:
     genomic_info:
       SrcNodeCount: fixed

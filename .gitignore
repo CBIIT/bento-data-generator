@@ -5,3 +5,5 @@ __pycache__/
 tmp/
 .gitsecret/keys/random_seed
 !*.secret
+.vscode
+*venv/
