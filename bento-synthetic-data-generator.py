@@ -378,7 +378,11 @@ for property_name in property_data['PropDefinitions'].keys():
             
     if type(property_value_type) is list:
         value_type = "list"
-        value_list = property_value_type
+        if "NON_PERMISSIVE_VALUE" not in configuration_files.keys():
+            value_list = property_value_type
+        else:
+            if not configuration_files["NON_PERMISSIVE_VALUE"]:
+                value_list = property_value_type
         #add section on reading the url to create a value list if property_value_type contains a url.
         if 'Desc' in property_data['PropDefinitions'][property_name]:
             desc = property_data['PropDefinitions'][property_name]['Desc']
@@ -588,6 +592,8 @@ def SpawnNodes():
                 else:
                     parent_node_length = len(dst_data_nodes_list)
                 step = int(node_counter / parent_node_length)
+                if parent_node_length > node_counter: #fix the parent node count should be bigger than children node count
+                    step = 1
 
                 many_to_many_rel = False
                 many_to_many = False

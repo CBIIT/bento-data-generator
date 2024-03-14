@@ -4,3 +4,4 @@ SYNTHETIC_DATA_FILE: ./ctdc_configuration_files/ctdc-synthetic_data_values.xlsx
 DATA_SPEC_FILE: ./ctdc_configuration_files/ctdc-mock-data-specs.yaml
 ID_FILE: ./ctdc_configuration_files/props-ctdc.yml
 OUTPUT_FOLDER: ./ctdc_mock_data_files/
+DELETE_ERROR_FILE: False
