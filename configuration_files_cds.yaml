@@ -1,8 +1,8 @@
 NODE_FILE: ./cds_configuration_files/cds-model.yml
 PROP_FILE: ./cds_configuration_files/cds-model-props.yml
 SYNTHETIC_DATA_FILE: ./cds_configuration_files/cds-synthetic_data_values.xlsx
-DATA_SPEC_FILE: ./cds_configuration_files/cds-mock-data-specs.yaml
+DATA_SPEC_FILE: ./cds_configuration_files/cds-mock-data-specs_manytomany.yaml
 ID_FILE: ./cds_configuration_files/props-cds.yml
-OUTPUT_FOLDER: ./cds_data_files/
+OUTPUT_FOLDER: ./cds_data_files_many_to_many/
 DELETE_ERROR_FILE: False
 NON_PERMISSIVE_VALUE: False #Change to True if the user wants to generate non_permissive values

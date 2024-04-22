@@ -279,6 +279,9 @@ RelationshipSpecs:
       SrcNodeCount: fixed
     sample:
       SrcNodeCount: fixed
+    file:
+      SrcNodeCount: random
+      ManyToMany: True
   sample:
     file:
       SrcNodeCount: random
