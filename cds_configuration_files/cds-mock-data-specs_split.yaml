@@ -268,7 +268,6 @@ RelationshipSpecs:
   program:
     study:
       SrcNodeCount: fixed
-      Exact_count: 50
   study:
     participant:
       SrcNodeCount: fixed
@@ -279,6 +278,9 @@ RelationshipSpecs:
       SrcNodeCount: fixed
     sample:
       SrcNodeCount: fixed
+    file:
+      SrcNodeCount: random
+      Exact_count: 50
   sample:
     file:
       SrcNodeCount: random
