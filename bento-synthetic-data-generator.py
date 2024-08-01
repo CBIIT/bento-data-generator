@@ -87,7 +87,7 @@ class ModelProperty:
             else:
                 property_data_value = random.randint(10,1000)
             return property_data_value
-        if self.value_type == 'date':
+        if self.value_type == 'date' or self.value_type == 'datetime':
             start_date = datetime(2019, 1, 1)
             end_date = datetime(2023, 12, 31)
             days_between = (end_date - start_date).days

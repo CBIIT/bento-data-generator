@@ -14,16 +14,16 @@ IncludeNodes:
     NodeCount: 1
     Prefix: CDS-STUDY
   participant:
-    NodeCount: 40
+    NodeCount: 200
     Prefix: CDS-CASE
   genomic_info:
     NodeCount: 200
     Prefix: CDS-GENO
   diagnosis:
-    NodeCount: 40
+    NodeCount: 200
     Prefix: CDS-DX
   sample:
-    NodeCount: 40
+    NodeCount: 200
     Prefix: CDS-BIOS
   file:
     NodeCount: 200
