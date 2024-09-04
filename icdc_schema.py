@@ -271,9 +271,11 @@ class ICDC_Schema:
                         if UNITS in prop_desc:
                             result[HAS_UNIT] = True
                 elif isinstance(prop_desc, list):
+                    #print(prop_desc)
                     enum = set()
                     r_url = re.compile(r"://")
                     url_list = list(filter(r_url.search, prop_desc))
+                    #print(url_list)
                     if not(len(prop_desc) == 1 and len(url_list) == 1):
                         for t in prop_desc:
                             enum.add(t)
