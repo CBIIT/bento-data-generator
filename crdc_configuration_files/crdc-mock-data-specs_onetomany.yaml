@@ -16,7 +16,7 @@ IncludeNodes:
     Prefix: CRDC-STUDY
   diagnosis:
     NodeCount: 40
-    Prefix: CRDC-DIAGNOSIS
+    #Prefix: CRDC-DIAGNOSIS
   sample:
     NodeCount: 20
     Prefix: CRDC-SAMPLE

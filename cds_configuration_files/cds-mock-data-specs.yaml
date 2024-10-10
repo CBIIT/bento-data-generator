@@ -11,8 +11,8 @@ HeadNode:
 #The parent nodes' NodeCount should not be smaller than the children nodes' NodeCount
 IncludeNodes:
   study:
-    NodeCount: 1
-    Prefix: CDS-STUDY
+    NodeCount: 4
+    #Prefix: CDS-STUDY
   participant:
     NodeCount: 200
     Prefix: CDS-CASE
@@ -31,6 +31,9 @@ IncludeNodes:
   image:
     NodeCount: 200
     Prefix: CDS-IMAGE
+  treatment:
+    NodeCount: 200
+    Prefix: CDS-TREATMENT
   
 #Properties for which synthetic values need to be created.
 #Assumption: property names are duplicated among node types, ie, a property never belongs
@@ -258,6 +261,14 @@ IncludeProperties:
     - passes_qc
     - crdc_id
 
+  treatment:
+    - treatment_id
+    - treatment_type
+    - treatment_outcome
+    - days_to_treatment
+    - therapeutic_agents
+    - response
+
 #Relationship specifications. For example: how many studies per program; how many cases per studies.
 # This also includes specifications on how these node counts should be generated.
 # 1. SrcNodeCount: fixed, indicates that the parent_id will be evenly distributed
@@ -280,6 +291,8 @@ RelationshipSpecs:
     sample:
       SrcNodeCount: fixed
     file:
+      SrcNodeCount: fixed
+    treatment:
       SrcNodeCount: fixed
   sample:
     file:

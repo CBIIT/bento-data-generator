@@ -913,7 +913,11 @@ fileValidationResult = loader.validate_files(False, file_list, 1000000000, 'tmp'
 def relationshipValidation(dict_of_data_edges, node_data, includeNodes):
     for edge in dict_of_data_edges.values():
         mul = node_data['Relationships'][edge.edge_type]['Mul']
-        prefix = includeNodes[edge.source_node.node_type]['Prefix']
+        try:
+            prefix = includeNodes[edge.source_node.node_type]['Prefix']
+        except Exception as e:
+            print(e)
+            prefix = ""
         child_node_id_list = []
         #print(edge.destination_node)
         for child_node_id in edge.destination_node.child_node_id_list:
