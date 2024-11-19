@@ -14,14 +14,13 @@ IncludeNodes:
     NodeCount: 20
     Prefix: CRDC-STUDY
   diagnosis:
-    NodeCount: 40
+    NodeCount: 10
     #Prefix: CRDC-DIAGNOSIS
   sample:
-    NodeCount: 60
+    NodeCount: 30
     Prefix: CRDC-SAMPLE
   file:
     NodeCount: 10
-    ManyToManyCount: 40
     Prefix: CDS-FILE
 
 #Properties for which synthetic values need to be created.
@@ -84,5 +83,4 @@ RelationshipSpecs:
       SrcNodeCount: fixed
   diagnosis:
     file:
-      SrcNodeCount: random
-      ManyToMany: True
+      SrcNodeCount: fixed

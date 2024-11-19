@@ -44,6 +44,8 @@ Nodes:
       - list_of_booleans
       - list_of_TBDs
       - file_id
+      - file_name
+      - md5sum
     Term:
       - Origin: CRDC
         Value: file

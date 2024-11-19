@@ -94,9 +94,7 @@ PropDefinitions:
       - "American Indian or Alaska Native"
       - "Asian"
       - "Black or African American"
-      - "Hispanic or Latino"
       - "Native Hawaiian or other Pacific Islander"
-      - "Not Allowed to Collect"
       - "Not Reported"
       - "Unknown"
       - "White"
@@ -207,3 +205,7 @@ PropDefinitions:
   study_id:
     Type: string
     Key: true
+  file_name:
+    Type: string
+  md5sum:
+    Type: string
