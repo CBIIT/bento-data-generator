@@ -604,7 +604,7 @@ def SpawnNodes():
                 #print(node_counter, parent_node_length)
                 
                 if "ManyToManyCount" in includeNodes[src_node_type].keys():
-                    node_distribution = 'random'
+                    #node_distribution = 'random'
                     many_to_many = True
                     node_counter = includeNodes[src_node_type]['ManyToManyCount']
                     expand_list = node_id_number_list
@@ -641,6 +641,25 @@ def SpawnNodes():
                         if index < len(random_split_points):
                             if index == random_split_points[random_split_points_index]:
                                 random_split_points_index += 1
+                                parent_node_index += 1
+
+                if node_distribution == 'fixed' and not many_to_many_rel and many_to_many:
+                    node_counter_list = range(len(old_node_id_list))
+                    evenly_split_points_index = 0
+                    import numpy as np
+                    evenly_split_points = np.linspace(0, len(old_node_id_list)-1, 10).tolist()
+                    for index in range(0, len(old_node_id_list)):
+                        old_node_id = ""
+                        if len(synthetic_node_id_list) > 0:
+                            old_node_id = synthetic_node_id_list.pop()
+                        elif id_prefix != "":
+                            old_node_id = id_prefix + "-" + str(old_node_id_list[index])
+                        else:
+                            old_node_id = old_node_id_list[index]
+                        old_node_id_dict[str(old_node_id)] = dst_data_nodes_list[parent_node_index].node_id
+                        if index < len(evenly_split_points):
+                            if index == evenly_split_points[evenly_split_points_index]:
+                                evenly_split_points_index += 1
                                 parent_node_index += 1
 
 
@@ -894,7 +913,11 @@ fileValidationResult = loader.validate_files(False, file_list, 1000000000, 'tmp'
 def relationshipValidation(dict_of_data_edges, node_data, includeNodes):
     for edge in dict_of_data_edges.values():
         mul = node_data['Relationships'][edge.edge_type]['Mul']
-        prefix = includeNodes[edge.source_node.node_type]['Prefix']
+        try:
+            prefix = includeNodes[edge.source_node.node_type]['Prefix']
+        except Exception as e:
+            print(e)
+            prefix = ""
         child_node_id_list = []
         #print(edge.destination_node)
         for child_node_id in edge.destination_node.child_node_id_list:

@@ -8,32 +8,29 @@ HeadNode:
 #Nodes to be included in the data graph.
 #Only nodes in the IncludeNodes section will be created.
 #Includes nodes in the hierarchy in which they occur in the model.
-#The parent nodes' NodeCount should not be smaller than the children nodes' NodeCount
 IncludeNodes:
   study:
-    NodeCount: 4
-    #Prefix: CDS-STUDY
+    NodeCount: 10
+    Prefix: CDS-STUDY
   participant:
-    NodeCount: 200
+    NodeCount: 40
     Prefix: CDS-CASE
   genomic_info:
     NodeCount: 200
     Prefix: CDS-GENO
   diagnosis:
-    NodeCount: 200
+    NodeCount: 40
     Prefix: CDS-DX
   sample:
-    NodeCount: 200
+    NodeCount: 40
     Prefix: CDS-BIOS
   file:
-    NodeCount: 200
+    NodeCount: 20
+    ManyToManyCount: 400
     Prefix: CDS-FILE
   image:
-    NodeCount: 200
+    NodeCount: 20
     Prefix: CDS-IMAGE
-  treatment:
-    NodeCount: 200
-    Prefix: CDS-TREATMENT
   
 #Properties for which synthetic values need to be created.
 #Assumption: property names are duplicated among node types, ie, a property never belongs
@@ -261,18 +258,10 @@ IncludeProperties:
     - passes_qc
     - crdc_id
 
-  treatment:
-    - treatment_id
-    - treatment_type
-    - treatment_outcome
-    - days_to_treatment
-    - therapeutic_agents
-    - response
-
 #Relationship specifications. For example: how many studies per program; how many cases per studies.
 # This also includes specifications on how these node counts should be generated.
-# 1. SrcNodeCount: fixed, indicates that the parent_id will be evenly distributed
-# 2. SrcNodeCount: random, indicates that the parent_id will be randomly distributed
+# 1. SrcNodeCount: fixed, indicates that the "count" variable holds the counts.
+# 2. SrcNodeCount: random, indicates that counts are generated from a drawing from a uniform distribution 
 # 3. All relationships among the included nodes will automatically be created.
 # 4. Do not specify relationships between nodes of the same type, e.g between two samples, two visits etc.
 
@@ -284,19 +273,19 @@ RelationshipSpecs:
     participant:
       SrcNodeCount: fixed
     file:
-      SrcNodeCount: fixed
+      SrcNodeCount: random
   participant:
     diagnosis:
       SrcNodeCount: fixed
     sample:
       SrcNodeCount: fixed
     file:
-      SrcNodeCount: fixed
-    treatment:
-      SrcNodeCount: fixed
+      SrcNodeCount: random
+      ManyToMany: True
   sample:
     file:
       SrcNodeCount: random
+      ManyToMany: True
   file:
     genomic_info:
       SrcNodeCount: fixed

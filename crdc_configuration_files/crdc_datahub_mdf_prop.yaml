@@ -1,0 +1,211 @@
+PropDefinitions:
+  id:
+    Type: string
+    Req: true
+  date:
+    Type: datetime
+    Req: Yes
+  transaction_id:
+    Type: url
+    Nul: true
+    Req: false
+  transaction_date:
+    Type: datetime
+    Key: false
+    Req: No
+  diagnosis_id:
+    Type: number
+    Desc: A unique identifier for a diagnosis.
+    Src: CRDC
+    Key: true
+    Nul: false
+  diagnosis:
+    Enum: [https:/icdo3.org/diagnosis_codes_and_terms/123]
+    Req: Preferred
+    Strict: false
+  participant_id:
+    Type: string
+    Key: true
+  case_type:
+    Type: TBD
+  of_participant_id:
+    Type: boolean
+  of_participant_type:
+    Enum:
+      - a_participant_type
+    Deprecated: false
+  of_file_id:
+    Enum:
+      - C:/path/to/file/id.txt
+    Deprecated: true
+  height:
+    Type:
+      value_type: number
+      units:
+        - cm
+  weight:
+    Type:
+      value_type: number
+      units:
+       - mg
+       - kg
+       - lbs
+       - stone
+      Term:
+        - Origin: CRDC
+          Code: 'weight123'
+          Value: Weight
+          Handle: weight
+  file_size:
+    Type:
+      value_type: integer
+      units:
+        - https://www.every_file_size_unit.com/bytesandstuff
+    Term:
+      - Origin: CRDC
+        Code: 'file123'
+        Value: File Size
+      - Origin: caDSR
+        Code: '11479876'
+        Value: Electronic Data File Size Integer
+        Version: '1.00'
+    Tags:
+      include_units: true
+    nanoid: nanoid
+  age_at_first_diagnosis:
+    Type:
+      value_type: integer
+      units: 
+        - years
+        - months
+        - days
+    Term:
+      - Origin: CRDC
+        Value: Age at First Diagnosis (years)
+      - Origin: caDSR
+        Value: Age at First Diagnosis in Years
+      - Origin: CCDI
+        Value: age at first diagnosis
+    Tags:
+      include_units: true
+      pref_units: days
+  race:
+    Enum:
+      - "American Indian or Alaska Native"
+      - "Asian"
+      - "Black or African American"
+      - "Native Hawaiian or other Pacific Islander"
+      - "Not Reported"
+      - "Unknown"
+      - "White"
+    Strict: true
+    Term:
+      - Origin: caDSR
+        Code: '2192199'
+        Value: Race Category Text
+        Version: '1.00'
+  sample_weight:
+    Type:
+      value_type: number
+      #units:
+      #  - pattern: ^\\d+(mg|kg|g)$
+      #    flavor: Perl
+      #  - pattern: ^\\d+(lbs|stone)$
+  sample_length:
+    Type:
+      value_type: number
+      units:
+        - path/to/sample/length/units/
+  sample_id:
+    Type:
+      pattern: ^[A-Z]{2,5}-\d{4,8}(_[A-Z\d]{2,4})?$
+      flavor: JS
+    Key: true
+  sample_type:
+    Type:
+      https://sample_types.com/api/v1/
+  sample_tumor_status:
+    Type:
+      - Normal
+      - Peritumoral
+      - Tumor
+  anatomic_site:
+    Type:
+      - https://anatomic_sites.gov/uberon/
+  collection_method:
+    Type:
+      - path/to/collection/methods
+  list_of_strings:
+    Type:
+      value_type: list
+      item_type: string
+  list_of_integers:
+    Type:
+      value_type: list
+      item_type: integer
+  list_of_numbers:
+    Type:
+      value_type: list
+      item_type: number
+  list_of_datetimes:
+    Type:
+      value_type: list
+      item_type: datetime
+  list_of_urls:
+    Type:
+      value_type: list
+      item_type: url
+  list_of_booleans:
+    Type:
+      value_type: list
+      item_type: boolean
+  list_of_TBDs:
+    Type:
+      value_type: list
+      item_type: TBD
+  study_data_types:
+    Type:
+      value_type: list
+      item_type:
+        - Genomic
+        - Imaging
+        - Clinical
+  experimental_strategy_and_data_subtype:
+    Type:
+      value_type: list
+      item_type:
+        - http://research.activity/experimental/method/type/1
+  participant_bmis:
+    Type:
+      value_type: list
+      item_type:
+        value_type: integer
+        units: 
+          - kg
+          - lbs
+          - stone
+  study_payments:
+    Type:
+      value_type: list
+      item_type:
+        value_type: number
+        units:
+          - $
+          - dollars
+          - USD
+  adult_or_childhood_study:
+    Enum:
+      - Adult
+      - Pediatric
+    Tags:
+      display_color: blue
+  file_id:
+    Type: string
+    Key: true
+  study_id:
+    Type: string
+    Key: true
+  file_name:
+    Type: string
+  md5sum:
+    Type: string

@@ -105,7 +105,8 @@ class ICDC_Schema:
         available
 
         """
-        return get_uuid(self.props.domain, node_type, signature)
+        str_signature = str(signature)
+        return get_uuid(self.props.domain, node_type, str_signature)
 
     def _process_properties(self, desc):
         """

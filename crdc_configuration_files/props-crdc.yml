@@ -1,0 +1,28 @@
+Properties:
+  domain: crdc.cancer.gov
+  rel_prop_delimiter: "$"
+
+  plurals:
+    study: studies
+    participant: participants
+    diagnosis: diagnoses
+    sample: samples
+    file: files
+
+  type_mapping:
+    string: String
+    number: Float
+    integer: Int
+    boolean: Boolean
+    array: Array
+    object: Object
+    datetime: DateTime
+    date: Date
+    TBD: String
+
+  id_fields:
+    study: study_id
+    participant: participant_id
+    diagnosis: diagnosis_id
+    sample: sample_id
+    file: file_id

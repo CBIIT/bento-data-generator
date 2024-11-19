@@ -11,7 +11,7 @@ HeadNode:
 #The parent nodes' NodeCount should not be smaller than the children nodes' NodeCount
 IncludeNodes:
   study:
-    NodeCount: 4
+    NodeCount: 1
     #Prefix: CDS-STUDY
   participant:
     NodeCount: 200
@@ -26,20 +26,158 @@ IncludeNodes:
     NodeCount: 200
     Prefix: CDS-BIOS
   file:
-    NodeCount: 200
+    NodeCount: 400
     Prefix: CDS-FILE
   image:
-    NodeCount: 200
+    NodeCount: 400
     Prefix: CDS-IMAGE
+  MultiplexMicroscopy:
+    NodeCount: 200
+    Prefix: CDS-MultiplexMicroscopy
+  NonDICOMCTimages:
+    NodeCount: 200
+    Prefix: CDS-NonDICOMCTimages
+  NonDICOMpathologyImages:
+    NodeCount: 200
+    Prefix: CDS-NonDICOMpathologyImages
+  NonDICOMMRimages:
+    NodeCount: 200
+    Prefix: CDS-NonDICOMMRimages
+  NonDICOMradiologyAllModalities:
+    NodeCount: 200
+    Prefix: CDS-NonDICOMradiologyAllModalities
+  NonDICOMPETimages:
+    NodeCount: 200
+    Prefix: CDS-NonDICOMPETimages
   treatment:
     NodeCount: 200
     Prefix: CDS-TREATMENT
+  
+  proteomic:
+    NodeCount: 200
+    Prefix: CDS-PROTEOMIC
   
 #Properties for which synthetic values need to be created.
 #Assumption: property names are duplicated among node types, ie, a property never belongs
 #to more than one node type.
 
 IncludeProperties:
+  MultiplexMicroscopy:
+    - MultiplexMicroscopy_id
+    - acquisition_method_type
+    - tumor_tissue_type
+    - tissue_fixative
+    - embedding_medium
+    - staining_method
+    - objective
+    - nominal_magnification
+    - immersion
+    - lens_numerical_aperture
+    - working_distance
+    - imaging_assay_type
+    - pyramid
+    - physical_size_x
+    - physical_size_y
+    - physical_size_z
+    - size_c
+    - size_t
+    - size_x
+    - size_y
+    - size_z
+    - channel_metadata_filename
+    - channel_metadata_file_url_in_cds
+    - channel_id
+    - channel_name
+    - cycle_number
+    - sub_cycle_number
+    - target_name
+    - antibody_name
+    - rrid_identifier
+    - fluorophore
+    - clone
+    - lot
+    - catalog_number
+    - excitation_wavelength
+    - emission_wavelength
+    - excitation_bandwidth
+    - emission_bandwidth
+    - metal_isotope_element_abbreviation
+    - metal_isotope_element_mass
+    - oligo_barcode_upper_strand
+    - oligo_barcode_lower_strand
+    - dilution
+    - concentration
+  NonDICOMCTimages:
+    - NonDICOMCTimages_id
+    - CTAquisitionProtocolElement_singleCollimationWidth
+    - CTAquisitionProtocolElement_totalCollimationWidth
+    - CTAquisitionProtocolElement_gantryDetectorTilt
+    - CTAquisitionProtocolElement_spiralPitchFactor
+    - CTAquisitionProtocolElement_ctdiVol
+    - CTAquisitionProtocolElement_ctdiPhantomTypeCode
+    - CTAquisitionProtocolElement_kVp
+    - CTAquisitionProtocolElement_exposureModulationType_Code
+    - CTImageReconstructionProtocolElement_convolutionKernel
+    - CTImageReconstructionProtocolElement_convolutionKernelGroupCode
+  NonDICOMMRimages:
+    - NonDICOMMRimages_id
+    - MRImageAcquisitionProtocolElement_echoPulseSequenceCategoryCode
+    - MRImageAcquisitionProtocolElement_diffusionBValue
+    - MRImageAcquisitionProtocolElement_diffusionDirectionalityCode
+    - MRImageAcquisitionProtocolElement_magneticFieldStrength
+    - MRImageAcquisitionProtocolElement_resonantNucleusCode
+    - MRImageAcquisitionProtocolElement_acquisitionContrastCode
+    - MRImageAcquisitionProtocolElement_inversionRecoveryIndicator
+    - MRImageAcquisitionProtocolElement_pulseSequenceName
+    - MRImageAcquisitionProtocolElement_multipleSpinEchoIndicator
+    - MRImageAcquisitionProtocolElement_phaseContrastIndicator
+    - MRImageAcquisitionProtocolElement_timeOfFlightContrastIndicator
+    - MRImageAcquisitionProtocolElement_arterialSpinLabelingContrastCode
+    - MRImageAcquisitionProtocolElement_steadyStatePulseSequenceCode
+    - MRImageAcquisitionProtocolElement_echoPlanarPulseSequenceIndicator
+    - MRImageAcquisitionProtocolElement_saturationRecoveryIndicator
+    - MRImageAcquisitionProtocolElement_spectrallySelectedSuppressionCode
+    - MRImageReconstructionProtocolElement_complexImageComponentCode
+  NonDICOMpathologyImages:
+    - NonDICOMpathologyImages_id
+    - acquisition_method_type
+    - tumor_tissue_type
+    - tissue_fixative
+    - embedding_medium
+    - staining_method
+    - objective
+    - nominal_magnification
+    - immersion
+    - lens_numerical_aperture
+  NonDICOMPETimages:
+    - NonDICOMPETimages_id
+    - PETImagingAcquisitionProtocolElement_gantryDetectorTilt
+    - Radiopharmaceutical_radionuclideCode
+  NonDICOMradiologyAllModalities:
+    - NonDICOMradiologyAllModalities_id
+    - performed_imaging_study_description
+    - performed_imaging_study_admittingDiagnosisCode
+    - performed_imaging_study_nonAcquisitionModalitiesInStudyCode
+    - performed_imaging_study_lossyImageCompressionIndicator
+    - performed_imaging_study_summary
+    - performed_imaging_study_primaryAnatomicSiteCode
+    - performed_imaging_study_acquisitionTypeCode
+    - performed_imaging_study_cardiacSynchronizationTechniqueCode
+    - performed_imaging_study_dataCollectionDiameter
+    - performed_imaging_study_respiratoryMotionTechniqueCode
+    - performed_imaging_study_bodyPositionCode
+    - performed_imaging_study_algorithmCode
+    - performed_imaging_study_reconstructionFieldOfViewHeight
+    - performed_imaging_study_reconstructionFieldOfViewWidth
+    - performed_imaging_study_reconstructionDiameter
+    - performed_imaging_study_sliceThickness
+    - performed_imaging_study_reconstructionInterval
+  proteomic:
+    - aliquot_id
+    - analytical_fractions
+    - instrument_make
+    - proteomic_instrument_model
+    - proteomic_design_description
   program:
     - program_name
     - program_acronym
@@ -161,7 +299,7 @@ IncludeProperties:
     - image_modality
     - imaging_equipment_manufacturer
     - imaging_equipment_model
-    - imaging_sofware
+    - imaging_software
     - imaging_protocol
     - organ_or_tissue
     - performed_imaging_study_description
@@ -264,7 +402,6 @@ IncludeProperties:
   treatment:
     - treatment_id
     - treatment_type
-    - treatment_outcome
     - days_to_treatment
     - therapeutic_agents
     - response
@@ -301,4 +438,19 @@ RelationshipSpecs:
     genomic_info:
       SrcNodeCount: fixed
     image:
+      SrcNodeCount: fixed
+    proteomic:
+      SrcNodeCount: fixed
+  image:
+    MultiplexMicroscopy:
+      SrcNodeCount: fixed
+    NonDICOMCTimages:
+      SrcNodeCount: fixed
+    NonDICOMpathologyImages:
+      SrcNodeCount: fixed
+    NonDICOMMRimages:
+      SrcNodeCount: fixed
+    NonDICOMradiologyAllModalities:
+      SrcNodeCount: fixed
+    NonDICOMPETimages:
       SrcNodeCount: fixed

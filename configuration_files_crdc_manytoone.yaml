@@ -1,0 +1,8 @@
+NODE_FILE: ./crdc_configuration_files/crdc_datahub_mdf.yml
+PROP_FILE: ./crdc_configuration_files/crdc_datahub_mdf_prop.yaml
+SYNTHETIC_DATA_FILE: ./crdc_configuration_files/crdc-synthetic_data_values.xlsx
+DATA_SPEC_FILE: ./crdc_configuration_files/crdc-mock-data-specs_manytoone.yaml
+ID_FILE: ./crdc_configuration_files/props-crdc.yml
+OUTPUT_FOLDER: ./crdc_data_files_many_to_one/
+DELETE_ERROR_FILE: False
+NON_PERMISSIVE_VALUE: False #Change to True if the user wants to generate non_permissive values
