@@ -37,7 +37,7 @@ Properties:
     genomic_info: genomic_info_id
     program: program_acronym
     image: study_link_id
-    proteomic: aliquot_id
+    proteomic: proteomic_info_id
     MultiplexMicroscopy: MultiplexMicroscopy_id
     NonDICOMCTimages: NonDICOMCTimages_id
     NonDICOMpathologyImages: NonDICOMpathologyImages_id
