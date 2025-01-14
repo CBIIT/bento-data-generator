@@ -1,0 +1,10 @@
+NODE_FILE: ./ctdc_configuration_files_1.0.0/ctdc_model_file.yaml
+PROP_FILE: ./ctdc_configuration_files_1.0.0/ctdc_model_properties_file.yaml
+SYNTHETIC_DATA_FILE: ./ctdc_configuration_files_1.0.0/ctdc-synthetic_data_values.xlsx
+DATA_SPEC_FILE: ./ctdc_configuration_files_1.0.0/ctdc-mock-data-specs.yaml
+ID_FILE: ./ctdc_configuration_files_1.0.0/props-ctdc.yml
+OUTPUT_FOLDER: ./ctdc_mock_data_files_1.0.0/
+GET_CDE_PERMISSIVE_VALUES: True
+CDE_ENV: dev
+CDE_PERMISSIVE_URL: "datahub_url" #replace it with the datahub api
+DELETE_ERROR_FILE: False
