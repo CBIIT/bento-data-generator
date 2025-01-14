@@ -3,7 +3,7 @@
 
 # In[1]:
 
-
+import requests
 from dataclasses import dataclass, field, fields, asdict
 import yaml
 from typing import List
@@ -19,6 +19,8 @@ import logging
 from datetime import datetime, timedelta
 import uuid
 import copy
+PROD = "prod"
+DATAHUB_HEADER = "https://hub"
 
 # In[2]:
 
@@ -334,17 +336,83 @@ synthetic_values_df = pd.read_excel(io = SYNTHETIC_DATA_FILE,
 
 # In[13]:
 
+get_cde_permissive_value = configuration_files.get("GET_CDE_PERMISSIVE_VALUES")
+def get_cde_pv(cde_url, cde_code):
+    cde_pv = []
+    query = """
+    query retrieveCDEs($CDEInfo: [CDEInput!]!) {
+    retrieveCDEs(CDEInfo: $CDEInfo) {
+        _id
+        CDEFullName
+        CDECode
+        CDEVersion
+        PermissibleValues
+        createdAt
+        updatedAt
+    }
+    }
+    """
+    garph_ql_variable = {
+        "CDEInfo": [
+            {
+                "CDECode": cde_code
+            }
+        ]
+    }
+    response = requests.post(
+        cde_url,
+        json={
+            "query": query,
+            "variables": garph_ql_variable  # Optional if your query/mutation doesn't need variables
+        }
+    )
+    if response.status_code == 200:
+        cde_info = response.json()
+        if len(cde_info['data']['retrieveCDEs']) > 0:
+            cde_pv = cde_info['data']['retrieveCDEs'][0].get("PermissibleValues",[])
+    else:
+        print("Error:", response.status_code, response.text)
+    if cde_pv is None:
+        cde_pv = []
+    return cde_pv
+
+
 
 with open(PROP_FILE) as f:
     property_data = yaml.load(f, Loader=yaml.FullLoader)
 for property_name in property_data['PropDefinitions'].keys():
     try:
-        property_value_type = property_data['PropDefinitions'][property_name]['Type']
+        try:
+            property_value_type = property_value_type = property_data['PropDefinitions'][property_name]['Type']['Enum']
+        except:
+            property_value_type = property_data['PropDefinitions'][property_name]['Type']
     except:
         try:
             property_value_type = property_data['PropDefinitions'][property_name]['Enum']
         except:
             property_value_type = 'string'
+    # see if the property is belong to string type
+    string_type = False
+    if type(property_value_type) is str:
+        if property_value_type == 'string':
+            string_type = True
+    if type(property_value_type) is list:
+        string_type = True
+
+    if get_cde_permissive_value and string_type:
+        terms = property_data["PropDefinitions"][property_name].get("Term")
+        if terms is not None:
+            cde_code = terms[0].get("Code")
+            cde_url = configuration_files.get("CDE_PERMISSIVE_URL")
+            cde_env = configuration_files.get("CDE_ENV")
+            if cde_code is not None and cde_url is not None:
+                if cde_env is not None and cde_env != PROD:
+                    cde_url = cde_url.replace(DATAHUB_HEADER, DATAHUB_HEADER + f"-{cde_env}")
+                cde_pv = get_cde_pv(cde_url, cde_code)
+                if len(cde_pv) > 0:
+                    property_value_type = cde_pv
+
+
     name = property_name
     desc = ""
     req= ""

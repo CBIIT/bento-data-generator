@@ -8,3 +8,6 @@ tmp/
 .vscode
 *venv/
 *.tsv
+*test*.py
+*test*.yaml
+.vscode/
