@@ -368,8 +368,13 @@ def get_cde_pv(cde_url, cde_code):
     )
     if response.status_code == 200:
         cde_info = response.json()
-        if len(cde_info['data']['retrieveCDEs']) > 0:
-            cde_pv = cde_info['data']['retrieveCDEs'][0].get("PermissibleValues",[])
+        try:
+            if len(cde_info['data']['retrieveCDEs']) > 0:
+                cde_pv = cde_info['data']['retrieveCDEs'][0].get("PermissibleValues",[])
+        except Exception as e:
+            cde_pv = []
+            print(f"Unable to obtain permissive values for the CDE code {cde_code}")
+            
     else:
         print("Error:", response.status_code, response.text)
     if cde_pv is None:
