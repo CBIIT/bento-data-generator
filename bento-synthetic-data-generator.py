@@ -371,6 +371,10 @@ def get_cde_pv(cde_url, cde_code):
         try:
             if len(cde_info['data']['retrieveCDEs']) > 0:
                 cde_pv = cde_info['data']['retrieveCDEs'][0].get("PermissibleValues",[])
+                if cde_pv is not None:
+                    if len(cde_pv) > 0:
+                        cde_pv = [item.strip() for item in cde_pv if item.strip()]
+                        print(cde_pv)
         except Exception as e:
             cde_pv = []
             print(f"Unable to obtain permissive values for the CDE code {cde_code}")
@@ -719,8 +723,6 @@ def SpawnNodes():
                 if node_distribution == 'fixed' and not many_to_many_rel and many_to_many:
                     node_counter_list = range(len(old_node_id_list))
                     evenly_split_points_index = 0
-                    import numpy as np
-                    evenly_split_points = np.linspace(0, len(old_node_id_list)-1, 10).tolist()
                     for index in range(0, len(old_node_id_list)):
                         old_node_id = ""
                         if len(synthetic_node_id_list) > 0:
@@ -730,12 +732,10 @@ def SpawnNodes():
                         else:
                             old_node_id = old_node_id_list[index]
                         old_node_id_dict[str(old_node_id)] = dst_data_nodes_list[parent_node_index].node_id
-                        if index < len(evenly_split_points):
-                            if index == evenly_split_points[evenly_split_points_index]:
-                                evenly_split_points_index += 1
-                                parent_node_index += 1
+                        if index % step == 0 and index != 0:
+                            parent_node_index += 1
 
-
+                
                 node_id_list = []
                 if src_node_type in dict_of_data_nodes.keys():
                     dict_of_data_nodes[src_node_type] = [copy.deepcopy(x) for x in dict_of_data_nodes[src_node_type]]
@@ -746,12 +746,12 @@ def SpawnNodes():
                                 step = (node_counter - edge_specs[dst_node_type][src_node_type]['one_to_one_count'])/edge_specs[dst_node_type][src_node_type]['many_to_one_count']
                         if node_index % step == 0 and node_index != 0:
                             parent_node_index += 1
-                    elif node_distribution == 'random':
+                    #elif node_distribution == 'random':
                         #print(node_index)
-                        if random_split_points_index < len(random_split_points):
-                            if node_index == random_split_points[random_split_points_index]:
-                                random_split_points_index += 1
-                                parent_node_index += 1
+                    #    if random_split_points_index < len(random_split_points):
+                    #        if node_index == random_split_points[random_split_points_index]:
+                    #            random_split_points_index += 1
+                    #            parent_node_index += 1
                     if parent_node_index > parent_node_length - 1:
                             parent_node_index = parent_node_length - 1
                     # node_id = id_prefix + "_" + str(random.randint(10**5, 10**6))
@@ -762,14 +762,20 @@ def SpawnNodes():
                     else:
                         node_id = node_id_number_list[node_index]
                     edge_id = "edge" + "_" + str(uuid.uuid4())
+                    current_parent_id = ""
                     if src_node_type not in children:
                         node_index += 1
                         parent_node_id_list = []
                         edge_id_list = [edge_id]
                         if not many_to_many_rel and many_to_many:
-                            parent_node_id_list.append(old_node_id_dict[node_id])
+                            current_parent_id = old_node_id_dict[node_id]
+                            parent_node_id_list.append(current_parent_id)
                         else:
-                            parent_node_id_list.append(dst_data_nodes_list[parent_node_index].node_id)
+                            if node_distribution == 'random':
+                                current_parent_id = random.choice(dst_data_nodes_list).node_id
+                            else:
+                                current_parent_id = dst_data_nodes_list[parent_node_index].node_id
+                            parent_node_id_list.append(current_parent_id)
                         child_node_id_list = []
                         node_type = src_node_type
                         src_data_node = DataNode(node_id = node_id, parent_node_id_list = parent_node_id_list, child_node_id_list = child_node_id_list,
@@ -780,12 +786,21 @@ def SpawnNodes():
                                     src_data_node = created_node
                                 else:
                                     node_id_list.append(node_id)
-                        dict_of_data_nodes[src_node_type].append(src_data_node) #source node added to the dict of nodes.         
-                        dst_data_nodes_list[parent_node_index].child_node_id_list.append(node_id) #add created source node to the child nodes list for dst node.
+                        dict_of_data_nodes[src_node_type].append(src_data_node) #source node added to the dict of nodes.
+                        current_parent_node_index = next((i for i, datanode in enumerate(dst_data_nodes_list) if datanode.node_id == current_parent_id), -1)
+                        dst_data_nodes_list[current_parent_node_index].child_node_id_list.append(node_id) #add created source node to the child nodes list for dst node.
 
                     #elif src_node_type in children:
                     elif src_node_type in children: #and not many_to_many_rel:
-                        dict_of_data_nodes[src_node_type][node_index].parent_node_id_list.append(dst_data_nodes_list[parent_node_index].node_id)                  
+                        if not many_to_many_rel and many_to_many:
+                            current_parent_id = old_node_id_dict[node_id]
+                        else:
+                            if node_distribution == 'random':
+                                current_parent_id = random.choice(dst_data_nodes_list).node_id
+                            else:
+                                current_parent_id = dst_data_nodes_list[parent_node_index].node_id
+                        current_parent_node_index = next((i for i, datanode in enumerate(dst_data_nodes_list) if datanode.node_id == current_parent_id), -1)
+                        dict_of_data_nodes[src_node_type][node_index].parent_node_id_list.append(dst_data_nodes_list[current_parent_node_index].node_id)                  
                         dict_of_data_nodes[src_node_type][node_index].edge_id_list.append(edge_id)
                         node_index += 1
                     edge_type = findEdgeType(node_data, src_node_type, dst_node_type)
@@ -954,6 +969,8 @@ for node_type in data_graph.dict_of_data_nodes:
     file_name = configuration_files['OUTPUT_FOLDER'] + node_type + ".tsv"
     if not os.path.exists(configuration_files['OUTPUT_FOLDER']):
         os.mkdir(configuration_files['OUTPUT_FOLDER'])
+    # remove duplication
+    df = df.drop_duplicates()
     df.to_csv(file_name, sep = "\t", index = False)
 
 
