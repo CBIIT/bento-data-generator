@@ -374,7 +374,6 @@ def get_cde_pv(cde_url, cde_code):
                 if cde_pv is not None:
                     if len(cde_pv) > 0:
                         cde_pv = [item.strip() for item in cde_pv if item.strip()]
-                        print(cde_pv)
         except Exception as e:
             cde_pv = []
             print(f"Unable to obtain permissive values for the CDE code {cde_code}")
