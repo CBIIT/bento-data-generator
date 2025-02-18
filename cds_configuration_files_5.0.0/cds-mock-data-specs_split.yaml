@@ -10,7 +10,7 @@ HeadNode:
 #Includes nodes in the hierarchy in which they occur in the model.
 IncludeNodes:
   study:
-    NodeCount: 10
+    NodeCount: 1
     Prefix: CDS-STUDY
   participant:
     NodeCount: 40
@@ -25,11 +25,10 @@ IncludeNodes:
     NodeCount: 40
     Prefix: CDS-BIOS
   file:
-    NodeCount: 20
-    ManyToManyCount: 400
+    NodeCount: 200
     Prefix: CDS-FILE
   image:
-    NodeCount: 20
+    NodeCount: 200
     Prefix: CDS-IMAGE
   
 #Properties for which synthetic values need to be created.
@@ -273,7 +272,7 @@ RelationshipSpecs:
     participant:
       SrcNodeCount: fixed
     file:
-      SrcNodeCount: random
+      SrcNodeCount: fixed
   participant:
     diagnosis:
       SrcNodeCount: fixed
@@ -281,11 +280,11 @@ RelationshipSpecs:
       SrcNodeCount: fixed
     file:
       SrcNodeCount: random
-      ManyToMany: True
+      Exact_count: 50
   sample:
     file:
       SrcNodeCount: random
-      ManyToMany: True
+      Exact_count: 150
   file:
     genomic_info:
       SrcNodeCount: fixed
