@@ -1166,7 +1166,6 @@ PropDefinitions:
     Desc: A coded value specifying spatial aspects of the mechanism of data collection.
     Enum:
     - 3D
-    Type: string
     Term:
     - Origin: caDSR
       Original Source: CDS
@@ -1749,7 +1748,7 @@ PropDefinitions:
   # file
   release_datetime:
     Desc: An ISO8601 formatted datetime that records the released datetime of the file
-    Type: datetime
+    Type: string
   is_supplementary_file:
     Desc: Whether or not the file is the supplementary file
     Type: boolean
@@ -1953,23 +1952,11 @@ PropDefinitions:
       Value: Research Activity Experimental Method Type
       Version: '1.00'
   # participant
-  sex:
+  sex_at_birth:
     Desc: A textual description of a person's sex at birth.
     Enum:
-    - Decline to answer
-    - Don't know
     - Female
-    - Intersex
     - Male
-    - None of these describe me
-    - Prefer not to answer
-    - Unknown
-    Term:
-    - Origin: caDSR
-      Original Source: CRDC Standard
-      Code: "7572817"
-      Value: Person Sex at Birth Category
-      Version: '1.00'
   ethnicity:
     Desc: OMB Ethnicity designator
     Enum:
@@ -1985,22 +1972,12 @@ PropDefinitions:
       Code: '2192217'
       Value: Ethnic Group Category Text
       Version: '2.00'
-  gender:
-    Desc: Biological gender at birth
+  sex:
+    Desc: Biological sex at birth
     Enum:
     - Female
-    - Intersex
     - Male
-    - Not Reported
-    - Unknown
-    - Unspecified
     Req: true
-    Term:
-    - Origin: caDSR
-      Original Source: NCI Std
-      Code: '2200604'
-      Value: Person Gender Text Type
-      Version: '3.00'
   race:
     Desc: OMB Race designator
     Enum:

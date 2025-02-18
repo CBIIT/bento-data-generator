@@ -81,7 +81,7 @@ class ModelProperty:
             property_data_value = round(property_data_value, 2)
             return property_data_value
         if self.value_type == 'boolean':
-            property_data_value = random.choice([True, False])
+            property_data_value = random.choice(["true", "false"])
             return property_data_value
         if self.value_type == 'integer':
             if type(self.minimum) == int and type(self.maximum) == int:
@@ -337,7 +337,7 @@ synthetic_values_df = pd.read_excel(io = SYNTHETIC_DATA_FILE,
 # In[13]:
 
 get_cde_permissive_value = configuration_files.get("GET_CDE_PERMISSIVE_VALUES")
-def get_cde_pv(cde_url, cde_code):
+def get_cde_pv(cde_url, cde_code, cde_version):
     cde_pv = []
     query = """
     query retrieveCDEs($CDEInfo: [CDEInput!]!) {
@@ -352,13 +352,23 @@ def get_cde_pv(cde_url, cde_code):
     }
     }
     """
-    garph_ql_variable = {
-        "CDEInfo": [
-            {
-                "CDECode": cde_code
-            }
-        ]
-    }
+    if cde_version is not None:
+        garph_ql_variable = {
+            "CDEInfo": [
+                {
+                    "CDECode": cde_code,
+                    "CDEVersion": cde_version
+                }
+            ]
+        }
+    else:
+        garph_ql_variable = {
+            "CDEInfo": [
+                {
+                    "CDECode": cde_code
+                }
+            ]
+        }
     response = requests.post(
         cde_url,
         json={
@@ -409,14 +419,16 @@ for property_name in property_data['PropDefinitions'].keys():
 
     if get_cde_permissive_value and string_type:
         terms = property_data["PropDefinitions"][property_name].get("Term")
+        
         if terms is not None:
             cde_code = terms[0].get("Code")
             cde_url = configuration_files.get("CDE_PERMISSIVE_URL")
             cde_env = configuration_files.get("CDE_ENV")
+            cde_version = terms[0].get("Version")
             if cde_code is not None and cde_url is not None:
                 if cde_env is not None and cde_env != PROD:
                     cde_url = cde_url.replace(DATAHUB_HEADER, DATAHUB_HEADER + f"-{cde_env}")
-                cde_pv = get_cde_pv(cde_url, cde_code)
+                cde_pv = get_cde_pv(cde_url, cde_code, cde_version)
                 if len(cde_pv) > 0:
                     property_value_type = cde_pv
 
@@ -970,6 +982,16 @@ for node_type in data_graph.dict_of_data_nodes:
         os.mkdir(configuration_files['OUTPUT_FOLDER'])
     # remove duplication
     df = df.drop_duplicates()
+    bool_list = []
+    for col_name in df.keys():
+        col_type = property_data['PropDefinitions'].get(col_name, {}).get("Type")
+        if col_type is None:
+            continue
+        if col_type == "boolean":
+            bool_list.append(col_name)
+    if len(bool_list) > 0:
+        for bool_col in bool_list:
+            df[bool_col] = df[bool_col].astype(str)
     df.to_csv(file_name, sep = "\t", index = False)
 
 
