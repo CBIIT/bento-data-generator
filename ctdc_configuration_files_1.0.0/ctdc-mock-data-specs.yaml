@@ -9,15 +9,12 @@ HeadNode:
 #Only nodes in the IncludeNodes section will be created.
 #Includes nodes in the hierarchy in which they occur in the model.
 IncludeNodes:
-  project:
-    NodeCount: 1
-    Prefix: CTDC-PROJECT
   study:
     NodeCount: 1
     Prefix: CTDC-STUDY
-  subject:
+  participant:
     NodeCount: 150
-    Prefix: CTDC-SUBJECT
+    Prefix: CTDC-PARTICIPANT
   demographic:
     NodeCount: 150
     Prefix: CTDC-DEMOGRAPHIC
@@ -36,9 +33,9 @@ IncludeNodes:
   radiotherapy:
     NodeCount: 300
     Prefix: CTDC-RADIOTHERAPY
-  subject_status:
+  participant_status:
     NodeCount: 150
-    Prefix: CTDC-SUBJECT-STATUS
+    Prefix: CTDC-PARTICIPANT-STATUS
   specimen:
     NodeCount: 300
     Prefix: CTDC-SPECIMEN
@@ -66,9 +63,12 @@ IncludeProperties:
     - program_name #11444542
     - program_short_name #11459801
     - crdc_id
-  project:
-    - project_name #11459804
-    - project_short_name #11459806
+  participant:
+    - participant_id #12220014
+    - biomarker_results_available #14735824
+    - radiology_report_available #14735825
+    - radiology_images_available #14735826
+    - histology_images_available #14735827
     - crdc_id
   study:
     - study_name #11459810
@@ -99,14 +99,6 @@ IncludeProperties:
     - image_collection_url #11556141
     - repository_name #14826003
     - collection_access #14825946
-    - crdc_id
-  
-  subject:
-    - subject_id #12220014
-    - biomarker_results_available #14735824
-    - radiology_report_available #14735825
-    - radiology_images_available #14735826
-    - histology_images_available #14735827
     - crdc_id
 
   demographic:
@@ -197,8 +189,8 @@ IncludeProperties:
     - best_response_to_radiotherapy #13383448
     - crdc_id
 
-  subject_status:
-    - subject_status_record_id #14822135
+  participant_status:
+    - participant_status_record_id #14822135
     - survival_status #2847330
     - primary_cause_of_death #4783274
     - off_study #14834973
@@ -251,21 +243,8 @@ RelationshipSpecs:
   program:
     study:
       SrcNodeCount: fixed
-    project:
-      SrcNodeCount: fixed
-  project:
-    study:
-      SrcNodeCount: fixed
-    principal_investigator:
-      SrcNodeCount: fixed
-    data_file:
-      SrcNodeCount: fixed
-    associated_link:
-      SrcNodeCount: fixed
-    image_collection:
-      SrcNodeCount: fixed
   study:
-    subject:
+    participant:
       SrcNodeCount: fixed
     associated_link:
       SrcNodeCount: fixed
@@ -276,7 +255,7 @@ RelationshipSpecs:
     data_file:
       SrcNodeCount: fixed
     
-  subject:
+  participant:
     data_file:
       SrcNodeCount: fixed
     demographic:
@@ -294,7 +273,7 @@ RelationshipSpecs:
       SrcNodeCount: fixed
     radiotherapy:
       SrcNodeCount: fixed
-    subject_status:
+    participant_status:
       SrcNodeCount: fixed
     specimen:
       SrcNodeCount: fixed
