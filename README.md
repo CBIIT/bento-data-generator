@@ -56,5 +56,6 @@ In the configuration file, ````DATA_SPEC_FILE```` value is the detailed configur
 
 ## Usage Example
 
-The user can use the command listed below to run the python script for generating Bento data in the local machine, 
-```python bento-synthetic-data-generator.py configuration_files_bento.yaml```
+The user can use the command listed below to run the python script for generating Bento data in the local machine.
+
+```python bento-synthetic-data-generator.py configuration_files_cds_5.0.0.yaml```
