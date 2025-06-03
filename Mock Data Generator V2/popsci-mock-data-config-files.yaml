@@ -1,0 +1,19 @@
+NODE_FILE: .\popsci-model.yml
+PROP_FILE: .\popsci-model-props.yml
+DATA_SPEC_FILE:  .\popsci-mock-data-specs_v2.yaml
+ID_FILE:  .\props-popsci.yml
+SYNTHETIC_DATA_FILE: .\cds-synthetic_data_values.xlsx
+
+ICDO_CONV_FILE:  .\sitetype.icdo3.d20220429.xlsx
+LOCATION_CONV_FILE: .\cancer_site_location.yaml
+STUDY_FILE: .\Study_Files\
+OUTPUT_FOLDER: .\Mock_Data_Output\
+
+
+
+#NODE_FILE: ./cds_two_head_nodes_configuration_files/cds-model.yml
+#PROP_FILE: ./cds_two_head_nodes_configuration_files/cds-model-props_v2.yml
+#SYNTHETIC_DATA_FILE: ./cds_two_head_nodes_configuration_files/cds-synthetic_data_values.xlsx
+#DATA_SPEC_FILE: ./cds_two_head_nodes_configuration_files/cds-mock-data-specs.yaml
+#ID_FILE: ./cds_two_head_nodes_configuration_files/props-cds.yml
+#OUTPUT_FOLDER: ./cds_two_head_nodes_data_files/
