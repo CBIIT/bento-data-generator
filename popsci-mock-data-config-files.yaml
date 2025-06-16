@@ -1,0 +1,11 @@
+#these files are also used in the data loader and will be stored in that repository
+NODE_FILE: ..\Data_Loader\model_files\popsci-model.yml
+PROP_FILE: ..\Data_Loader\model_files\popsci-model-props.yml
+ID_FILE:  ..\Data_Loader\model_files\props-popsci.yml
+LOCATION_CONV_FILE: ..\Data_Loader\model_files\cancer_site_location.yaml
+HISTOLOGY_CONV_FILE: ..\Data_Loader\model_files\cancer_histology_v2.yaml
+
+SYNTHETIC_DATA_FILE: .\cds-synthetic_data_values.xlsx  #this file is in the code but file is empt
+DATA_SPEC_FILE:  .\popsci-mock-data-specs_v2.yaml
+STUDY_FILE: .\Study_Files\
+OUTPUT_FOLDER: .\Mock_Data_Output\
