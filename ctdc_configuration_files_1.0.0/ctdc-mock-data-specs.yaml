@@ -13,16 +13,16 @@ IncludeNodes:
     NodeCount: 1
     Prefix: CTDC-STUDY
   participant:
-    NodeCount: 150
+    NodeCount: 100
     Prefix: CTDC-PARTICIPANT
   demographic:
-    NodeCount: 150
+    NodeCount: 100
     Prefix: CTDC-DEMOGRAPHIC
   exposure:
     NodeCount: 200
     Prefix: CTDC-EXPOSURE
   diagnosis:
-    NodeCount: 150
+    NodeCount: 100
     Prefix: CTDC-DIAGNOSIS
   targeted_therapy:
     NodeCount: 300
@@ -34,13 +34,13 @@ IncludeNodes:
     NodeCount: 300
     Prefix: CTDC-RADIOTHERAPY
   participant_status:
-    NodeCount: 150
+    NodeCount: 100
     Prefix: CTDC-PARTICIPANT-STATUS
   specimen:
     NodeCount: 300
     Prefix: CTDC-SPECIMEN
   data_file:
-    NodeCount: 600
+    NodeCount: 100
     Prefix: CTDC-DATA-FILE
   associated_link:
     NodeCount: 100
@@ -140,7 +140,7 @@ IncludeProperties:
     - histological_subtype #14843594
     - stage_of_disease #3440332
     - tumor_grade #11325685
-    #- date_of_diagnosis #2178801 # quantified in days indexed to date of trial enrollment 
+    # - date_of_diagnosis #2178801 # quantified in days indexed to date of trial enrollment 
     #- subject_age_at_diagnosis #10609539
     - crdc_id
 

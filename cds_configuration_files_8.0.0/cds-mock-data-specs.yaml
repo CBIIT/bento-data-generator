@@ -86,7 +86,7 @@ IncludeProperties:
     - co_investigator_name
     - co_investigator_email
     - phs_accession
-    - bioproject_accession
+    #- bioproject_accession
     - funding_agency
     - funding_source_program_name
     - grant_id
@@ -163,7 +163,7 @@ IncludeProperties:
     - sample_anatomic_site
     - sample_age_at_collection
     - derived_from_specimen
-    - biosample_accession
+    #- biosample_accession
     - crdc_id
 
   file:

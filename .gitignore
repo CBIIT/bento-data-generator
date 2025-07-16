@@ -11,3 +11,4 @@ tmp/
 *test*.py
 *test*.yaml
 .vscode/
+*test.*
