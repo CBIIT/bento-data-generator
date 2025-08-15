@@ -39,7 +39,7 @@ IncludeNodes:
   specimen:
     NodeCount: 300
     Prefix: CTDC-SPECIMEN
-  data_file:
+  file:
     NodeCount: 100
     Prefix: CTDC-DATA-FILE
   associated_link:
@@ -71,6 +71,7 @@ IncludeProperties:
     - histology_images_available #14735827
     - crdc_id
   study:
+    - study_accession
     - study_name #11459810
     - study_short_name #11459812
     - study_id #5054234
@@ -85,7 +86,6 @@ IncludeProperties:
     - person_middle_name #2179590
     - person_orcid #10624734
     - crdc_id
-
   associated_link:
     - associated_link_record_id #14822135
     - associated_link_name #14822136
@@ -140,7 +140,7 @@ IncludeProperties:
     - histological_subtype #14843594
     - stage_of_disease #3440332
     - tumor_grade #11325685
-    # - date_of_diagnosis #2178801 # quantified in days indexed to date of trial enrollment 
+    #- date_of_diagnosis #2178801 # quantified in days indexed to date of trial enrollment 
     #- subject_age_at_diagnosis #10609539
     - crdc_id
 
@@ -219,7 +219,7 @@ IncludeProperties:
       # - days_from_specimen_collection_to_initial_pathologic_diagnosis #11253404
       - crdc_id
 
-  data_file:
+  file:
     - data_file_name #11284037
     - data_file_type  #14824731
     - data_file_description #11280338
@@ -252,11 +252,10 @@ RelationshipSpecs:
       SrcNodeCount: fixed
     principal_investigator:
       SrcNodeCount: fixed
-    data_file:
+    file:
       SrcNodeCount: fixed
-    
   participant:
-    data_file:
+    file:
       SrcNodeCount: fixed
     demographic:
       SrcNodeCount: fixed
@@ -278,9 +277,9 @@ RelationshipSpecs:
     specimen:
       SrcNodeCount: fixed
   diagnosis:
-    data_file:
+    file:
       SrcNodeCount: fixed
   specimen:
-    data_file:
+    file:
       SrcNodeCount: fixed
 

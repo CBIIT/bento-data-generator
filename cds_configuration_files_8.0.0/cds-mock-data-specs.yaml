@@ -14,7 +14,7 @@ IncludeNodes:
     NodeCount: 1
     Prefix: GC-STUDY
   pdx:
-    NodeCount: 400
+    NodeCount: 200
     Prefix: GC-PDX
   participant:
     NodeCount: 200
@@ -220,7 +220,6 @@ IncludeProperties:
     - imaging_software
     - imaging_protocol
     - organ_or_tissue
-    - performed_imaging_study_typeCode
     - longitudinal_temporal_event_type
     - longitudinal_temporal_event_offset
     - crdc_id
@@ -343,6 +342,7 @@ IncludeProperties:
     - performed_imaging_study_reconstructionDiameter
     - performed_imaging_study_sliceThickness
     - performed_imaging_study_reconstructionInterval
+    - performed_imaging_study_typeCode
     - crdc_id
   proteomic:
     - proteomic_info_id
