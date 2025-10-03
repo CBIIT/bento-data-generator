@@ -1,0 +1,11 @@
+NODE_FILE: ./cds_configuration_files_10.0.0/cds-model.yml
+PROP_FILE: ./cds_configuration_files_10.0.0/cds-model-props.yml
+SYNTHETIC_DATA_FILE: ./cds_configuration_files_10.0.0/cds-synthetic_data_values_test.xlsx
+DATA_SPEC_FILE: ./cds_configuration_files_10.0.0/cds-mock-data-specs.yaml
+ID_FILE: ./cds_configuration_files_10.0.0/props-cds.yml
+OUTPUT_FOLDER: ./cds_data_files_10.0.0/
+GET_CDE_PERMISSIVE_VALUES: True
+CDE_ENV: dev2
+CDE_PERMISSIVE_URL: "datahub_url"
+DELETE_ERROR_FILE: False #must set to False if getting pvs from cde
+NON_PERMISSIVE_VALUE: False #Change to True if the user wants to generate non_permissive values

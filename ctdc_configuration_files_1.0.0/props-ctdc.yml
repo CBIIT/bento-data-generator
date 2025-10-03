@@ -18,8 +18,9 @@ Properties:
     surgical_procedure: surgical_procedures
     radiological_procedure: radiological_procedures
     subject_status: subject_status
-    data_file: data_files
+    file: files
     principal_investigator:  principal_investigators
+    consent_group: consent_groups
 
   type_mapping:
     string: String
@@ -48,5 +49,6 @@ Properties:
     surgery: surgical_procedure_record_id
     radiotherapy: radiological_procedure_record_id
     participant_status: participant_status_record_id
-    data_file: data_file_uuid
+    file: data_file_uuid
     principal_investigator:  person_record_id
+    consent_group: consent_group_id

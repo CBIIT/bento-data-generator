@@ -6,6 +6,7 @@
 import requests
 from dataclasses import dataclass, field, fields, asdict
 import yaml
+import rstr
 from typing import List
 from collections import namedtuple, defaultdict, Counter
 import random
@@ -96,6 +97,9 @@ class ModelProperty:
             random_days = random.randint(0, days_between)
             property_data_value = start_date + timedelta(days=random_days)
             return property_data_value
+        if self.pattern != "" or self.pattern is not None:
+            print(self.pattern)
+            property_data_value = rstr.xeger(self.pattern)
 
 
 # In[3]:
@@ -489,7 +493,8 @@ for property_name in property_data['PropDefinitions'].keys():
         if 'units' in property_value_type:
             units = property_value_type['units']
         if 'pattern' in property_value_type:
-            pattern = property_value_type['pattern']
+            #pattern = property_value_type['pattern']
+            pattern = property_value_type.get('Type', {}).get('pattern')
             value_type = "regex"
         if 'Req' in property_data['PropDefinitions'][property_name]:
             req = property_data['PropDefinitions'][property_name]['Req']

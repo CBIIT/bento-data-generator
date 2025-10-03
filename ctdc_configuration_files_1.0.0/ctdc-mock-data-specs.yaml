@@ -13,16 +13,16 @@ IncludeNodes:
     NodeCount: 1
     Prefix: CTDC-STUDY
   participant:
-    NodeCount: 150
+    NodeCount: 100
     Prefix: CTDC-PARTICIPANT
   demographic:
-    NodeCount: 150
+    NodeCount: 100
     Prefix: CTDC-DEMOGRAPHIC
   exposure:
     NodeCount: 200
     Prefix: CTDC-EXPOSURE
   diagnosis:
-    NodeCount: 150
+    NodeCount: 100
     Prefix: CTDC-DIAGNOSIS
   targeted_therapy:
     NodeCount: 300
@@ -34,13 +34,13 @@ IncludeNodes:
     NodeCount: 300
     Prefix: CTDC-RADIOTHERAPY
   participant_status:
-    NodeCount: 150
+    NodeCount: 100
     Prefix: CTDC-PARTICIPANT-STATUS
   specimen:
     NodeCount: 300
     Prefix: CTDC-SPECIMEN
-  data_file:
-    NodeCount: 600
+  file:
+    NodeCount: 100
     Prefix: CTDC-DATA-FILE
   associated_link:
     NodeCount: 100
@@ -71,6 +71,7 @@ IncludeProperties:
     - histology_images_available #14735827
     - crdc_id
   study:
+    - study_accession
     - study_name #11459810
     - study_short_name #11459812
     - study_id #5054234
@@ -85,7 +86,6 @@ IncludeProperties:
     - person_middle_name #2179590
     - person_orcid #10624734
     - crdc_id
-
   associated_link:
     - associated_link_record_id #14822135
     - associated_link_name #14822136
@@ -219,7 +219,7 @@ IncludeProperties:
       # - days_from_specimen_collection_to_initial_pathologic_diagnosis #11253404
       - crdc_id
 
-  data_file:
+  file:
     - data_file_name #11284037
     - data_file_type  #14824731
     - data_file_description #11280338
@@ -252,11 +252,10 @@ RelationshipSpecs:
       SrcNodeCount: fixed
     principal_investigator:
       SrcNodeCount: fixed
-    data_file:
+    file:
       SrcNodeCount: fixed
-    
   participant:
-    data_file:
+    file:
       SrcNodeCount: fixed
     demographic:
       SrcNodeCount: fixed
@@ -278,9 +277,9 @@ RelationshipSpecs:
     specimen:
       SrcNodeCount: fixed
   diagnosis:
-    data_file:
+    file:
       SrcNodeCount: fixed
   specimen:
-    data_file:
+    file:
       SrcNodeCount: fixed
 
