@@ -1,0 +1,191 @@
+#Properties for which synthetic values need to be created.
+#Assumption: property names are duplicated among node types, ie, a property never belongs
+#to more than one node type.
+
+#Head nodes do not have any parents
+#most models only have one headnode but any node with NO parents classifies as a headnode
+HeadNode:   
+  - name: program
+    Prefix: ""
+    count: 1   #make 1 program node
+  - name: next_generation_sequencing_assay
+    Prefix: Next_Gen_Sequence_Assay
+    count: 2  #make 2 different NGS nodes
+  - name: immune_assay
+    Prefix: Immune_Assay
+    count: 2  #create 2 differnt Immune Assay Nodes
+  - name: cell_based_assay
+    Prefix: Cell_Based_Assay
+    count: 3  #create 2 differnt Cell Based Assay Nodes
+
+###########################################################################################
+# use this property to set the study name
+StudyName: MOCK_AI
+
+###########################################################################################
+#for each node included will generate a ID field for the value locacted in props["id_fields"]
+#the term will be the Prefix followed by a random number of length defined by the id_length that is zero padded
+#example {StudyName}-{Prefix}-{zero padded random number}
+#id_length defaults to a 3 digit number or the smallest power of 10 to capture all the records
+IncludeNodes:
+  study:
+     Prefix: STUDY
+  file:
+    Prefix: FILE    #example   CMB-FILE-6291970
+  principal_investigator:
+    Prefix: INVESTIGATOR
+  associated_link:
+    Prefix: ASSOCIATED_LINK
+  image_collection:
+    Prefix: IMAGE_COLLECTION
+  consent_group:
+    Prefix: GRU_COL  #CONSENT_GROUP
+  cohort:
+    Prefix: COHORT
+  study_arm:
+    Prefix: STUDY_ARM
+  publication:
+    Prefix: PUBLICATION
+  participant:
+    Prefix: SUBJECT
+  demographic:
+    Prefix: DEMOGRAPHIC
+  participant_status:
+    Prefix: STATUS
+  exposure:
+    Prefix: EXPOSURE
+  diagnosis:
+    Prefix: DIAGNOSIS
+  targeted_therapy:
+    Prefix: TARGET
+  non_targeted_therapy:
+    Prefix: NON-TARGET
+  surgery:
+    Prefix: SURGERY
+  radiotherapy:
+    Prefix: RADIOTHERAPY
+  specimen:
+    Prefix: SPECIMEN
+  assay:
+    Prefix: ASSAY
+
+###########################################################################################
+ 
+#Relationship specifications. For example: how many studies per program; how many cases per studies.
+# This also includes specifications on how these node counts should be generated.
+# 1. SrcNodeCount: fixed, indicates that the "count" variable holds the counts.
+# 2. SrcNodeCount: random, indicates that counts are generated from a drawing from a uniform distribution 
+# 3. SrcNodeCount: cousin, indicates that both source and destination nodes already exist and a random sampling 
+#                      relationship needs to be established with out makeing new nodes
+# 4. All relationships among the included nodes will automatically be created.
+# 5. Do not specify relationships between nodes of the same type, e.g between two samples, two visits etc.
+
+#in this model it is study -> study_arm -> cohort ->- participant
+
+RelationshipSpecs: 
+#Parent:
+    #Child:
+        #number of child nodes for each parent node
+        #child relation to parent
+ 
+  program:
+     study:
+       NodeCount: 1
+       SrcNodeCount: fixed
+       
+  study:
+    participant:
+      SrcNodeCount: decendant    #in this model it is study -> study_arm -> cohort -> participant
+    file:
+      SrcNodeCount: decendant    #in this model it is participant -> diagnosis -> specimen -> file
+    associated_link:
+      NodeCount: 1
+      SrcNodeCount: fixed
+    image_collection:
+      NodeCount: 5
+      SrcNodeCount: random
+    publication:
+      NodeCount: 5
+      SrcNodeCount: random
+    consent_group:
+      NodeCount: 3
+      SrcNodeCount: fixed
+    cohort:
+      SrcNodeCount: decendant  #in this model it is study -> study_arm -> cohort
+    study_arm:
+      NodeCount: 2
+      SrcNodeCount: fixed
+    principal_investigator:
+      NodeCount: 3
+      SrcNodeCount: random
+
+  assay:
+    file:
+      NodeCount: 3
+      SrcNodeCount: fixed
+
+  specimen:
+    file:
+      NodeCount: 2
+      SrcNodeCount: fixed
+    assay:
+      NodeCount: 3
+      SrcNodeCount: random
+  diagnosis:
+    file:
+      SrcNodeCount: decendant    #in this model it is participant -> diagnosis -> specimen -> file
+
+  cell_based_assay:
+    assay:
+      SrcNodeCount: decendant
+  immune_assay:
+    assay:
+      SrcNodeCount: decendant    #in this model it is specimen -> assay <- subassay
+  next_generation_sequencing_assay:
+    assay:
+      SrcNodeCount: decendant    #in this model it is specimen -> assay <- subassay
+
+  consent_group:
+    participant:
+      SrcNodeCount: sibling     # participant count is determined by cohort, not by consent group
+  
+  study_arm:
+    cohort:
+      NodeCount: 1
+      SrcNodeCount: fixed    # for each study arm, make up to 4 cohorts
+  
+  cohort:
+    participant:
+      NodeCount: 50     #total participats made will be (study count) * (study_arm count) * (cohort count) * (participant count)
+      SrcNodeCount: fixed   # for each cohort make 50 participants (2 * 1 * 50)
+
+  participant:
+    demographic:
+      NodeCount: 1
+      SrcNodeCount: fixed    #each participant gets 1 and only 1 demographic node
+    exposure:
+      NodeCount: 2
+      SrcNodeCount: random
+    diagnosis:
+      NodeCount: 3
+      SrcNodeCount: random
+    targeted_therapy:
+      NodeCount: 3
+      SrcNodeCount: random
+    non_targeted_therapy:
+      NodeCount: 2
+      SrcNodeCount: random    
+    surgery:
+      NodeCount: 4
+      SrcNodeCount: random
+    radiotherapy:
+      NodeCount: 3
+      SrcNodeCount: random
+    participant_status:
+      NodeCount: 1
+      SrcNodeCount: fixed
+    specimen:
+      NodeCount: 3
+      SrcNodeCount: random
+    file:
+      SrcNodeCount: decendant    #in this model it is participant -> diagnosis -> specimen -> file

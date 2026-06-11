@@ -1,0 +1,17 @@
+#these files are also used in the data loader and will be stored in that repository
+#NODE_FILE: .\Model_Files\ctdc_model_file.yaml
+#PROP_FILE: .\Model_Files\ctdc_model_properties_file.yaml
+#ID_FILE:   .\Model_Files\props_ctdc.yml
+
+#SYNTHETIC_DATA_FILE:  .\Additional_Files\cds-synthetic_data_values.xlsx  #this file is in the code but file is empt
+
+DATA_SPEC_FILE:       .\ctdc-mock-data-specs_v2.yaml   #outlines how many of each node type to make based on model relationships
+CUSTOM_TERMS_FILE:    .\user_custom_terms.yaml         #options for free text or custom Enums (will use instead of cadsr)
+UBERON_LOCATION_FILE: .\list_of_UBERON_codes.yaml      #uberon not in cadsr, here is a dictionary to use if necessary
+
+
+#INVALID_CADSR:        .\Additional_Files\invalid_terms.yaml          #terms in CADSR but fail validation
+
+#STUDY_FILE: .\Study_Files\
+#TEMPLATE_FILES: .\Data_Loading_Templates
+#OUTPUT_FOLDER: .\Mock_Data_Output\

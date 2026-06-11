@@ -1,0 +1,346 @@
+#####################################################
+# Missing Terms:  Terms in the model but at the moment do not have custom values will default to "lorem ipsum"
+# Numeric Values: Terms that are numeric, user can set min and max ranges
+# String_Values:  Terms that do not have Enums in the model but user can add custom to prevent default "lorem ipsum"
+#                 Also can be used in place of CADSR terms for cases user wants specific terms
+# WeightProperties: can custom weight for Enums if user wants to have a term more prevelant (currently selects uniformaly)
+#########################################################################################
+Missing_Terms:
+  study:
+    - study_population
+    - study_organization
+  publication:
+    - publication_title
+  surgery:
+    - surgical_procedure_findings
+    - extent_of_residual_disease
+    - surgical_procedure
+  file:
+    - data_file_description
+  next_generation_sequencing_assay:
+    - target_capture_kit
+    - enrichment_kit
+  immune_assay:
+    - antibody_used_for_immune_based_assay 
+    - clone
+    - antigen
+  cell_based_assay:
+    - antibody_used_for_cell_based_assay
+    - roi_id
+#########################################################################################
+Numeric_Values:
+  age_at_enrollment:
+    minimum: 18      #min age of participant in study (at time of enrollment)
+    maximum: 90      #max age of participant in study (at time of enrollment)
+  participant_age_at_diagnosis:
+    Min: 10 #*365      #min age of participant in study (at time of enrollment)
+    maximum: 90 #*365      #max age of participant in study (at time of enrollment)
+  height:
+    minimum: 140  #1 * 2.54     #height has to be a positive number greate then 0
+    maximum: 190  #120 * 2.54   #height in cm and this would be 10 feet tall
+  weight:
+    minimum: 40   # 1/2.205      #weight has to be a positive number greater then 0
+    maximum: 150  #750/2.205     #weight is in kg and this would be a person who is 750 lbs 
+  ncbi_taxonomy_id:
+    minimum: 9606
+    maximum: 9606
+  consent_group_number:
+    minimum: 1
+    maximum: 1
+  necrosis_area_percentage:
+    minimum: 0
+    maximum: 100
+  viable_tumor_area_percentage:
+    minimum: 0
+    maximum: 100
+  tumor_tissue_total_area_percentage:
+    minimum: 0
+    maximum: 100
+  year_of_publication:  #must be a 4 digit number in YYYY format
+    minimum: 2000
+    maximum: 2025
+  sequencing_read_length:
+    minimum: 10
+    maximum: 30
+  radiation_dose:
+    minimum: 25
+    maximum: 100
+  total_radiation_dose:
+    minimum: 25
+    maximum: 100
+  targeted_therapy_dose:
+    minimum: 25
+    maximum: 100
+  non_targeted_therapy_dose:
+    minimum: 25
+    maximum: 100
+  a260_a230:
+    minimum: 0
+    maximum: 5
+  fibrosis_area_percentage:
+    minimum: 0
+    maximum: 100
+
+
+#########################################################################################
+String_Values:
+  program_name:
+    Enum: 
+      - National Cancer Institute
+  program_short_name:
+    Enum:
+      - NCI
+  study_name:
+    Enum:
+      - Full name of MOCK STUDY  #Cancer Moonshot Biobank
+  study_short_name:
+    Enum:
+      - MOCK  #CMB
+  study_accession:
+    Enum:
+      - phs000000   #fixed?
+  study_id: 
+    Enum:
+      - '' #NCT04314401
+  study_description:
+    Enum:
+      - This is a mock study used for testing and has no real value
+  nci_id:
+    Enum:
+      - assigned by the Clinical Trial Sponsor
+  nct_id:
+    Enum:
+      - assigned by the Clinicaltrials.gov Protocol
+  study_version:
+    Enum:
+      - v1.0
+  study_age_group:
+    Enum:
+      - Adolescent and Young Adult
+  study_biobank:
+    Enum:
+      - ECOG-ACRIN_Central_Biorepository_and_Pathology_Facility
+  dates_of_conduct:
+    Enum:
+      - September 2020 - September 2025 (estimated)
+  study_outcome:
+    Enum:
+      - Objective Response Rate (ORR)
+  study_justification:
+    Enum:
+      - Study Administration Trial Justification Text
+  study_data_sharing_plan:
+    Enum:
+      - Study Administration Data Sharing Plan
+  other_study_outcome:
+    Enum:
+      - N/a
+      - No other outcome provided
+  recist_objective_response_rate:
+    Enum:
+      - 42% (95% CI 33-51%)
+  primary_diagnosis:
+    Enum: # Currently reflective only of the values used by the CMB
+      - Colorectal cancer, NOS
+      - Acute myeloid leukemia, NOS
+      - Adenocarcinoma of the gastroesophageal junction
+      - Melanoma
+      - Myeloma, NOS
+      - Non-small cell lung cancer, NOS
+      - Prostate cancer, NOS
+      - Small cell lung cancer
+      - Invasive breast carcinoma
+      - Fallopian tube carcinoma
+      - Gastric cancer, NOS
+      - Primary peritoneal carcinoma
+      - Esophageal cancer, NOS
+      - Ovarian epithelial cancer
+  primary_disease_site:
+    Enum:
+      - Rectum
+      - Lymph Node
+      - Gastroesophageal Junction
+      - Colon
+      - Bone Marrow
+      - Lung
+      - Epidermis
+      - Prostate
+  histology:
+    Enum:
+      - Adenocarcinoma
+      - Non-Small Cell Carcinoma
+      - Melanoma
+      - Large Cell Carcinoma
+      - Squamous Cell Carcinoma
+      - Multiple Myeloma
+      - Prostate Carcinoma
+      - Acute Myeloid Leukemia - M3 eosinophilic variant
+      - Invasive Adenocarcinoma
+      - Acute Myeloid Leukemia - M5 granulocytic variant
+      - Small Cell Carcinoma
+      - High-grade Carcinoma
+      - Acute Myeloid Leukemia - poorly-differentiated M1 variant
+      - Plasma Cell Myeloma
+      - Adenosquamous Carcinoma
+  histological_subtype:
+    Enum:
+      - Adenocarcinoma
+      - High-grade Carcinoma
+      - Squamous Cell Carcinoma
+      - Prostate Carcinoma
+      - Non-Small Cell Carcinoma
+      - Plasma Cell Myeloma
+      - Acute Myeloid Leukemia - M3 eosinophilic variant
+      - Acute Myeloid Leukemia - M5 granulocytic variant
+      - Small Cell Carcinoma
+      - Multiple Myeloma
+  disease_staging_system_version:
+    Enum:
+      - Version 1
+  consent_group_name:
+    Enum:
+      - MOCK General Research Use 
+  cohort_name:
+    Enum:
+      - This is is the name of the Cohort
+  cohort_dose:
+    Enum:
+      - 1 
+      - 2 
+      - 3 
+      - 5 
+      - 10 
+      - 25 
+      - 50
+      - 100
+      - 200
+  cohort_dose_uom:
+    Enum:
+      - mg/m2
+      - ml 
+      - mg
+  cohort_description:
+    Enum:
+      - This is a discription of the cohort
+  study_arm_name:
+    Enum:
+      - This is the name of the study arm
+  study_arm_description:
+    Enum: 
+      - description of the study arm.
+  authorship:
+    Enum:
+      - Dr. David R. Holloway, Priya Sethi, Prof. Nora C. Flynn
+      - Dr. Lina V. Herrera, Thomas K. Nguyen, Prof. Rahul Menon
+      - Dr. Tobias Werner, Chen Mei-Ling, Aisha Karim
+      - Dr. Yuki Tanaka, Maria Lopez-Gonzales, Prof. Kevin J. Roth
+      - Emily Zhao, Dr. Marco de Santis, Prof. Helena Brandt
+      - Jonathan P. Reeves, Dr. Nia Olufemi, Sarah M. Klein
+  journal_citation:
+    Enum:
+      - Mock Journal 1, Vol. 33, No. 1, pp. 45-59, 2023
+      - Mock Journal 2, Vol. 41, No. 12, pp. 3771-3785, 2024
+      - Mock Journal 3, Vol. 58, No. 2, pp. 89-107, 2022
+      - Mock Journal 4, Vol. 42, No. 3, pp. 215-232, 2023
+      - Mock Journal 5, Vol. 19, No. 7, pp. 554-568, 2024
+  image_collection_name:
+    Enum:
+      - CMB-PCA
+      - CMB-MML
+      - CMB-MEL
+      - CMB-LCA
+      - CMB-GEC
+      - CMB-CRC
+  repository_name:
+    Enum:
+    - TCIA
+    - IDC
+  radiological_procedure:
+    Enum:
+      - Whole Brain Radiation
+      - CyberKnife
+      - Palliative radiation to the pelvic mass
+      - IGRT
+      - LOW DOSE RADIATION
+      - Palliative Radiation Therapy
+      - Prophylactic Cranial Radiation
+      - External beam radiation delivered in 2 fractions to T5-T8.
+      - Daily Radiation Treatment to R Lung/Nodes
+      - Yttrium 90 radio embolization Y90 Microspheres injection
+  radiological_procedure_anatomical_location:
+    Enum:
+      - Brain
+      - Skull
+      - Chest
+      - Lungs
+      - Ribs
+      - Liver
+      - Bladder
+      - Overies       
+  response_system_version:
+    Enum: 
+      - Version 1
+  total_radiation_dose_units:
+    Enum:
+      - ml 
+      - mg 
+  total_radiation_administered_units:
+    Enum:
+      - ml 
+      - mg 
+  radiation_administered_units:
+    Enum:
+      - ml 
+      - mg 
+  ncbi_taxonomy_name:
+    Enum:
+      - Homo sapiens
+  targeted_therapy_dose_units:
+    Enum:
+      - ml 
+      - mg 
+  non_targeted_therapy_dose_units:
+    Enum:
+      - ml
+      - mg
+  off_study_reason_other:
+    Enum:
+      - N/a
+      - Not Specified
+  associated_link_name:
+    Enum:
+      - Mock ClinicalTrials.gov record
+  sequencing_depth:
+    Enum:
+      - 30
+      - 50
+      - 80
+      - 100
+      - 250  
+  tabula_sapiens_reference_genome_version:
+    Enum:
+      - Tabula Sapiens v2.0
+  radiation_frequency:
+      Enum:
+        - Daily
+        - Twice A Week
+        - Weekly
+        - Monthly
+#########################################################################################
+WeightProperties:
+  sex: #mock percents for sex at birth
+    - Female: .49
+    - Male: .49
+  race:  #mock percents for reported race
+    - American Indian or Alaska Native: .003
+    - Asian: .0025
+    - Black or African American: .144
+    - Native Hawaiian or other Pacific Islander: .003
+    - White: .751
+    - Unknown: .0965
+  ethnicity:
+     - Hispanic or Latino : .20
+     - Not Hispanic or Latino: .80
+  multi_race_opt:  #if want participants to be mutli-racial, set weights here
+   - Single: .81
+   - Multi: .19
