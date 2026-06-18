@@ -20,7 +20,7 @@ HeadNode:
 
 ###########################################################################################
 # use this property to set the study name
-StudyName: MOCK_AI
+StudyName: Test CTDC Mock Data
 
 ###########################################################################################
 #for each node included will generate a ID field for the value locacted in props["id_fields"]

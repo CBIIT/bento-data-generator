@@ -6,6 +6,10 @@
 # WeightProperties: can custom weight for Enums if user wants to have a term more prevelant (currently selects uniformaly)
 #########################################################################################
 Missing_Terms:
+  program:
+    - program_short_description
+    - program_full_description
+    - program_sort_order
   study:
     - study_population
     - study_organization
@@ -19,7 +23,6 @@ Missing_Terms:
     - data_file_description
   next_generation_sequencing_assay:
     - target_capture_kit
-    - enrichment_kit
   immune_assay:
     - antibody_used_for_immune_based_assay 
     - clone
@@ -86,19 +89,22 @@ Numeric_Values:
 String_Values:
   program_name:
     Enum: 
-      - National Cancer Institute
+      - Molecular Analysis for Therapy Choice
+#      - National Cancer Institute
   program_short_name:
     Enum:
-      - NCI
+      - MATCH
+#      - NCI
   study_name:
     Enum:
-      - Full name of MOCK STUDY  #Cancer Moonshot Biobank
+      - CTDC mock data
+#      - Full name of MOCK STUDY  #Cancer Moonshot Biobank
   study_short_name:
     Enum:
-      - MOCK  #CMB
+      - CTDC-MOCK  #CMB
   study_accession:
     Enum:
-      - phs000000   #fixed?
+      - phs008888   #fixed?
   study_id: 
     Enum:
       - '' #NCT04314401
