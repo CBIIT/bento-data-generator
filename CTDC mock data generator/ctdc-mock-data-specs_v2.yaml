@@ -56,10 +56,8 @@ IncludeNodes:
     Prefix: EXPOSURE
   diagnosis:
     Prefix: DIAGNOSIS
-  targeted_therapy:
-    Prefix: TARGET
-  non_targeted_therapy:
-    Prefix: NON-TARGET
+  therapy:
+    Prefix: THERAPY
   surgery:
     Prefix: SURGERY
   radiotherapy:
@@ -169,12 +167,9 @@ RelationshipSpecs:
     diagnosis:
       NodeCount: 3
       SrcNodeCount: random
-    targeted_therapy:
+    therapy:
       NodeCount: 3
       SrcNodeCount: random
-    non_targeted_therapy:
-      NodeCount: 2
-      SrcNodeCount: random    
     surgery:
       NodeCount: 4
       SrcNodeCount: random
